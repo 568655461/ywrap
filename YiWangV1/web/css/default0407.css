@@ -1,0 +1,38 @@
+﻿/* Site CSS, By lcc807@ikoo8.com */
+/* Other CSS */
+
+
+.tooltipster-base { line-height:initial;}
+.my-custom-theme {
+	border-radius: 0; 
+	border: 1px solid #c4c4c4;
+	background: #FFF;
+	color: #333;
+}
+/* Use this next selector to style things like font-size and line-height: */
+.my-custom-theme .tooltipster-content {
+	font-size: 14px;
+	padding: 20px;
+}
+
+/* PIE PROGRESS UI */
+.pie_progress { text-align: center; position: relative; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; }
+.pie_progress svg { margin: 0 auto; }
+.pie_progress__content,
+.pie_progress__number,
+.pie_progress__label,
+.pie_progress__icon { width: 100%; position: absolute; top: 50%; left: 0; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); }
+.pie_progress__number { font-size: 42px; }
+.pie_progress__label {font-size: 12px; }
+.pie_progress__svg { display: inline-block; position: relative; width: 100%; padding-bottom: 100%; vertical-align: middle; overflow: hidden; }
+.pie_progress__svg svg { display: inline-block; position: absolute; top: 0; left: 0; }
+
+/* PREVIEW IMAGE */
+.preview_container { margin: 0 auto 0; width: 960px; display:none;}
+/*设置成屏幕大小，不要带滚动条*/
+.preview_container div { height: 640px; -moz-user-select: none; overflow: hidden; position: relative; -webkit-user-select: none; width: 960px; }
+.preview_container div .select_div { border: 1px dotted #000; position: relative; z-index: 9999; background: #fff; opacity: 0.5; }
+.preview_container div img { display: block; left: 0; position: absolute; top: 0; }
+/*预览窗口大小，需要动态设置*/
+.preview_container .preview { border: 5px solid #fff; border-radius: 5px; box-shadow: 2px 2px 3px rgba(0,0,0,0.35); height: 167px; top:80px;right: 20px; -moz-border-radius: 5px; -moz-box-shadow: 2px 2px 3px rgba(0,0,0,0.35); position: absolute; -webkit-border-radius: 5px; -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.35); width: 155px; }
+.preview_container span { background: #000; cursor: move; display: block; left: 0; width: 155px; color: #fff; display: block; position: absolute; text-align: center; text-transform: uppercase; }

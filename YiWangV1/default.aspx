@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" validateRequest=false CodeBehind="default.aspx.cs" Inherits="velocity_lxwmvc._Default" %>

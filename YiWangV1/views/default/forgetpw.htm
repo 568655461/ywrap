@@ -1,0 +1,53 @@
+﻿<div class="page_login" style="background-image: url(/web/images/login_background.jpg);">
+    <div class="page_login_make"></div>
+    <div class="page_login_box lxw_box" style="height: 350px;">
+        <div class="title">找回密码</div>
+        <ul>
+            <li><div class="li_div"><input id="account" type="text" class="lxw_user" placeholder="请输入手机或邮箱" /></div><span class="tip"></span></li>
+            <li class="button_code button_code_local button_code_img _hidden lxw_code_div ">
+                <div class="li_div"><input type="text" class="lxw_code" placeholder="请输入旁边的验证码" /></div>
+                <div class="li_tool"><img src="login_code_ss?t=$!now" class="lxw_codeimg" /></div>
+                <span class="tip"></span>
+            </li>
+            <li class="button_code button_code_num _hidden lxw_sms_div">
+                <div class="li_div"><input id="code" type="text" class="lxw_smscode" placeholder="短信验证码" /></div>
+                <div class="li_tool">
+                <a href="javascript:void(0)" class="lxw_btn_sms">获取短信验证码</a>
+                <a href="javascript:void(0)" class="lxw_btn_phone">获取语音验证码</a>
+                </div>
+                <span class="tip"></span>
+            </li>
+            <li class="button"><button class="set_next lxw_submit">继续</button></li>
+            <li class="forgetpw"><a href="login">返回</a></li>
+        </ul>
+    </div>
+</div>
+
+<script id="reset_form" type="text/html" class="lxw_div_pwd">
+    <div class="title">重置密码</div>
+    <ul>
+        <li><div class="li_div"><input type="password" class="new_pw lxw_pwd1" placeholder="设置您的密登录密码（至少6位）" /></div><span class="tip"></span></li>
+        <li><div class="li_div"><input type="password" class="new_pw2 lxw_pwd2" placeholder="确认密码" /></div><span class="tip"></span></li>
+        <li class="button"><button class="set_password" onclick="savepwd();">重置密码</button></li>
+    </ul>
+</script>
+
+<script id="reset_ok" type="text/html" class="lxw_div_pwd_ok">
+    <ul style="margin-top: 50px">
+        <li style="border: 0; text-align: center;">密码重置成功，请重新登录</li>
+        <li style="border: 0; text-align: center;">&nbsp;</li>
+        <li style="border: 0; text-align: center;">&nbsp;</li>
+        <li class="button"><button onclick="location.href = '/login';">返回登录</button></li>
+    </ul>
+</script>
+
+<script id="reset_email" type="text/html" class="lxw_div_email">
+    <ul style="margin-top: 50px">
+        <li style="border: 0; text-align: center;">重置密码的链接已经发送到您的邮箱：</li>
+        <li style="border: 0; text-align: center;" class="lxw_email">exampler@alibaba.com</li>
+        <li style="border: 0; text-align: center;">&nbsp;</li>
+        <li class="button"><button onclick="location.href = '/login';">返回登录</button></li>
+    </ul>
+</script>
+
+<script src="/web/js/forgetpw.js"></script>

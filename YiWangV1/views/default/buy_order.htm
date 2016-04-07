@@ -1,0 +1,382 @@
+﻿<script src="/web/js/blocksit.min.js"></script> 
+<script src="/web/js/location.js" type="text/javascript"></script>
+<script src="/web/layer/layer.js" type="text/javascript"></script>
+<link href="/web/layer/skin/layer.css" rel="stylesheet">
+<script src="/web/js/jquery.formatCurrency-1.4.0.js"></script>
+
+<div class="nav_title">结算下单</div>
+<div class="buy_order">
+    <div class="mxl_addrs">
+       
+    </div>
+    <div class="buy_order_panel clearfix">
+        <div class="f_l title">支付方式</div>
+        <div class="f_l panel_container panel_pay_type">
+            <a href="javascript:void(0);" class="active" v="1">支付宝</a>
+            <a href="javascript:void(0);"  v="2">微信支付</a>
+            <a href="javascript:alert('弹出转账的银行信息?')"  v="3">转账支付</a>
+        </div>
+    </div>
+    <div class="buy_order_panel clearfix">
+        <div class="f_l title">购买商品</div>
+        <div class="f_l panel_container panel_pay_list">
+            <ul>
+                #foreach($item in $dingdanmingxi)
+                #set($cart=$core_buy.getzuopin($item.ywyishupinid))
+                #set($ysj=$core_buy.getyishujia($cart.ywyishujiaid))
+                <li class="clearfix">
+                    <div class="f_l thumb"><a href="/artworks/${cart.key}" target="_blank"><img src="${GTUPIANIMGIMG}${cart.tupian}.jpg_small02"/></a></div>
+                    <div class="f_l detail">
+                        <div class="title nowrap">$funhelper.encode("$!cart.zhongwen","",$funhelper.encode("$!cart.mingcheng","","无题","$!cart.mingcheng"),"$!cart.zhongwen")</div>
+                        <p><a href="/artist/${ysj.key}" target="_blank">$ysj.xingming</a></p>
+                        <p>$!cart.fenlei1 $!cart.fenlei2</p>
+                        <p>${cart.size}</p>
+                    </div>
+                    <div class="f_r price_unit">
+                        <p class="now"><strong class="price">¥<em>$cart.money</em></strong></p>
+                        <p class="old"><strong class="price">#if($!cart.youhuijia != "")¥<em>$cart.youhuijia</em>#end</strong></p>
+                        <!--<p class="special"><span>会员生日优惠</span></p>-->
+                    </div>
+                </li>
+                #end
+                
+            </ul>
+        </div>
+    </div>
+    <div class="buy_order_panel clearfix">
+        <div class="f_l title">价格计算</div>
+        <div class="f_l panel_container panel_pay_price">
+            <div class="f_l coupons">
+                <div class="item">
+                    <!--<input type="checkbox" />-->
+                    <span class="title">使用艺网码</span>
+                    <div class="input_div">
+                        <input type="text" class="mxl_yiwangma"/>
+                        <!--<span class="tip">艺网码无效</span>-->
+                        <input type="button" value="使用" class="button mxl_shiyong"/>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="title"></span>
+                    <div class="input_div">
+                        <span class="title mxl_ywmmsg"></span>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="f_r result">
+                <div class="detailed">
+                    <p><span>商品</span><em v="$!dingdan.zongjia">¥$dingdan.totalprice</em></p>
+                    <p><span>物流费</span><em>¥100</em></p>
+                    <p><span>艺网码抵扣</span><em class="mxl_totalused" v="0">-¥0</em></p>
+                  
+                </div>
+                <div class="sum mxl_sum">
+                    <span>合计</span>
+                    <em v="$!dingdan.zongjia">¥$dingdan.totalprice</em>
+                </div>
+                <div class="submit">
+                    <a href="/buy_cart">返回购物车</a>
+                    <button class="lxw_submit">提交订单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 提交订单，跳转支付页面后，弹出层 -->
+<script id="divtijiaodingdan" type="text/html">
+    <div style="padding:3px 0;">
+        <div style="padding:3px 0;" class="yuanyin_inputList">
+            <p><img class="mxl_ercode"/></p>
+        </div>
+    </div>
+    <p><span class="mxl_zhifu_msg"></span>订单已生成，如果未能支付，请前往<a href="/user_order">订单中心</a>完成支付</p>
+</script>
+
+<script>
+    var _ = {};
+    //使用的艺网码累加
+    _.yiwangmalist = [];
+
+
+    var listyiwangma = [];
+    $(function(){
+        $(".lxw_submit").on("click", function (ret) {
+            //获取地址信息
+            var dizhi = $(".defualt") && $(".defualt").length > 0 && $(".defualt").attr("v");
+            if (!dizhi) {
+                alert("请选择地址!");
+                return;
+            }
+
+            var pay = $(".panel_pay_type .active") && $(".panel_pay_type .active").length > 0 && $(".panel_pay_type .active").attr("v");
+            if (!pay) {
+                alert("请选择付款方式!");
+                return;
+            }
+
+            //使用艺网码和积分
+            var ywm = "";
+            if (_.yiwangmalist.length > 0)
+                ywm = _.yiwangmalist.join(",");
+            //确认付款吗？
+            var openurl = "buy_order_create?d=" + dizhi + "&pay=" + pay + "&new=$!new&id=$!id&yiwangma=" + ywm + "&t=" + new Date();
+            //锁屏
+            OpenMode();
+            if (pay == 1) {
+                $(".mxl_zhifu_msg").text("请在新页面中完成支付。");
+                window.open(openurl);
+            }
+            else if (pay == 2)
+            {
+                $(".mxl_zhifu_msg").text("请使用微信扫描二维码完成支付。");
+                //二进制流输出图片
+                function getBlobImage($img, url, opacity) {
+                    opacity = opacity || 1;
+                    $img.hide();
+                    window.URL = window.URL || window.webkitURL;
+                    if (typeof history.pushState == "function") {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("get", url, true);
+                        xhr.responseType = "blob";
+                        xhr.onload = function () {
+                            if (this.status == 200) {
+                                var blob = this.response;
+
+                                $img[0].onload = function (e) {
+
+                                    window.URL.revokeObjectURL($img[0].src);
+                                    $img.fadeTo("slow", opacity);
+
+                                };
+
+                                $img[0].src = window.URL.createObjectURL(blob);
+                            }
+                        }
+                        xhr.send();
+                    } else {
+                    }
+                }
+
+                var img = $(".mxl_ercode");
+                getBlobImage(img, openurl);
+
+            }
+           
+            //监听结果
+            setTimeout(function () {
+                checktimer();
+            }, 2000);
+
+        });
+        //监测订单支付情况
+        function checktimer() {
+            var d = "$!new";
+            $.get("check_order_pay?new=" + d + "&t=" + new Date(), function (d) {
+                if (d.indexOf("ok|") != -1) {
+                    location.href = "/buy_order_success?new=" + d.split('|')[1] + "&t=" + new Date();
+                }
+                else {
+                    setTimeout(function () {
+                        checktimer();
+                    }, 2000);
+                }
+            });
+        }
+        //弹屏
+        function OpenMode() {
+            confirm($('#divtijiaodingdan').html(), {
+                title: '提交订单',
+                isHtml: 1,
+                confirmButton: '支付成功',
+                cancelButton: '支付遇到问题',
+                confirm: function () {
+                    //点击确认后
+                    location.href = "/buy_order_success";
+                },
+                cancel: function () {
+                    location.href = "/user_order";
+                }
+            });
+        }
+
+        $(".mxl_shiyong").click(function () {
+            $(".mxl_ywmmsg").html("");
+
+            var yiwangma = $.trim($(".mxl_yiwangma").val());
+            if (yiwangma == "") {
+                alert("请输入艺网码")
+                return;
+            }
+            //剩余订单总价
+            var zongjia = $.trim($(".mxl_sum em").attr("v"));
+            //zongjia = zongjia.substring(zongjia.indexOf("¥") + 1, zongjia.length);
+            //
+            var yiwangmalist = _.yiwangmalist.join(",");
+            if (yiwangmalist.length > 0) {
+                yiwangmalist += "," + yiwangma;
+            }
+            else {
+                yiwangmalist = yiwangma;
+            }
+            var para = { zongjia: zongjia, yiwangma: yiwangma, yiwangmaused: yiwangmalist };
+            $.post("buy_order_checkywm",
+                para,
+                function (d) {
+                    if (d.status == true) {
+                        var totalused = $.trim($(".mxl_totalused").attr("v"))
+                        //totalused = totalused.substring(totalused.indexOf("¥") + 1, totalused.length);
+                        //累计优惠
+                        var totalused = parseFloat(totalused) + parseFloat(d.youhui);
+                        $(".mxl_totalused").text(totalused);
+                        $(".mxl_totalused").attr("v", totalused);
+                        //剩余订单总价
+                        var sum = parseFloat(zongjia) - parseFloat(d.youhui);
+                        $(".mxl_sum em").text(sum);
+                        $(".mxl_sum em").attr("v", sum);
+
+                        $(".mxl_totalused").formatCurrency({ roundToDecimalPlace: -1 });
+                        $(".mxl_sum em").formatCurrency({ roundToDecimalPlace: -1 });
+
+                        $(".mxl_totalused").text("-¥" + $(".mxl_totalused").text());
+                        $(".mxl_sum em").text("¥" + $(".mxl_sum em").text());
+                        //已使用的艺网码集合
+                        _.yiwangmalist.push(yiwangma);
+
+                        $(".mxl_yiwangma").val("");
+                    }
+                    else {
+                        $(".mxl_ywmmsg").html(d.msg);
+                    }
+                }
+            );
+        });
+
+        
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        function initaddrs() {
+            $.get("buy_order_addrs", function (html) {
+                $(".mxl_addrs").html(html);
+                bindclick();
+            });
+        }
+        initaddrs();
+
+        function bindclick() {
+            //eval($("#mxl_addrs").html());
+
+            addressInit('s1', 's2', 's3', '$!body', '$!body', '$!body');
+
+            $('.panel_address .open_all').click(function () {
+                $('.panel_address ._hidden').slideToggle(0, function () {
+                    if ($(this).is(':hidden')) {
+                        $('.open_all').text('展开全部地址');
+                    } else {
+                        $('.open_all').text('收起全部地址');
+                    }
+                });
+            });
+
+            $('.panel_pay_type a').click(function () {
+                $('.panel_pay_type a').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            $(".lxw_dizhi").on("click", function () {
+                $(".lxw_dizhi").removeClass("defualt");
+                $(this).addClass("defualt");
+            })
+            //保存地址信息
+            $(".save").off("click", null);
+            $(".save").on("click", function () {
+                var flag = false;
+                //验证信息，那些是必须填写
+                $(".mxl_addaddress input[type='text']").each(function (i, v) {
+                    var ths = $(v);
+                    var chk = ths.attr("msg");
+                    var value = $.trim(ths.val());
+                    if (value == "" && chk != "" && chk != undefined)
+                    {
+                        alert(chk);
+                        flag = true;
+                        return false;
+                    }
+                    var mobileReg = /^1\d{10}$/;
+                    if (ths.attr("name") == "shoujihao2" && !mobileReg.test(value)) {
+                        alert(chk);
+                        flag = true;
+                        return false;
+                    }
+                });
+
+                if (flag)
+                    return;
+                //提交信息
+                $("form").ajaxSubmit({
+                    type: "post",
+                    url: "user_address_save",
+                    success: function (ret) {
+                        if (ret == "ok")
+                        {
+                            layer.closeAll();
+                            alert("修改成功！");
+                            initaddrs();
+                        }
+                        else {
+                            alert(ret);
+                        }
+                    }
+                });
+            });
+            //弹出地址层
+            $(".mxl_add_addrs").click(function () {
+                layer.open({
+                    type: 1,
+                    skin: 'layui-layer-lcc',
+                    title: '添加地址',
+                    area: ['700px', '600px'],
+                    content: $(".mxl_addaddress")
+                });
+                $('input[type="checkbox"]').iCheck({
+                    checkboxClass: 'icheckbox_minimal-orange',
+                    radioClass: 'iradio_minimal',
+                    increaseArea: '20%'
+                });
+            });
+            //关闭弹出层
+            $(".cancel").click(function () {
+                layer.closeAll();
+            });
+        }
+    });
+
+</script>
+
+
+<script type="text/html" id="body_load">
+    $('.panel_pay_list .thumb').each(function () {
+        var div_w = $(this).width(); 
+        var div_h = $(this).height();
+        var div_pro = div_w / div_h;
+        var img_obj = $(this).find('img');
+        var img_w = img_obj.width();
+        var img_h = img_obj.height();
+        var img_pro = img_w / img_h;
+        if (img_w > div_h && img_h < div_h) {
+            img_obj.css({ 'width': div_w });
+        } else if (img_h > div_h && img_w < div_h) {
+            img_obj.css({ 'height': div_h });
+        } else if (div_pro < img_pro) {
+            img_obj.css({ 'width': div_w});
+            img_obj.css({ 'padding-top': (div_h - img_obj.height()) / 2 + 'px' });
+        } else if (div_pro > img_pro) {
+            img_obj.css({ 'height': div_h });
+        } else {
+            img_obj.css({ 'width': '100%' });
+        }
+    });
+</script>

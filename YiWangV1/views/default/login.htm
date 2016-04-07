@@ -1,0 +1,51 @@
+﻿<div class="page_login"  style ="background-image: url(/web/images/login_background.jpg);">
+    <div class="page_login_make"></div>
+    <div class="page_login_box">
+        <div class="logo" onclick="location.href = '/index';" style="cursor:pointer"></div>
+        <ul>
+            <li><div class="li_div"><input id="account" type="text" placeholder="请输入手机或邮箱" class="lxw_user pure-input-1" autocomplete="off"/></div><span class="tip"></span></li>
+        </ul>
+        <ul class="login_div">
+            <li class="_hidden"><div class="li_div"><input id="password" type="password" class="lxw_pwd_login" placeholder="请输入密码" autocomplete="off"/></div><span class="tip"></span></li>
+
+            <li class="_hidden lxw_li_code_login button_code button_code_local">
+                <div class="li_div" onClick="javascript:mysub()"><input  class="lxw_code_login" /></div>
+                <div class="li_tool"><img class="lxw_codeimg_login" src="login_code_ss?t=$!now" /></div>
+                <span class="tip"></span>
+            </li>
+
+            <li class="button"><button ref="登录 / 注册" class="lxw_submit_login">登录 / 注册</button></li>
+            <li class="forgetpw"><a href="forgetpw">忘记密码</a></li>
+        </ul>
+
+        <ul class="register_div _hidden">
+            <li class="lxw_li_code_reg button_code button_code_local">
+                <div class="li_div"><input class="lxw_code_reg" placeholder="请输入验证码"/></div>
+                <div class="li_tool"><img class="lxw_codeimg_reg" src="login_code_ss?t=$!now" /></div>
+                <span class="tip"></span>
+            </li>
+
+            <li class="button_code">
+                <div class="li_div"><input id="code" class="lxw_code_value" type="text" placeholder="短信验证码" /></div>
+                <div class="li_tool">
+                    <a class="lxw_code_sms">获取短信验证码</a>
+                    <a class="lxw_code_phone">获取语音验证码</a>
+                </div>
+                <span class="tip"></span>
+            </li>
+
+            <li><div class="li_div"><input id="password2" type="password" class="lxw_pwd_reg" placeholder="请输入密码，不少于6位" /></div><span class="tip"></span></li>
+            <li class="button"><button class="lxw_submit_reg">注册</button></li>
+        </ul>
+        
+        <div class="login_third">
+            <a href="$!weibo" target="_blank">
+                <i class="fa fa-weibo"></i>
+            </a>
+            ##最好弹出来
+            <a href="$!weixin"><i class="fa fa-weixin"></i></a>
+        </div>
+    </div> 
+</div>
+
+<script src="/web/js/login.js"></script> 

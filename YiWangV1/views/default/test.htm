@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+     <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+    <style>        html, body {width:100%
+        }
+    </style>
+<body> 
+    <div class="_div" style="width:50%;height:400px;">
+	<canvas id="canvas" ></canvas>
+	</div>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257530311'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257530311' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>
+
+<script>
+    var DEBUG = !0;
+    var maxPx = 50;
+    var minPx = 10;
+var _ = {}; _.moneys = [], _.i = 0; while (_.i++ < 10000) _.moneys[_.moneys.length] = Math.random() * 60000; _.moneys.sort(); _.GETMAX = function (tmp) { var max = tmp[0]; for (var i = 1; i < tmp.length; i++) max < tmp[i] && (max = tmp[i]); return max; }, _.GETMIN = function (tmp) { var max = tmp[0]; for (var i = 1; i < tmp.length; i++) max > tmp[i] && (max = tmp[i]); return max; };function n() { var can = $('canvas'); can.attr("width", $("._div").width()), can.attr("height", $("._div").height()); var cans = can[0].getContext('2d'), WIDTH = can.width(), HEIGHT = can.height(), X = can.offset().left, _20 = 0, MINPX = Math.max(Math.min(can.width() / 20, maxPx), minPx), Y = HEIGHT - _20; cans.fillStyle = "rgba(0,0,0,1)", cans.lineWidth = 0.5;var V_MAX = _.GETMAX(_.moneys), V_MIN = _.GETMIN(_.moneys), COUNT = (WIDTH / MINPX + 1), len = (V_MAX - V_MIN) / COUNT, COUNTS = []; for (var i = 0; i < COUNT; i++) COUNTS[i] = 0; for (var i = 0; i < _.moneys.length; i++) COUNTS[Math.floor(_.moneys[i] / len)]++; for (var i = 0; i < COUNT && DEBUG; i++) COUNTS[i] = Math.pow(COUNTS[i], 6); var MAXHEIGHT = _.GETMAX(COUNTS), HEIGHTLEN = MAXHEIGHT / (HEIGHT - _20 * 2); function DRAW() { cans.clearRect(0, 0, WIDTH, HEIGHT), cans.moveTo(0 + WIDTH, Y + 1), cans.lineTo(0, Y + 1), cans.stroke(); for (var i = 0; i < COUNT; i++) cans.strokeRect(i * MINPX, HEIGHT - _20 - COUNTS[i] / HEIGHTLEN, MINPX, COUNTS[i] / HEIGHTLEN); } DRAW(); can.off("mousemove", null); can.on("mousemove", function (e) { e = window.event || e; var eX = e.pageX - this.offsetLeft; var eY = e.pageY - this.offsetTop; DRAW(); for (var i = 0; i < COUNT; i++) eX > (i * MINPX) && eX <= ((i + 1) * MINPX) && (cans.fillStyle = "rgba(128,128,128,0.5)", cans.fillRect(i * MINPX, HEIGHT - _20 - COUNTS[i] / HEIGHTLEN, MINPX, COUNTS[i] / HEIGHTLEN), cans.fillStyle = "rgba(0,0,0,1)", cans.fillText(COUNTS[i] + "件", eX, eY)); }); };$(function () { n(); });$(window).resize(n);
+
+   
+</script>

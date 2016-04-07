@@ -1,0 +1,143 @@
+﻿<div class="maxl_project_data">
+    <div class="search_line">
+        <span class="result_num mxl_result_num"><em>$pager1.recordcount</em>个结果</span>
+    </div>
+    <div class="search_content">
+        <!-- 无结果DIV -->
+    
+        #if($pager1.recordcount == 0)
+        <div class="no_data">
+            <strong>搜索结果为空</strong>
+            请检查你的输入是否有误
+        </div>
+        #end
+        <div class="search_list">
+            <ul>
+                #foreach($item in $pager1.data)
+                #set($yishujia=$core_buy.getyishujia($item.ywyishujiaid))
+                <li>
+                    <div class="project clearfix"><!--艺术品-->
+                        <div class="f_l thumb"><a href="/artworks/$!{item.xiangqing}" target="_blank"><img src="${GTUPIANIMGIMG}$!{item.tupian}.jpg_small02"/></a></div>
+                        <div class="f_l detail">
+                            <div class="title nowrap">$funhelper.encode("$!item.zhongwen","",$funhelper.encode("$!item.mingcheng","","无题","$!item.mingcheng"),"$!item.zhongwen")</div>
+                            <p>$!yishujia.xingming</p>
+                            <p>$!{item.gao}*$!{item.kuan}CM</p>
+                            <p>¥$!{item.jiage}</p>
+                        </div>
+                        <div class="f_l info">
+                            <strong class="title">作品描述</strong>
+                            <div class="summarize">$!{item.miaoshu}</div>
+                            <div class="more">
+                                <a href="/artworks/$!{item.xiangqing}" >查看详情 ></a><!--转 作品详情里面吗？-->
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                #end
+            </ul>
+            <div class="pagination p_r">
+            $core_pager.simple($!pager1)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="maxl_artist_data">
+    <div class="search_line">
+        <span class="result_num mxl_result_num"><em>$pager2.recordcount</em>个结果</span>
+    </div>
+    <div class="search_content">
+            <!-- 无结果DIV -->
+            #if($pager2.recordcount == 0)
+            <div class="no_data">
+                <strong>搜索结果为空</strong>
+                请检查你的输入是否有误
+            </div>
+            #end
+        <div class="search_list">
+            <ul>
+                #foreach($item in $pager2.data)
+                #set($yishupin=$core_buy.getyishupinbyyishujia($item.ywyishujiaid))
+                <li>
+                    <div class="artist clearfix"><!--艺术家-->
+                        <div class="introduces">
+                            <a class="avatar" href="/artist/$!{item.key}">
+                                <!--<img src="$!item.zhaopian" />-->
+                                #if("$!{item.touxiang}"!="")
+                                <img src="$!{OSS}ysj/$!{item.touxiang}"/>
+                               #else
+                                   #if("$!{item.touxiangld}"!="")
+                                   <img src="$!{OSS}ysj/$!{item.touxiangold}"/>
+                                   #else
+                                        #if("$!{item.zhaopian}"!="")
+                                        <img src="$!{OSS}ysj/$!{item.zhaopian}"/>
+                                        #else
+                                        <img src="$!{OSS}ysj/$!{item.zhaopianold}"/>
+                                        #end
+                                   #end
+                               #end
+                            </a>
+                            <p class="name">$!item.xingming</p>
+                            <p>$!item.bieming</p>
+                            <!--<p>$!item.shenfenzheng</p>
+                            <p>荷兰</p>-->
+                        </div>
+                        <div class="artist_project">
+                            <ul>
+                                #foreach($ysp in $yishupin)
+                                <li><a href="/artworks/$!{ysp.xiangqing}" target="_blank"><img src="${GTUPIANIMGIMG}$!{ysp.tupian}.jpg_small02" /></a></li>
+                                #end
+                            </ul>
+                            <a href="/artist/$!{item.key}">更多 ></a><!--跳转至艺术家页面-->
+                        </div>
+                    </div>
+                </li>
+                #end
+            </ul>
+            <div class="pagination p_r">
+            $core_pager.simple($!pager2)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="maxl_article_data">
+    <div class="search_line">
+        <span class="result_num mxl_result_num"><em>$pager3.recordcount</em>个结果</span>
+    </div>
+    <div class="search_content">
+        <!-- 无结果DIV -->
+        #if($pager3.recordcount == 0)
+        <div class="no_data">
+            <strong>搜索结果为空</strong>
+            请检查你的输入是否有误
+        </div>
+        #end
+        <div class="search_list">
+            <ul>
+                #foreach($item in $pager3.data)
+                #set($sysyonghu=$core_buy.getsysyonghu($item.tianjiaren))
+                <li>
+                    <div class="article clearfix"><!--文章-->
+                        <div class="content">
+                            <strong class="title">$!{item.biaoti}</strong>
+                            <div class="summarize">$!{item.neirong}</div>
+                            <div class="info">
+                                <span class="time">$!{item.riqi}</span>
+                                <span class="author">作者：$!{sysyonghu.xingming}</span>
+                                <span class="reply">回复：100</span>
+                            </div>
+                            <a class="more" href="#">查看详情 ></a>
+                        </div>
+                        #if("$!{item.tupian}"!="")
+                        <img src="$!{item.tupian}" class="avatar"/>
+                       #end
+                    </div>
+                </li>
+                #end
+            </ul>
+            <div class="pagination p_r">
+            $core_pager.simple($!pager3)
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" class="curname" value="$!colname" />

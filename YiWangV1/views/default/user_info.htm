@@ -1,0 +1,286 @@
+﻿<style>
+    .btnCrop{
+        width:20px;
+        height:20px;
+        display:inline-block;
+        line-height:20px;
+        float:right;
+        position:absolute;
+        top:195px;
+        left:175px;
+        cursor:pointer;
+        border:1px solid #FFF;
+        text-align:center;
+        color:#FFF;
+        font-size:20px;
+        background:rgba(0,0,0,0.2);
+    }
+    .btnCropS {
+        left:196px;
+    }
+</style>
+<form method="post" onsubmit="return false;">
+<input type="hidden" name="flag" value="1" />
+    <input type="hidden" name="lxw_userimage" class="lxw_userimage" value="" />
+    <input type="hidden" name="lxw_userimagebig" class="lxw_userimagebig" value="" />
+<div class="manage_info">
+    <div class="item base_info">
+        <div class="title">基本信息</div>
+        <div class="form">
+            <table>
+                <tr>
+                    <td>我的照片</td>
+                    <td>
+                      <style>
+                            .file1 {
+                               
+                            }
+                            .file1 input {
+                                position: absolute;
+                                font-size: 1000px;
+                                height:200px!important;
+                                line-height:200px!important;
+                                right: 0;
+                                top: 0;
+                                opacity: 0;
+                            }
+                           
+                      </style>
+                        <div class="input_div border_div">
+                            <div class="avatar clearfix">
+                                <div class="img_o f_l overlay file">
+                                    #if("$!yonghu.zhaopian"!="")
+                                    <img src="$!{OSS}face/$!yonghu.zhaopian" class="thumb_o"/>
+                                    #else
+                                    <img src="/web/images/avatar_default.jpg" class="thumb_o"/>
+                                    #end
+                                    
+                                    ##<input type="file" id="File1" />
+                                    <div class="btnCrop btnCropB" style="display:none;">+</div><div class="btnCrop btnCropS" style="display:none;">-</div>
+                                </div>
+
+                                <div class="img_c f_l">
+                                    <span class="explain">请上传一张图片作为您的头像  </span>
+                                    <div class="buttons">
+                                        <input type="file" id="avatar_file" />
+                                        <button class="avatar_file">上传照片</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td>昵称</td>
+                    <td>
+                        <div class="input_div border_div"><input type="text" value="$!yonghu.nicheng" placeholder="昵称" name="nicheng"/></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>真实姓名</td>
+                    <td>
+                        <div class="input_div border_div"><input type="text" name="xingming" value="$!yonghu.xingming"/></div>
+                        <div class="input_div_tip">方便我们与您取得联系，为您提供更多服务。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>我是</td>
+                    <td>
+                        <div class="input_div">
+                            <select style="width:80px;" name="xingbie">
+                                <option value="男">男生</option>
+                                <option value="女">女生</option>
+                            </select>
+                        </div>
+                        <div class="input_div_tip"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>出生日期</td>
+                    <td>
+                        <div class="input_div" >
+                            <select style="width:80px;margin-right:10px;" name="chushengnian" class="lxw_n lxw_riqi">
+                                #foreach($item in [2000..1939])
+                                <option value="$item">$item年</option>
+                                #end
+                            </select>
+                            <select style="width:80px;margin-right:10px;" name="chushengyue" class="lxw_y lxw_riqi">
+                                #foreach($item in [1..12])
+                                <option value="$item">$item月</option>
+                                #end
+                            </select>
+                            ## 不考虑31号的问题。
+                            <select style="width:80px;margin-right:10px;" name="chushengri" class="lxw_r ">
+                                #foreach($item in [1..31])
+                                <option value="$item">$item日</option>
+                                #end
+                            </select>
+                        </div>
+                        <div class="input_div_tip">您来到这个世界的神奇日子。生日当天，我们为您送上专属优惠。</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="item">
+        <div class="title">登录密码</div>
+        <div class="form">
+            <table class="password_default">
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input_div border_div safe_status">
+                            #if("$!yonghu.mima"!="")
+                            <span>********</span>
+                            <span>非常安全</span>
+                            #end
+                        </div>
+                        <div class="input_div_tip"><a href="javascript:void(0);" onclick="$('.password_modify').fadeIn(0);$('.password_default').fadeOut(0);">$funhelper.encode("$!yonghu.mima","","设置密码","修改密码")</a></div>
+                        <script>
+                            
+                        </script>
+                    </td>
+                </tr>
+            </table>
+            <table class="password_modify _hidden">
+                #if("$!yonghu.mima"=="")
+                <tr class="_hidden">
+                   
+                    <td>当前密码</td>
+                    <td>
+                        <div class="input_div border_div"><input type="password" class="lxw_pwd1" /></div>
+                    </td>
+                    
+                </tr>
+                #else
+                <tr>
+                    <td>当前密码</td>
+                    <td>
+                        <div class="input_div border_div"><input type="password" class="lxw_pwd1" /></div>
+                    </td>
+
+                </tr>
+                #end
+                <tr>
+                    <td>新密码</td>
+                    <td>
+                        <div class="input_div border_div"><input type="password" class="lxw_pwd2" /></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>确认新密码</td>
+                    <td>
+                        <div class="input_div border_div"><input type="password" class="lxw_pwd3" /></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="save lxw_pwd_save">确定</button>
+                        <button class="cancel" onclick="repwd();">取消</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="item">
+        <div class="title">电话号码$!yonghu.dianhua2</div> 
+        <div class="form">
+            
+            <table class="mobile_default $funhelper.encode("$!yonghu.shoujihao","","_hidden")">
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input_div border_div safe_status">
+                            <span class="lxw_phone">$funhelper.encode("$!yonghu.shoujihao","","","+86") *** **** $yonghu.shoujihao.substring(7,4)</span>
+                            <span>已验证</span>
+                        </div>
+                        <div class="input_div_tip"><a href="javascript:void(0);" onclick="rephone();">修改电话号码</a></div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="mobile_modify  $funhelper.encode("$!yonghu.shoujihao","","","_hidden")">
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input_div border_div" style="background:#FFF;">
+                            <input type="text" value="+86" class="font_b" style="width:35px;float:left;" readonly/>
+                            <input type="mobile" value="$!yonghu.shoujihao" style="width:80%;float:left;" class="font_b lxw_mobile"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input_div border_div f_l" style="width:154px;"><input type="text" class="lxw_code" placeholder="输入验证码" /></div>
+                        <a href="javascript:void(0);" class="code_get lxw_getcode">获取验证码</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="save lxw_mobile_save">绑定</button>
+                        <button class="cancel" onclick="$('.mobile_modify').fadeOut(0);$('.mobile_default').fadeIn(0);">取消</button>
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+    </div>
+    <div class="item">
+        <div class="title">电子邮件</div>
+        <div class="form">
+
+            <table class="email_defualt $funhelper.encode("$!yonghu.youjianrenzheng","1","","_hidden")">
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input_div border_div mail_status">
+                            <span class="lxw_email">$!yonghu.youjian</span>
+                            <span class="lxw_email_status">$funhelper.encode("$!yonghu.youjianrenzheng","1","已验证")</span>
+                        </div>
+
+
+                        <div class="input_div_tip"><a href="javascript:void(0);" onclick="modifyemail();">修改电子邮件</a>
+
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="email_modify $funhelper.encode("$!yonghu.youjianrenzheng","1","_hidden","")">
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input_div border_div" style="background:#FFF;">
+                            <input type="email" placeholder="请输入有效的电子邮件" value="$!yonghu.youjian" class="lxw_email_value"/>
+                            <a href="javascript:void(0);" class="email_code_get lxw_email_send $funhelper.encode("$!yonghu.youjian","","_hidden","")">发送确认邮件</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        ##<button class="save">确定</button>
+                        <button class="cancel lxw_cancel _hidden" >取消</button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <div class="item controller">
+        <button class="save lxw_all_save">保存</button>
+        <div class="controller_tip _hidden">* 请修改红色标记的地方</div>
+    </div>
+</div>
+</form>
+<div class="agreement">
+    艺网遵守用户协议，不会向任何第三方透露您的信息，<a href="#">查看详情</a>。
+</div>
+
+<script src="/web/js/user_info.js"></script> 

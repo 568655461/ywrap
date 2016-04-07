@@ -1,0 +1,291 @@
+﻿<script src="//cdn.bootcss.com/jquery-json/2.5.1/jquery.json.min.js"></script>
+<script src="/web/js/jquery.formatCurrency-1.4.0.js"></script>
+
+<div class="nav_title">我的购物车</div>
+<div class="buy_cart">
+    <div class="buy_class">
+        <ul>
+            <li class="active"><a href="#">全部商品</a></li>
+            <!-- <li><a href="#">优惠商品<span>0</span></a></li> -->
+        </ul>
+    </div>
+    <div class="buy_cart_choice_all clearfix">
+        <label class="f_l choice_all"><input type="checkbox" /> 全选</label>
+        <div class="f_r">
+            已选商品（不含运费）<strong class="price">¥<em>0.00</em></strong>
+            <button onclick="javascript:submitorder();">结算</button>
+        </div>
+    </div>
+    <div class="buy_cart_list">
+        <ul>
+            #set($dt="")
+            #foreach($item in $list)
+            #if($dt=="")
+            <li>
+                <label class="choice_item"><input type="checkbox" /> $item.riqi.ToString("yyyy-MM-dd")</label>
+            #end
+
+            #if($dt!="" && $dt!=$item.riqi.ToString("yyyy-MM-dd"))
+            </li>
+            <li>
+                <label class="choice_item"><input type="checkbox" /> $item.riqi.ToString("yyyy-MM-dd")</label>
+            #end
+                #set($cart=$core_buy.getzuopin($item.ywyishupinid))
+                #set($ysj=$core_buy.getyishujia($cart.ywyishujiaid))
+                <div class="item clearfix">
+                    <div class="f_l choice">
+                        #if("$!cart.chushou"!="1")
+                        <input type="checkbox" value="$item.ywyishupinid" cs="$cart.chushou" class="lxw_id" v="$!{cart.key}" />
+                        #end
+                    </div>
+
+                    <div class="f_l thumb"><a href="/artworks/${cart.key}" target="_blank"><img src="${GTUPIANIMGIMG}${cart.tupian}.jpg_small02"/></a></div>
+                    <div class="f_l unified detail">
+                        <div class="title nowrap">$funhelper.encode("$!cart.zhongwen","",$funhelper.encode("$!cart.mingcheng","","无题","$!cart.mingcheng"),"$!cart.zhongwen") $funhelper.encode("$!cart.chushou","1","(已售)")</div>
+                        <p><a href="/artist/${ysj.key}" target="_blank">$ysj.xingming</a></p>
+                        <p>$!cart.fenlei1 $!cart.fenlei2</p>
+                        <p>${cart.size}</p>
+                    </div>
+                    <div class="f_l unified price_unit">
+                        <p class="now"><strong class="price">¥<em v="$!cart.jiage">$!cart.money</em></strong></p>
+                        <p class="old"><strong class="price">#if($!cart.youhuijia != "")¥<em>$cart.youhuijia</em>#end</strong></p>
+                        ##<p class="special"><span>会员生日优惠</span></p>
+                    </div>
+                    <div class="f_l unified amount">
+                        <div class="item-amount" v="$!cart.shuliang">
+                            #if($!cart.shuliang > 1)
+                            <a href="javascript:void(0);" class="minus">-</a>
+                            #end
+                            <input type="text" value="$item.shuliang" class="text-amount lxw_id_$!{cart.key}" autocomplete="off"  
+                                #if("$!cart.shuliang"=="" || $!cart.shuliang==0 || $!cart.shuliang==1) 
+                                readonly 
+                                #end
+                                />
+                            #if($!cart.shuliang > 1)
+                            <a href="javascript:void(0)" class="plus">+</a>
+                            #end
+                        </div>
+                    </div>
+                    <div class="f_l unified price_sum">
+                        <strong class="price price_sum">¥<em v="$funhelper.chengfa($cart.jiage,$item.shuliang)">$core_buy.moneyformat($funhelper.chengfa($cart.jiage,$item.shuliang))</em></strong>
+                    </div>
+                    <div class="f_l unified op">
+                        ##<a href="javascript:;" class="add_collect">加入我欣赏的作品</a>
+                        <a href="javascript:;" class="del" v2="$item.ywgouwucheid">移除</a>
+                    </div>
+                </div>
+            
+            #set($dt=$item.riqi.ToString("yyyy-MM-dd"))
+            #end
+
+            #if($dt!="")
+            </li>
+            #end          
+        </ul>
+    </div>
+    <div class="buy_cart_bar">
+        <label class="f_l choice_all"><input type="checkbox" /> 全选</label>
+        <div class="operations">
+            <a href="javascript:void(0);" style="display:none;">删除</a>
+            <a href="javascript:void(0);" style="display:none;">加入我的收藏室</a>
+            <a href="javascript:void(0);" style="display:none;">分享</a>
+        </div>
+        <div class="bar-right">
+            <div class="f_l amount-sum">
+                <span class="txt">已选商品</span>
+                <em>0</em>
+                <span class="txt">件</span>
+            </div>
+            <div class="pipe"></div>
+            <div class="f_l price-sum">
+                <span class="txt">合计（不含运费）:</span><strong class="price">¥<em>0.00</em></strong>
+            </div>
+            <div class="pipe"></div>
+            <div class="f_l btn-area"><a href="javascript:submitorder();"><span>结算</span></a></div>
+        </div>
+    </div>
+    <input type="hidden" value="0" id="choice_all_value"/>
+</div>
+
+<script>
+    $(function () {
+        /* Choice Controller */
+        $('.choice_all input').on('ifChecked', function (event) {
+            $(this).attr("checked", true);
+            $('.choice_all input').iCheck('check');
+            $('.buy_cart_list').find('.choice_item input, .choice input').iCheck('check');
+            $('.buy_cart_list').find('.item').addClass('active');
+            $('#choice_all_value').val('1');
+            price_all();
+        });
+        $('.choice_all input').on('ifUnchecked', function (event) {
+            $(this).attr("checked", false);
+            $('.choice_all input').iCheck('uncheck');
+            $('.buy_cart_list').find('.choice_item input, .choice input').iCheck('uncheck');
+            $('.buy_cart_list').find('.item').removeClass('active');
+            $('#choice_all_value').val('0');
+            price_all();
+        });
+        $('.choice_item input').on('ifChecked', function (event) {
+            $(this).attr("checked", true);
+            $(this).parents('li').find('.choice input').iCheck('check');
+            $(this).parents('li').find('.item').addClass('active');
+            price_all();
+        });
+        $('.choice_item input').on('ifUnchecked', function (event) {
+            $(this).attr("checked", false);
+            $(this).parents('li').find('.choice input').iCheck('uncheck');
+            $(this).parents('li').find('.item').removeClass('active');
+            price_all();
+        });
+        $('.item .choice input').on('ifChecked', function (event) {
+            $(this).attr("checked", true);
+            $(this).parents('.item').addClass('active');
+            price_all();
+        });
+        $('.item .choice input').on('ifUnchecked', function (event) {
+            $(this).attr("checked", false);
+            $(this).parents('.item').removeClass('active');
+            price_all();
+        });
+
+        /* Amount Controller */
+        $('.item-amount .minus').click(function () {
+            if ($(this).next('.text-amount').val() > 1) {
+                $(this).next('.text-amount').val(parseFloat($(this).next('.text-amount').val()) - 1);
+            }
+            price_itme(this);
+        });
+        $('.item-amount .plus').click(function () {
+            if (parseFloat($(this).parent().attr("v")) > parseFloat($(this).prev('.text-amount').val())) {
+                $(this).prev('.text-amount').val(parseFloat($(this).prev('.text-amount').val()) + 1);
+            }
+            price_itme(this);
+        });
+
+        $('.item-amount .text-amount').bind('input propertychange', function () {
+            price_itme(this);
+        });
+
+        /* Other Controller */
+        $('.buy_cart_list .op .add_collect').click(function () {
+            
+        });
+        $('.buy_cart_list .op .del').click(function () {
+            var obj = $(this);
+            confirm('你确定要移除吗？', {
+                confirm: function () {
+                    //maxiaoli 2015.12.16 增加
+                    var id = obj.attr("v2");
+                    console.log(id);
+                    $.post("buy_cart_delete", { ids: id }, function (ret) {
+                        if (ret.indexOf("ok") != -1) {
+                            obj.parents('.item').fadeOut(500, function () { $(this).remove(); });
+                            //alert(obj.parents('li').children('.item').length);
+
+                            if (obj.parents('li').children('.item').length <= 1) {
+                                obj.parents('li').fadeOut(500, function () { $(this).remove(); });
+                            }
+                        }
+                        else {
+                            alert(ret.split('|')[1]);
+                        }
+                    });
+                }
+            });
+        });
+
+        /* Price Function */
+        function price_itme( obj ) {
+            var father_obj = $(obj).parents('.item');
+            //mxl 数量超过最库存时   用最大库存
+            if (parseFloat(father_obj.find('.text-amount').val()) > parseFloat($(obj).parent().attr("v"))) {
+                father_obj.find('.text-amount').val($(obj).parent().attr("v"));
+            }
+            var sum = parseFloat((
+                parseFloat(father_obj.find('.now .price em').attr("v")) * parseFloat(father_obj.find('.text-amount').val())
+                ).toFixed(2));
+            father_obj.find('.price_sum em').html(sum);
+            father_obj.find('.price_sum em').formatCurrency({ roundToDecimalPlace: -1 });
+            father_obj.find('.price_sum em').attr("v", sum);
+
+            price_all(1);
+        }
+
+        function price_all() {
+            var sum = 0;
+            var count = 0;//数量
+            $('.buy_cart_list .choice').each(function () {
+                if ($(this).find('input').attr('checked')) {
+                    sum += parseFloat($(this).parents('.item').find('.price_sum').find('em').attr("v"));
+                    count += parseInt($(this).parent().find(".text-amount").val());
+                }
+            });
+            if (sum > 0) {
+                $('.buy_cart_bar .btn-area a, .buy_cart_choice_all button').addClass('ok');
+            } else {
+                $('.buy_cart_bar .btn-area a, .buy_cart_choice_all button').removeClass('ok');
+            }
+            //mxl
+            sum = sum == 0 ? "0.00" : sum;
+            $('.buy_cart_bar .price-sum .price em').text(sum);
+            $('.buy_cart_choice_all .price em').text(sum);
+            //mxl 20151203 增加
+            $('.buy_cart_bar .amount-sum em').text(count);
+
+            $('.buy_cart_bar .price-sum .price em').attr("v", sum);
+            $('.buy_cart_choice_all .price em').attr("v", sum);
+            //格式化金额
+            $('.buy_cart_bar .price-sum .price em').formatCurrency({roundToDecimalPlace:-1});
+            $('.buy_cart_choice_all .price em').formatCurrency({roundToDecimalPlace:-1});
+        }
+    });
+
+    function submitorder() {
+        debugger;
+        var ok = $('.buy_cart_bar .btn-area a, .buy_cart_choice_all button');
+        if (ok.hasClass("ok")) {
+            //传递选择的作品及数量
+            var select = [];
+            $('.lxw_id:checked').each(function () {
+                var t = {};
+                t.id = $(this).attr("v");
+                t.count = $(".lxw_id_" + t.id).val();
+
+                select[select.length] = t;
+            });
+            
+            //传递作品生成订单
+            $.post("buy_cart_create", { json: $.toJSON(select) }, function (ret) {
+                //生成成功，直接跳转到，购物车里面的选择的信息清除掉，如果下单的话
+                if (ret.indexOf("ok|") != -1) {
+                    location.href = "buy_order?new=" + ret.split('|')[1] + "&id=" + ret.split('|')[2];
+                }
+            });
+        }
+    }
+</script>
+
+<script type="text/html" id="body_load">
+    $('.buy_cart_list .thumb').each(function () {
+        var div_w = $(this).width(); 
+        var div_h = $(this).height();
+        var div_pro = div_w / div_h;
+        var img_obj = $(this).find('img');
+        var img_w = img_obj.width();
+        var img_h = img_obj.height();
+        var img_pro = img_w / img_h;
+        if (img_w > div_h && img_h < div_h) {
+            img_obj.css({ 'width': div_w });
+        } else if (img_h > div_h && img_w < div_h) {
+            img_obj.css({ 'height': div_h });
+        } else if (div_pro < img_pro) {
+            img_obj.css({ 'width': div_w});
+            img_obj.css({ 'padding-top': (div_h - img_obj.height()) / 2 + 'px' });
+        } else if (div_pro > img_pro) {
+            img_obj.css({ 'height': div_h });
+        } else {
+            img_obj.css({ 'width': '100%' });
+        }
+    });
+</script>

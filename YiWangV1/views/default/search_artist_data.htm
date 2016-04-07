@@ -1,0 +1,56 @@
+﻿<div class="search_line">
+    <span class="result_num mxl_result_num"><em>$pager.recordcount</em>个结果</span>
+</div>
+<div class="search_content">
+        <!-- 无结果DIV -->
+        #if($pager.recordcount == 0)
+        <div class="no_data">
+            <strong>搜索结果为空</strong>
+            请检查你的输入是否有误
+        </div>
+        #end
+    <div class="search_list">
+        <ul>
+            #foreach($item in $pager.data)
+            #set($yishupin=$core_buy.getyishupinbyyishujia($item.ywyishujiaid))
+            <li>
+                <div class="artist clearfix"><!--艺术家-->
+                    <div class="introduces">
+                        <a class="avatar" href="/artist/$!{item.key}">
+                            <!--<img src="$!item.zhaopian" />-->
+                            #if("$!{item.zhaopian}"!="")
+                            <img src="$!{OSS}ysj/$!{item.zhaopian}" class="avatar"/>
+                           #else
+                               #if("$!{item.zhaopianold}"!="")
+                               <img src="$!{OSS}ysj/$!{item.zhaopianold}" class="avatar"/>
+                               #else
+                                    #if("$!{item.zhaopian}"!="")
+                                    <img src="$!{OSS}ysj/$!{item.zhaopian}"/>
+                                    #else
+                                    <img src="$!{OSS}ysj/$!{item.zhaopianold}"/>
+                                    #end
+                               #end
+                           #end
+                        </a>
+                        <p class="name">$!item.xingming</p>
+                        <p>$!item.bieming</p>
+                        <!--<p>$!item.shenfenzheng</p>
+                        <p>荷兰</p>-->
+                    </div>
+                    <div class="artist_project">
+                        <ul>
+                            #foreach($ysp in $yishupin)
+                            <li><a href="/artworks/$!{ysp.xiangqing}" target="_blank"><img src="${GTUPIANIMGIMG}$!{ysp.tupian}.jpg_small02" /></a></li>
+                            #end
+                        </ul>
+                        <a href="/artist/$!{item.key}">更多 ></a><!--跳转至艺术家页面-->
+                    </div>
+                </div>
+            </li>
+            #end
+        </ul>
+        <div class="pagination p_r">
+        $core_pager.simple($!pager)
+        </div>
+    </div>
+</div>

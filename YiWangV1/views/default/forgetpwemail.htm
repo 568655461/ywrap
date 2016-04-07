@@ -1,0 +1,23 @@
+﻿<div class="page_login" style="background-image: url(/web/images/login_background.jpg);">
+    <div class="page_login_make"></div>
+    <div class="page_login_box lxw_box" style="height: 350px;">
+        <div class="title">重置密码</div>
+        <ul>
+            <li><div class="li_div"><input type="password" class="new_pw lxw_pwd1" placeholder="设置您的密登录密码（至少6位）" /></div></li>
+            <li><div class="li_div"><input type="password" class="new_pw2 lxw_pwd2" placeholder="确认密码" /></div></li>
+            <li class="button"><button class="set_password" onclick="savepwd();">重置密码</button></li>
+        </ul>
+    </div>
+</div>
+<script id="reset_ok" type="text/html" class="lxw_div_pwd_ok">
+    <ul style="margin-top: 50px">
+        <li style="border: 0; text-align: center;">密码重置成功，请重新登录</li>
+        <li style="border: 0; text-align: center;">&nbsp;</li>
+        <li style="border: 0; text-align: center;">&nbsp;</li>
+        <li class="button">
+            <button onclick="location.href='/login'">返回</button></li>
+    </ul>
+</script>
+
+
+<script src="/web/js/forgetpwemail.js"></script>

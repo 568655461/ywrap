@@ -1,0 +1,519 @@
+﻿#set($GTITLE="发现")
+<style>.page_2{display:none;}</style>
+<div class="found_center">
+    <div class="nav_banner">
+        <a href="javascript:void(0);" class="item_1 active" v="艺术生活" link="living">
+            <o></o>
+            <div class="bg" style="background:url(/web/images/buy_nav_1.jpg) left top;background-size:cover;"></div>
+            <h2>
+                艺术生活
+                <span>家居&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商业空间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装饰</span>
+            </h2>
+        </a>
+        <a href="javascript:void(0);" class="item_2" v="艺术收藏" link="collect">
+            <o></o>
+            <div class="bg" style="background:url(/web/images/buy_nav_2.jpg) right bottom;background-size:cover;"></div>
+            <h2>艺术收藏</h2>
+        </a>
+    </div>
+
+    ##第二个层控制，点击第二个层，其实还是触发第一个层的内容
+    <div class="second_display">
+        <div class="bg bg_1" style="background:url(/web/images/buy_nav_1.jpg) left center;background-size:cover;display:block;"></div>
+        <div class="bg bg_2" style="background:url(/web/images/buy_nav_2.jpg) right bottom;background-size:cover;display:none;"></div>
+        <div class="_item_banner">
+            <div class="item_banner item_banner_1 f_l" v="艺术生活">
+                <a href="javascript:void(0);" class="item_1" link="living">艺术生活</a>
+                <a href="javascript:void(0);" class="item_2" link="collect">艺术收藏</a>
+            </div>
+            <div class="item_banner item_banner_2 _hidden f_l" v="艺术收藏">
+                <a href="javascript:void(0);" class="item_2" link="collect">艺术收藏</a>
+                <a href="javascript:void(0);" class="item_1" link="living">艺术生活</a>
+            </div>
+        </div>
+        <div class="item_class f_l">
+            <div class="select bar_a">
+                <a href="javascript:void(0);"></a>
+            </div>
+            <div class="select page_1">
+                <strong v="作品类别">作品类别</strong>
+                <span class="line"></span>
+                <ul class="lxw_danxuan_2" v="zplb">
+                    <li class="active"><a href="javascript:void(0);" v="" >全部</a></li>
+                    <li><a href="javascript:void(0);">油画</a></li>
+                   
+                    <li><a href="javascript:void(0);">雕塑</a></li>
+                   
+                    <li><a href="javascript:void(0);">摄影</a></li>
+                    <li><a href="javascript:void(0);">版画</a></li>
+                    
+                </ul>
+            </div>
+            <div class="select page_1">
+                <strong v="呈现空间">呈现空间</strong>
+                <span class="line"></span>
+                <ul class="lxw_duoxuan_2" v="cxkj">
+                    <li class="active">
+                        <a href="javascript:void(0);" v="" class="ckcxkj_o">全部</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" v="1">商业空间</a>
+                        <ul v="1">
+                            <li><label><input type="checkbox" v1="cxkj_4_1" /> 办公</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_1" /> 餐饮</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_1" /> 娱乐</label></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" v="2">住宅</a>
+                        <ul v="2">
+                            <li><label><input type="checkbox" v1="cxkj_4_2" /> 卧室</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_2" /> 客厅</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_2" /> 餐厅</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_2" /> 书房</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_2" /> 其他</label></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" v="3">酒店</a>
+                        <ul v="3">
+                            <li><label><input type="checkbox" v1="cxkj_4_3" /> 大厅</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_3" /> 客房</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_3" /> 走廊</label></li>
+                            <li><label><input type="checkbox" v1="cxkj_4_3" /> 其他</label></li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0);" class="ckcxkj_o" v="4">其他</a></li>
+                </ul>
+            </div>
+
+            <div class="select page_2">
+                <strong>学术分类</strong>
+                <ul class="lxw_duoxuan_2" v="xsfl">
+                    <li class="active">
+                        <a href="javascript:void(0);" v="" class="ckxsfl_o">全部</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" v="1">传统艺术</a>
+                        <ul v="1">
+                            <li><label><input type="checkbox" v1="xsfl_2_1"  /> 学院油画</label></li>
+                            <li><label><input type="checkbox" v1="xsfl_2_1"/> 传统水墨</label></li>
+                            <li><label><input type="checkbox" v1="xsfl_2_1"/> 现代水墨</label></li>
+                            <li><label><input type="checkbox" v1="xsfl_2_1"/> 雕塑艺术</label></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" v="2">当代艺术</a>
+                        <ul v="2">
+                            <li><label><input type="checkbox" v1="xsfl_2_2"/> 当代绘画</label></li>
+                            <li><label><input type="checkbox" v1="xsfl_2_2"/> 当代水墨</label></li>
+                            <li><label><input type="checkbox" v1="xsfl_2_2"/> 雕塑与装置</label></li>
+                            <li><label><input type="checkbox" v1="xsfl_2_2"/> 摄影与图片</label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="select page_2">
+                <strong v="创作时间">创作时间</strong>
+                <span class="line"></span>
+                <ul class="lxw_danxuan_2" v="czsj">
+                    <li class="active"><a href="javascript:void(0);" v="" >全部</a></li>
+                    <li><a href="javascript:void(0);" v="0-1970">1970以前</a></li>
+                    <li><a href="javascript:void(0);">1970-1980</a></li>
+                    <li><a href="javascript:void(0);">1980-1990</a></li>
+                    <li><a href="javascript:void(0);">1990-2000</a></li>
+                    <li><a href="javascript:void(0);">2000-2010</a></li>
+                    <li><a href="javascript:void(0); "  v="2010-3000">2010-至今</a></li>
+                </ul>
+            </div>
+
+            <div class="select page_common">
+                <strong v="题材">题材</strong>
+                <span class="line"></span>
+                <ul class="lxw_danxuan_2" v="tc">
+                    <li class="active"><a href="javascript:void(0);" v="" >全部</a></li>
+                    <li><a href="javascript:void(0);">风景</a></li>
+                    <li><a href="javascript:void(0);">人物</a></li>
+                    <li><a href="javascript:void(0);">静物</a></li>
+                    <li><a href="javascript:void(0);">其他</a></li>
+                </ul>
+            </div>
+            <div class="select page_common">
+                <strong v="风格">风格</strong>
+                <span class="line"></span>
+                <ul class="lxw_danxuan_2" v="fg">
+                    <li class="active"><a href="javascript:void(0);" v="" >全部</a></li>
+                    <li><a href="javascript:void(0);">抽象</a></li>
+                    <li><a href="javascript:void(0);">具象</a></li>
+                    <li><a href="javascript:void(0);">观念</a></li>
+                </ul>
+            </div>
+            <div class="select page_common" style="min-width:85px;">
+                <strong v="尺寸">尺寸</strong>
+                <span class="line"></span>
+                <ul class="lxw_danxuan_2" v="cc" style="min-width:85px;">
+                    <li class="active"><a href="javascript:void(0);" v="" >全部</a></li>
+                    <li><a href="javascript:void(0);" v="0cm-50cm">50cm 以下</a></li>
+                    <li><a href="javascript:void(0);">50cm-100cm</a></li>
+                    <li><a href="javascript:void(0);">100cm-150cm</a></li>
+                    <li><a href="javascript:void(0);">150cm-200cm</a></li>
+                    <li><a href="javascript:void(0);" v="200cm-10000cm">200cm 以上</a></li>
+                </ul>
+            </div>
+            <div class="select page_common" style="min-width:110px;">
+                <strong v="价格">价格</strong>
+                <span class="line"></span>
+                <ul class="lxw_danxuan_2" v="jg" style="min-width:110px;">
+                    <li class="active"><a href="javascript:void(0);" v="0" >全部</a></li>
+                    <li><a href="javascript:void(0);" v="0,2000"          >¥ 2,000 以下</a></li>
+                    <li><a href="javascript:void(0);" v="2001,8000"       >¥ 2,000 - ¥ 8,000</a></li>
+                    <li><a href="javascript:void(0);" v="8000,15000"      >¥ 8,000 - ¥ 15,000</a></li>
+                    <li><a href="javascript:void(0);" v="15000,30000"     >¥ 15,000 - ¥ 30,000</a></li>
+                    <li><a href="javascript:void(0);"  v="30001,999999999">¥ 30,000 以上</a></li>
+                </ul>
+            </div>
+            <div class="select page_1" style="min-width:102px;">
+                <strong v="color_all"><div class="color_choice lxw_color_title" style="margin:8px 5px;position: relative;left:18px;"><i class="color_all"></i></div> 颜色</strong>
+                <span class="line"></span>
+                <ul style="min-width:102px;">
+                    <li>
+                        <div class="color_choice_div clearfix lxw_color_2">
+                            <div class="color_choice active" v="全部"><i class="color_all"></i></div>
+                            <div class="color_choice" v="棕色"><i class="brown"></i></div>
+                            <div class="color_choice" v="红色"><i class="red"></i></div>
+                            <div class="color_choice" v="橙色"><i class="orange"></i></div>
+                            <div class="color_choice" v="黄色"><i class="yellow"></i></div>
+                            <div class="color_choice" v="淡粉红色"><i class="rose_pink"></i></div>
+                            <div class="color_choice" v="深黄绿色"><i class="kelly_green"></i></div>
+                            <div class="color_choice" v="土黄色"><i class="khaki"></i></div>
+                            <div class="color_choice" v="绿色"><i class="green"></i></div>
+                            <div class="color_choice" v="青色"><i class="azure"></i></div>
+                            <div class="color_choice" v="蓝色"><i class="blue"></i></div>
+                            <div class="color_choice" v="紫色"><i class="purple"></i></div>
+                            <div class="color_choice" v="粉红色"><i class="pink"></i></div>
+                            <div class="color_choice" v="白色"><i class="white" style="border:1px solid #EFEFEF;"></i></div>
+                            <div class="color_choice" v="灰色"><i class="grey"></i></div>
+                            <div class="color_choice" v="黑色"><i class="black"></i></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--<em><span class="recordcount"></span> 件欣赏的作品</em>-->
+    </div>
+
+    <div class="default_display _hidden">
+        <a class="filter_close"></a>
+
+        <div class="filter clearfix">
+            <div class="left f_l">
+                <div class="item page_1 clearfix">
+                    <div class="category_name">作品类别</div>
+                    <div class="category_div clearfix lxw_danxuan" v="zplb">
+                        <a href="javascript:void(0);" class="active" v="">全部</a>
+                        <a href="javascript:void(0);">油画</a>
+                        <!--<a href="javascript:void(0);">中国画</a>
+                        <a href="javascript:void(0);">当代水墨</a>-->
+                        <a href="javascript:void(0);">雕塑</a>
+                        <!--<a href="javascript:void(0);">装置</a>-->
+                        <a href="javascript:void(0);">摄影</a>
+                        <a href="javascript:void(0);">版画</a>
+                        <!--<a href="javascript:void(0);">书法</a>
+                        <a href="javascript:void(0);">水粉水彩</a>
+                        <a href="javascript:void(0);">工艺品</a>
+                        <a href="javascript:void(0);">衍生工艺</a>
+                        <a href="javascript:void(0);">其他</a>-->
+                    </div>
+                </div>
+                <div class="item page_1 clearfix">
+                    <div class="category_name">呈现空间</div>
+                    <div class="category_div clearfix lxw_duoxuan_2" v="cxkj">
+                        <a href="javascript:void(0);" class="active ckcxkj_a" v="">全部</a>
+                        <a href="javascript:void(0);" v1="cxkj_4_1" v="1" _data="办公,餐饮,娱乐,其他">商业空间</a>
+                        <a href="javascript:void(0);" v1="cxkj_4_2" v="2" _data="卧室,客厅,餐厅,书房,其他">住宅</a>
+                        <a href="javascript:void(0);" v1="cxkj_4_3" v="3" _data="大厅,客房,走廊,其他">酒店</a>
+                        <a href="javascript:void(0);" v1="cxkj_4_4" class="ckcxkj_a" v="4">其他</a>
+                    </div>
+                    <div class="category_div_more clearfix" v="cxkj">
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+
+                <div class="item page_2 clearfix">
+                    <div class="category_name">学术分类</div>
+                    <div class="category_div clearfix lxw_duoxuan_2" v="xsfl">
+                        <a href="javascript:void(0);" class="active ckxsfl_a" v="">全部</a>
+                        <a href="javascript:void(0);" v1="xsfl_2_1" v="1" _data="学院油画,传统水墨,现代水墨,雕塑艺术">传统艺术</a>
+                        <a href="javascript:void(0);" v1="xsfl_2_2" v="2" _data="当代绘画,当代水墨,雕塑与装置,摄影与图片">当代艺术</a>
+                    </div>
+                    <div class="category_div_more clearfix" v="xsfl">
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+
+                <div class="item page_common clearfix">
+                    <div class="category_name">题材</div>
+                    <div class="category_div clearfix lxw_danxuan" v="tc">
+                        <a href="javascript:void(0);" class="active" v="">全部</a>
+                        <a href="javascript:void(0);">风景</a>
+                        <a href="javascript:void(0);">人物</a>
+                        <a href="javascript:void(0);">静物</a>
+                        <a href="javascript:void(0);">其他</a>
+                    </div>
+                </div>
+                <div class="item page_common clearfix">
+                    <div class="category_name">风格</div>
+                    <div class="category_div clearfix lxw_danxuan"  v="fg">
+                        <a href="javascript:void(0);" class="active" v="">全部</a>
+                        <a href="javascript:void(0);">抽象</a>
+                        <a href="javascript:void(0);">具象</a>
+                        <a href="javascript:void(0);">观念</a>
+                    </div>
+                </div>
+                <div class="item page_common clearfix" style="display:none">
+                    <div class="category_name">价格</div>
+                    <div class="category_div clearfix lxw_danxuan" v="jg">
+                       
+                        <a href="javascript:void(0);" v="0">全部</a>
+                        <a href="javascript:void(0);" v="0,2000">¥ 2,000 以下</a>
+                        <a href="javascript:void(0);" v="2001,8000">¥ 2,000 - ¥ 8,000</a>
+                        <a href="javascript:void(0);" v="8000,15000">¥ 8,000 - ¥ 15,000</a>
+                        <a href="javascript:void(0);" v="15000,30000">¥ 15,000 - ¥ 30,000</a>
+                        <a href="javascript:void(0);" v="30001,999999999">¥ 30,000 以上</a>
+
+                    </div>
+                </div>
+                <div class="item page_1 clearfix">
+                    <div class="category_name">
+                        <select class="lxw_cc">
+                            <option value="">尺寸</option>
+                            <option value="h">尺寸(高)</option>
+                            <option value="w">尺寸(宽)</option>
+                            <option value="my">自定义</option>
+                        </select>
+                    </div>
+                    <div id="item_cc_select" class="category_div clearfix lxw_danxuan" v="cc">
+                        <a href="javascript:void(0);" class="active" v="">全部</a>
+                        <a href="javascript:void(0);" v="0cm-50cm">50cm 以下</a>
+                        <a href="javascript:void(0);">50cm-100cm</a>
+                        <a href="javascript:void(0);">100cm-150cm</a>
+                        <a href="javascript:void(0);">150cm-200cm</a>
+                        <a href="javascript:void(0);" v="200cm-10000cm">200cm 以上</a>
+                    </div>
+                    <div id="item_cc_custom" class="category_div clearfix" style="overflow:initial;display:none;">
+                        <div class="price_slider">
+                            <div class="slider-set" style="margin:0;">
+                                <div class="price_input" style="width:78px;">
+                                    <span>宽</span>
+                                    <input type="text" class="mxl_jg_s" style="width:45px;"/>
+                                </div>
+                                <span>-</span>
+                                <div class="price_input" style="width:78px;">
+                                    <span>高</span>
+                                    <input type="text" class="mxl_jg_e" style="width:45px;"/>
+                                </div>
+                                <span class="hou" style="display:none;">-</span>
+                                <div class="price_input hou" style="width:78px;display:none;">
+                                    <span>厚</span>
+                                    <input type="text" class="mxl_jg_h" style="width:45px;"/>
+                                </div>
+                                <div class="price_confirm">
+                                    <a href="javascript:void(0);" class="confirm lxw_ccsubmit">确定</a>
+                                    <a href="javascript:void(0);" class="reset lxw_ccreset">重置</a>
+                                </div>
+                                <div class="temp_jiage"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item page_2 clearfix">
+                    <div class="category_name">创作时间</div>
+                    <div class="category_div clearfix lxw_danxuan" v="czsj">
+                        <a href="javascript:void(0);" class="active" v="">全部</a>
+                        <a href="javascript:void(0);" v="0-1970">1970以前</a>
+                        <a href="javascript:void(0);">1970-1980</a>
+                        <a href="javascript:void(0);">1980-1990</a>
+                        <a href="javascript:void(0);">1990-2000</a>
+                        <a href="javascript:void(0);">2000-2010</a>
+                        <a href="javascript:void(0);" v="2010-3000">2010-至今</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right f_r">
+                <div class="item page_1 clearfix">
+                    <div class="category_name">色彩</div>
+                    <div class="category_div clearfix">
+                        <div class="color_choice lxw_color">
+                            <a href="javascript:void(0);" class="all active" v="全部">全部</a>
+                            <a href="javascript:void(0);" class="brown" v="棕色">棕色</a>
+                            <a href="javascript:void(0);" class="red" v="红色">红色</a>
+                            <a href="javascript:void(0);" class="orange" v="橙色">橙色</a>
+                            <a href="javascript:void(0);" class="yellow" v="黄色">黄色</a>
+                            <a href="javascript:void(0);" class="rose_pink" v="淡粉红色">淡粉红色</a>
+                            <a href="javascript:void(0);" class="khaki" v="土黄色">土黄色</a>
+                            <a href="javascript:void(0);" class="kelly_green" v="深黄绿色">深黄绿色</a>
+                            <a href="javascript:void(0);" class="green"v="绿色">绿色</a>
+                            <a href="javascript:void(0);" class="azure" v="青色">青色</a>
+                            <a href="javascript:void(0);" class="blue" v="蓝色">蓝色</a>
+                            <a href="javascript:void(0);" class="purple" v="紫色">紫色</a>
+                            <a href="javascript:void(0);" class="pink" v="粉红色">粉红色</a>
+                            <a href="javascript:void(0);" class="white" v="白色">白色</a>
+                            <a href="javascript:void(0);" class="grey" v="灰色">灰色</a>
+                            <a href="javascript:void(0);" class="black" v="黑色">黑色</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item page_common clearfix">&nbsp;</div>
+                <div class="item page_common clearfix">
+                    <div class="category_name" style="padding-top: 20px;">价格区间</div>
+                    <div class="category_div clearfix" style="overflow:initial;">
+                        <div class="price_slider" id="price_slider">
+                            <canvas id="canvas" height="30"  style="position:absolute;top:-14px;z-index:-1;"></canvas>
+                            <div id="slider-range"></div>
+                            <div class="slider-data clearfix">
+                                <span class="slider-data-left f_l"></span>
+                                <span class="slider-data-right f_r"></span>
+                            </div>
+                            <div class="slider-set">
+                                <div class="price_input">
+                                    <span>¥</span>
+                                    <input type="text" onkeyup="allowNumeric(this)" class="lxw_jg_s" id="slider-set-start"/>
+                                </div>
+                                <span>-</span>
+                                <div class="price_input">
+                                    <span>¥</span>
+                                    <input type="text" onkeyup="allowNumeric(this)" class="lxw_jg_e" id="slider-set-end" />
+                                </div>
+                                <div class="price_confirm">
+                                    <a href="javascript:void(0);" class="confirm lxw_jgsubmit">确定</a>
+                                    <a href="javascript:void(0);" class="reset lxw_jgreset">重置</a>
+                                </div>
+
+                                <div class="temp_jiage"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filter2 clearfix">
+            <a href="javascript:void(0);" onclick="$('.filter2_c').slideToggle();">更多筛选条件</a>
+            <!--<em><span class="recordcount"></span> 件欣赏的作品</em>-->
+        </div>
+        <div class="filter filter2_c clearfix" style="padding:0 40px 20px;margin:0;display:none;">
+            <div class="item page_common clearfix">
+                <div class="category_name">所在地区</div>
+                <div class="category_div clearfix lxw_danxuan" v="szdq" lazy="1">
+                    <a href="javascript:void(0);" class="active" v="">全部</a>
+                    <a href="javascript:void(0);">北京</a>
+                    <a href="javascript:void(0);">上海</a>
+                    <a href="javascript:void(0);">南京</a>
+                    <a href="javascript:void(0);">广州</a>
+                    <a href="javascript:void(0);">成都</a>
+                    <a href="javascript:void(0);">华东</a>
+                    <a href="javascript:void(0);">华南</a>
+                    <a href="javascript:void(0);">西南</a>
+                    <a href="javascript:void(0);">华北</a>
+                    <a href="javascript:void(0);">东北</a>
+                </div>
+            </div>
+            <div class="item page_common clearfix">
+                <div class="category_name">艺术家出生年代</div>
+                <div class="category_div clearfix lxw_danxuan" v="csnd"  lazy="1">
+                    <a href="javascript:void(0);" class="active" v="">全部</a>
+                    <a href="javascript:void(0);" v="0-1940">1940前</a>
+                    <a href="javascript:void(0);">1950-1960</a>
+                    <a href="javascript:void(0);">1960-1970</a>
+                    <a href="javascript:void(0);">1970-1980</a>
+                    <a href="javascript:void(0);">1980-1990</a>
+                    <a href="javascript:void(0);">1990-2000</a>
+                    <a href="javascript:void(0);">2000-2010</a>
+                </div>
+            </div>
+            <div class="item page_common clearfix">
+                <div class="category_name">搜索</div>
+                <div class="category_div clearfix">
+                        <input type="text" class="search_input lxw_key" />
+                </div>
+            </div>
+            <div class="item page_common clearfix">
+                <div class="category_search_btn">
+                    <a href="javascript:void(0);" class="confirm lxw_search">确定</a>
+                    <a href="javascript:void(0);" class="cancel lxw_cancel">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="filter3 clearfix">
+            <div>
+                <select class="lxw_select" v="ob_rq">
+                    <option value="">上架时间</option>
+                    <option value="1">上架时间最新</option>
+                    <option value="0">上架时间最早</option>
+                </select>
+            </div>
+            <div>
+                <select class="lxw_select" v="ob_zt">
+                    <option value="">作品状态</option>
+                    <option value="0">只看未售</option>
+                </select>
+            </div>
+            <div>
+                <select class="lxw_select" v="ob_jg">
+                    <option value="">价格</option>
+                    <option value="0">价格从低到高</option>
+                    <option value="1">价格从高到低</option>
+                </select>
+            </div>
+        </div>
+        <div class="image_list_ver clearfix">
+            <div class="clearfix" id="container"></div>
+            <div class="image_no_date"></div>
+            <div class="image_load _hidden">加载中...</div>
+            <!-- 翻页控制，需要显示，请清楚_hidden属性 -->
+            <div class="pagination p_c _hidden" style="margin:40px 0;">
+                <a href="#" class="disabled"><</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .ui-slider-horizontal{height:3px !important;margin-top: 12px;}
+    .ui-widget-content { background:#DDD !important;border: 1px solid #CCC !important;}
+    .ui-slider .ui-slider-range { background:#F33 !important;}
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { background:#FFF !important;border: 1px solid #afafaf !important;}
+    .ui-slider .ui-slider-handle { width:24px !important;height:24px !important;}
+    .ui-slider-horizontal .ui-slider-handle { top:-12px !important;border-radius:50% !important;}
+</style>
+<link href="//cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script type="text/html" id="body_load">
+    $(function(){
+        
+    })
+</script>
+<script>
+    var __144 = "$!f";
+    if (__144 == "") __144 = 144;
+    _gmoney = [$!data];
+    var SEARCH = {};
+    SEARCH.zplb = "$!zplb";
+    SEARCH.tc = "$!tc";
+    SEARCH.fg = "$!fg";
+    SEARCH.cc = "$!cc";
+    SEARCH.jg = "$!jg";
+    var __lb = "$!f";
+</script>
+<script src="/web/js/found.js"></script>

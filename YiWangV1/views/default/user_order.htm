@@ -1,0 +1,164 @@
+﻿<div class="nav_title">我的订单</div>
+<div class="order_list">
+    <div class="order_class">
+        <ul>
+            <li class="lxw_menu" v="all"><a href="javascript:void(0)">全部订单</a></li>
+            <li class="lxw_menu" v="weifahuo"><a href="javascript:void(0)">未发货</a></li>
+            <li class="lxw_menu" v="yisongda"><a href="javascript:void(0)">已送达</a></li>
+            <li class="lxw_menu" v="yiquxiao"><a href="javascript:void(0)">已取消</a></li>
+        </ul>
+    </div>
+
+    <div class="lxw_order">
+        <!-- 下面信息在 user_order_data.htm -->
+    </div>
+</div>
+
+<script type="text/html" id="bodyloadspan1">
+    $('.tooltip').tooltipster({
+        contentAsHTML:  true,
+        arrowColor:     '#FFF',
+        position:       'bottom',
+        theme:          'my-custom-theme'
+    });
+
+    $('.tooltip_logistics').tooltipster({
+        contentAsHTML:  true,
+        arrowColor:     '#FFF',
+        position:       'bottom',
+        theme:          'my-custom-theme',
+        functionInit: function(origin, content) {
+            if (content) {
+                $.ajax({
+                    type: 'POST',
+                    url: '',
+                    success: function(data) {
+                        var html = '';
+                        html += '<div class="card_logistics_information">';
+                        html += '<ul>';
+                        html += '<li>';
+                        html += '<span class="date">2015-10-23</span>';
+                        html += '<span class="week">周五</span>';
+                        html += '<span class="time">09:15:48</span>';
+                        html += '<span class="text">商家正通知快递公司揽件</span>';
+                        html += '</li>';
+                        html += '<li>';
+                        html += '<span class="date hidden">2015-10-23</span>';
+                        html += '<span class="week hidden">周五</span>';
+                        html += '<span class="time">09:06:00</span>';
+                        html += '<span class="text">快件离开【北京】,正发往下一站</span>';
+                        html += '</li>';
+                        html += '<li>';
+                        html += '<span class="date hidden">2015-10-23</span>';
+                        html += '<span class="week hidden">周五</span>';
+                        html += '<span class="time">09:06:00</span>';
+                        html += '<span class="text">顺丰速运 已收取快件</span>';
+                        html += '</li>';
+                        html += '<li>';
+                        html += '<span class="date hidden">2015-10-23</span>';
+                        html += '<span class="week hidden">周五</span>';
+                        html += '<span class="time">11:22:00</span>';
+                        html += '<span class="text">快件离开【北京】,正发往 【北京大兴集散中心】</span>';
+                        html += '</li>';
+                        html += '<li>';
+                        html += '<span class="date hidden">2015-10-23</span>';
+                        html += '<span class="week hidden">周五</span>';
+                        html += '<span class="time">13:02:00</span>';
+                        html += '<span class="text">快件离开【北京大兴集散中心】,正发往 【北京顺义集散中心】</span>';
+                        html += '</li>';
+                        html += '<li>';
+                        html += '<span class="date">2015-10-24</span>';
+                        html += '<span class="week">周六</span>';
+                        html += '<span class="time">11:01:00</span>';
+                        html += '<span class="text">正在派送途中,请您准备签收</span>';
+                        html += '</li>';
+                        html += '<li class="latest">';
+                        html += '<span class="date hidden">2015-10-24</span>';
+                        html += '<span class="week hidden">周六</span>';
+                        html += '<span class="time">11:02:00</span>';
+                        html += '<span class="text">已签收,感谢使用顺丰,期待再次为您服务</span>';
+                        html += '</li>';
+                        html += '</ul>';
+                        html += '<span>&nbsp;</span>';
+                        html += '</div>';
+                        origin.tooltipster('content', html);
+                    },
+                    error: function () {
+                        origin.tooltipster('content', '查询失败！');
+                    }
+                });
+                return '请稍后，正在查询物流信息...';
+            }
+        }
+    });
+</script>
+
+<script type="text/html" id="bodyloadspan2">
+    $('.order_list .thumb').each(function () {
+        var div_w = $(this).width(); 
+        var div_h = $(this).height();
+        var div_pro = div_w / div_h;
+        var img_obj = $(this).find('img');
+        var img_w = img_obj.width();
+        var img_h = img_obj.height();
+        var img_pro = img_w / img_h;
+        if (img_w > div_h && img_h < div_h) {
+            img_obj.css({ 'width': div_w });
+        } else if (img_h > div_h && img_w < div_h) {
+            img_obj.css({ 'height': div_h });
+        } else if (div_pro < img_pro) {
+            img_obj.css({ 'width': div_w});
+            img_obj.css({ 'padding-top': (div_h - img_obj.height()) / 2 + 'px' });
+        } else if (div_pro > img_pro) {
+            img_obj.css({ 'height': div_h });
+        } else {
+            img_obj.css({ 'width': '100%' });
+        }
+    });
+</script>
+
+<script>
+    var _ = {};
+    _.page = 1;
+    _.pagesize = 5;
+
+    var W = "";
+    function loaddata(w, page) {
+        w = w || "";
+        page = page || _.page;
+
+        W = w;
+        $.get("user_order_data", { w: w, page: page, ps: _.pagesize }, function (html) {
+            $(".lxw_order").html(html);
+            bindclick();
+        });        
+    }
+
+    function bindclick() {
+        $(".lxw_page").off("click", null);
+        $(".lxw_page").on("click", function () {
+            var ths = $(this);
+            var v = ths.attr("v") || "";
+            if (v == "") return;
+
+            $(".lxw_page").removeClass("active");
+            ths.addClass("active");
+            loaddata(W, v);
+        });
+
+        eval($("#bodyloadspan1").html());
+        eval($("#bodyloadspan2").html());
+    }
+    //20151130 lxw 
+    $(function () {
+        $(".lxw_menu").on("click", function () {
+            if ($(this).hasClass("active")) return;
+            $(".lxw_menu").removeClass("active");
+            $(this).addClass("active");
+
+            loaddata($(this).attr("v"));
+        });
+
+        $(".lxw_menu").eq(0).trigger("click");
+    });
+</script>

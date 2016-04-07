@@ -1,0 +1,4582 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>velocity_lxwmvccore</name>
+    </assembly>
+    <members>
+        <member name="T:lxwmvc.applicationhelper">
+            <summary>
+            功能:系统初始化菜单
+            [11-03-08 15:39  周二 lxw]<para />
+            </summary>
+        </member>
+        <member name="F:lxwmvc.applicationhelper.CAIDANS">
+            <summary>
+            所有的菜单集合
+            </summary>
+        </member>
+        <member name="F:lxwmvc.applicationhelper.QUANXIANS">
+            <summary>
+            所有的权限结合
+            </summary>
+        </member>
+        <member name="F:lxwmvc.applicationhelper.YILAIS">
+            <summary>
+            依赖的ID
+            </summary>
+        </member>
+        <member name="F:lxwmvc.applicationhelper.syspages">
+            <summary>
+            动态页面
+            </summary>
+        </member>
+        <member name="F:lxwmvc.applicationhelper.citypage">
+            <summary>
+            城市页面，也属于动态页面
+            </summary>
+        </member>
+        <member name="M:lxwmvc.applicationhelper.initsyspages">
+            <summary>
+            初始化系统页面
+            </summary>
+        </member>
+        <member name="M:lxwmvc.applicationhelper.initcitypages">
+            <summary>
+            初始化系统页面
+            </summary>
+        </member>
+        <member name="M:lxwmvc.applicationhelper.reload">
+            <summary>
+            重新扫描加载菜单和权限
+            </summary>
+        </member>
+        <member name="M:lxwmvc.applicationhelper.initmenupower">
+            <summary>
+            功能:初始化菜单和权限
+            [11-03-08 15:47  周二 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.applicationhelper.createbindll``1(System.String,``0)">
+            <summary>
+            功能:把has表生成缓存文件
+            [11-03-08 15:47  周二 lxw]<para />
+            </summary>
+            <param name="strPathName">路径</param>
+            <param name="has">哈希表</param>
+        </member>
+        <member name="M:lxwmvc.applicationhelper.readbindll``1(System.String)">
+            <summary>
+            功能:从文件中读取出来到哈希表
+            [11-03-08 15:48  周二 lxw]<para />
+            </summary>
+            <param name="strPathName">文件路径</param>
+        </member>
+        <member name="M:lxwmvc.applicationhelper.CreateModels(System.String)">
+            <summary>
+            创建实体类和描述
+            </summary>
+            <param name="conn"></param>
+        </member>
+        <member name="T:lxwmvc.orand">
+            <summary>
+            连接方式
+            </summary>
+        </member>
+        <member name="F:lxwmvc.orand.or">
+            <summary>
+            或者关系
+            </summary>
+        </member>
+        <member name="F:lxwmvc.orand.and">
+            <summary>
+            并且关系
+            </summary>
+        </member>
+        <member name="T:lxwmvc.express">
+            <summary>
+            判断式
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.like">
+            <summary>
+            like
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.notlike">
+            <summary>
+            not like
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.dayushuzi">
+            <summary>
+            大于 用于数字比较
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.xiaoyushuzi">
+            <summary>
+            小于 用于数字比较
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.dayudengyushuzi">
+            <summary>
+            大于等于 用于数字比较
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.xiaoyudengyushuzi">
+            <summary>
+            小于等于 用于数字比较
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.dengyushuzi">
+            <summary>
+            等于 用于数字比较
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.budengyushuzi">
+            <summary>
+            不等于 用于数字比较
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.dengyuzifuchuan">
+            <summary>
+            等于 用于字符串
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.budengyuzifuchuan">
+            <summary>
+            不等于 用于字符串
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.dengyuriqi">
+            <summary>
+            等于 用于日期
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.budengyuriqi">
+            <summary>
+            不等于 用于日期
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.dayuriqi">
+            <summary>
+            大于 用于日期
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.xiaoyuriqi">
+            <summary>
+            小于 用于日期
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.dayudengyuriqi">
+            <summary>
+            大于等于 用于日期比较
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.xiaoyudengyuriqi">
+            <summary>
+            小于等于 用于日期比较
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.in">
+            <summary>
+            包括
+            </summary>
+        </member>
+        <member name="F:lxwmvc.express.notin">
+            <summary>
+            不包括
+            </summary>
+        </member>
+        <member name="T:lxwmvc.layoutAttribute">
+            <summary>
+            布局信息
+            </summary>
+        </member>
+        <member name="M:lxwmvc.layoutAttribute.#ctor(System.String)">
+            <summary>
+            布局构造函数，默认布局为default
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:lxwmvc.layoutAttribute.layoutname">
+            <summary>
+            布局名称
+            </summary>
+        </member>
+        <member name="T:lxwmvc.biemingAttribute">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="M:lxwmvc.biemingAttribute.#ctor(System.String)">
+            <summary>
+            别名构造函数
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:lxwmvc.biemingAttribute.bieming">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="T:lxwmvc.transAttribute">
+            <summary>
+            支持事务
+            </summary>
+        </member>
+        <member name="M:lxwmvc.transAttribute.#ctor(System.Data.IsolationLevel)">
+            <summary>
+            是否构造函数
+            </summary>
+            <param name="iso">默认事务级别是 IsolationLevel.ReadCommitted</param>
+        </member>
+        <member name="P:lxwmvc.transAttribute.iso">
+            <summary>
+            事务级别
+            </summary>
+        </member>
+        <member name="T:lxwmvc.tongbuAttribute">
+            <summary>
+            支持锁定
+            </summary>
+        </member>
+        <member name="M:lxwmvc.tongbuAttribute.#ctor(System.Boolean)">
+            <summary>
+            同步构造函数，默认支持同步
+            </summary>
+            <param name="tongbu"></param>
+        </member>
+        <member name="P:lxwmvc.tongbuAttribute.tongbu">
+            <summary>
+            方法是否支持同步
+            </summary>
+        </member>
+        <member name="T:lxwmvc.helperAttribute">
+            <summary>
+            帮助类
+            </summary>
+        </member>
+        <member name="M:lxwmvc.helperAttribute.#ctor(System.Type)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="P:lxwmvc.helperAttribute.helpertype">
+            <summary>
+            输出的模板中的类型
+            </summary>
+        </member>
+        <member name="P:lxwmvc.helperAttribute.instance">
+            <summary>
+            帮助类的实例
+            </summary>
+        </member>
+        <member name="T:lxwmvc.weixinAttribute">
+            <summary>
+            微信
+            </summary>
+        </member>
+        <member name="M:lxwmvc.weixinAttribute.#ctor(System.Type,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="type"></param>
+            <param name="url"></param>
+            <param name="scope"></param>
+        </member>
+        <member name="P:lxwmvc.weixinAttribute.type">
+            <summary>
+            输出的模板中的类型
+            </summary>
+        </member>
+        <member name="P:lxwmvc.weixinAttribute.instance">
+            <summary>
+            帮助类的实例
+            </summary>
+        </member>
+        <member name="P:lxwmvc.weixinAttribute.url">
+            <summary>
+            回调处理地址
+            </summary>
+        </member>
+        <member name="P:lxwmvc.weixinAttribute.scope">
+            <summary>
+            scope
+            </summary>
+        </member>
+        <member name="T:lxwmvc.IWeiXin">
+            <summary>
+            微信验证
+            </summary>
+        </member>
+        <member name="M:lxwmvc.IWeiXin.CheckUserInfo(System.String,System.String)">
+            <summary>
+            微信验证
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.caidanAttribute">
+            <summary>
+            菜单属性
+            </summary>
+        </member>
+        <member name="M:lxwmvc.caidanAttribute.#ctor(System.String)">
+            <summary>
+            菜单构造函数
+            </summary>
+            <param name="mingcheng">菜单中文名称</param>
+        </member>
+        <member name="P:lxwmvc.caidanAttribute.biaoshi">
+            <summary>
+            菜单标示
+            </summary>
+        </member>
+        <member name="P:lxwmvc.caidanAttribute.mingcheng">
+            <summary>
+            显示的中文名称
+            </summary>
+        </member>
+        <member name="P:lxwmvc.caidanAttribute.path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="T:lxwmvc.quanxianAttribute">
+            <summary>
+            权限属性
+            </summary>
+        </member>
+        <member name="M:lxwmvc.quanxianAttribute.#ctor(System.String,System.String)">
+            <summary>
+            权限构造函数
+            </summary>
+            <param name="mingcheng">权限名称</param>
+            <param name="caidan">所属菜单方法的名称 例如：save  例如:xxx.save</param>
+        </member>
+        <member name="P:lxwmvc.quanxianAttribute.mingcheng">
+            <summary>
+            权限名称
+            </summary>
+        </member>
+        <member name="P:lxwmvc.quanxianAttribute.biaoshi">
+            <summary>
+            权限标示
+            </summary>
+        </member>
+        <member name="P:lxwmvc.quanxianAttribute.caidan">
+            <summary>
+            菜单标示
+            </summary>
+        </member>
+        <member name="T:lxwmvc.yilaiAttribute">
+            <summary>
+            可以依赖菜单 依赖权限
+            </summary>
+        </member>
+        <member name="M:lxwmvc.yilaiAttribute.#ctor(System.String)">
+            <summary>
+            依赖权限
+            </summary>
+            <param name="quanxian_caidan">权限的方法名称 例如：save  例如:xxx.save</param>
+        </member>
+        <member name="P:lxwmvc.yilaiAttribute.quanxian_caidan">
+            <summary>
+            权限名称
+            </summary>
+        </member>
+        <member name="T:lxwmvc.BaseJson">
+            <summary>
+            输出的json对象
+            </summary>
+        </member>
+        <member name="F:lxwmvc.BaseJson.success">
+            <summary>
+            返回数据是否成功
+            </summary>
+        </member>
+        <member name="F:lxwmvc.BaseJson.code">
+            <summary>
+            返回编码信息
+            </summary>
+        </member>
+        <member name="F:lxwmvc.BaseJson.msg">
+            <summary>
+            返回提示信息
+            </summary>
+        </member>
+        <member name="F:lxwmvc.BaseJson.data">
+            <summary>
+            返回数据信息
+            </summary>
+        </member>
+        <member name="T:lxwmvc.jsonAttribute">
+            <summary>
+            发送json对象
+            </summary>
+        </member>
+        <member name="M:lxwmvc.jsonAttribute.#ctor(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="P:lxwmvc.jsonAttribute.jsontype">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lxwmvc.jsonAttribute.instance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lxwmvc.cryptohelper">
+            <summary>
+            功能:CryptoHelper用于加密解密，这个类需要优化，里面的加密和解密其实是存在问题的。
+            [11-03-09 09:13  周三 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.encode(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.decode(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.md5(System.String)">
+            <summary>
+            功能:字符串MD5加密
+            [11-03-08 19:44  周二 lxw]<para />
+            </summary>
+            <param name="str">需要加密的字符串</param>
+            <returns>返回加密后的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.MD5Encrypt(System.String)">
+            <summary>
+            MD5 加密静态方法
+            </summary>
+            <param name="EncryptString">待加密的密文</param>
+            <returns>returns</returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.DESEncrypt(System.String,System.String)">
+            <summary>
+            DES 加密(数据加密标准，速度较快，适用于加密大量数据的场合)
+            </summary>
+            <param name="EncryptString">待加密的密文</param>
+            <param name="EncryptKey">加密的密钥</param>
+            <returns>returns</returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.DESDecrypt(System.String,System.String)">
+            <summary>
+            DES 解密(数据加密标准，速度较快，适用于加密大量数据的场合)
+            </summary>
+            <param name="DecryptString">待解密的密文</param>
+            <param name="DecryptKey">解密的密钥</param>
+            <returns>returns</returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.RC2Encrypt(System.String,System.String)">
+            <summary>
+            RC2 加密(用变长密钥对大量数据进行加密)
+            </summary>
+            <param name="EncryptString">待加密密文</param>
+            <param name="EncryptKey">加密密钥</param>
+            <returns>returns</returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.RC2Decrypt(System.String,System.String)">
+            <summary>
+            RC2 解密(用变长密钥对大量数据进行加密)
+            </summary>
+            <param name="DecryptString">待解密密文</param>
+            <param name="DecryptKey">解密密钥</param>
+            <returns>returns</returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.DES3Encrypt(System.String,System.String,System.String,System.String)">
+            <summary>
+            3DES 加密(基于DES，对一块数据用三个不同的密钥进行三次加密，强度更高)
+            </summary>
+            <param name="EncryptString">待加密密文</param>
+            <param name="EncryptKey1">密钥一</param>
+            <param name="EncryptKey2">密钥二</param>
+            <param name="EncryptKey3">密钥三</param>
+            <returns>returns</returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.DES3Decrypt(System.String,System.String,System.String,System.String)">
+            <summary>
+            3DES 解密(基于DES，对一块数据用三个不同的密钥进行三次加密，强度更高)
+            </summary>
+            <param name="DecryptString">待解密密文</param>
+            <param name="DecryptKey1">密钥一</param>
+            <param name="DecryptKey2">密钥二</param>
+            <param name="DecryptKey3">密钥三</param>
+            <returns>returns</returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.AESEncrypt(System.String,System.String)">
+            <summary>
+            AES 加密(高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法)
+            </summary>
+            <param name="EncryptString">待加密密文</param>
+            <param name="EncryptKey">加密密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.AESDecrypt(System.String,System.String)">
+            <summary>
+            AES 解密(高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法)
+            </summary>
+            <param name="DecryptString">待解密密文</param>
+            <param name="DecryptKey">解密密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.Encode(System.String)">
+            <summary>
+            作用：将字符串内容转化为16进制数据编码，其逆过程是Decode
+            参数说明：
+            strEncode 需要转化的原始字符串
+            转换的过程是直接把字符转换成Unicode字符,比如数字"3"-->0033,汉字"我"-->U+6211
+            函数decode的过程是encode的逆过程.
+            </summary>
+            <param name="strEncode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.cryptohelper.Decode(System.String)">
+             <summary>
+            作用：将16进制数据编码转化为字符串，是Encode的逆过程
+             </summary>
+             <param name="strDecode"></param>
+             <returns></returns>
+        </member>
+        <member name="T:lxwmvc.dbdatehelper">
+            <summary>
+            组合查询条件
+            </summary>
+        </member>
+        <member name="M:lxwmvc.dbdatehelper.dbdatecompare(System.String,lxwmvc.express,System.String)">
+            <summary>
+            生成日期比较字符串
+            </summary>
+            <param name="strColumn">字段</param>
+            <param name="express">比较表达式</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.dbdatehelper.dbdatecompare(System.String,lxwmvc.express,System.String,lxwmvc.express,System.String)">
+            <summary>
+            这里存在一个严重的问题，已经处理  20120702
+            </summary>
+            <param name="column">字段</param>
+            <param name="express1">比较表达式1</param>
+            <param name="startDate">开始日期</param>
+            <param name="express2">比较表达式2</param>
+            <param name="endDate">结束日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.dbdatehelper.querystring(lxwmvc.WHERE,System.String,System.String,lxwmvc.orand,lxwmvc.express)">
+            <summary>
+            组合查询语句
+            </summary>
+            <param name="where"></param>
+            <param name="strcolmun"></param>
+            <param name="strvalue"></param>
+            <param name="orand"></param>
+            <param name="express"></param>
+        </member>
+        <member name="M:lxwmvc.dbdatehelper.querystring(System.String@,System.String,System.String,lxwmvc.orand,lxwmvc.express)">
+            <summary>
+            功能:组合查询语句
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="strwhere">需要组合的字符串</param>
+            <param name="strcolmun">等式左边的数据，相当于数据库对应的字段</param>
+            <param name="strvalue">等式右边的数据, 多个数据用";"隔开</param>
+            <param name="orand">OrAnd表示和前面的语句组合方式，如果是第一个，OrAnd不起作用</param>
+            <param name="express">等式中间连接的表达式</param>
+        </member>
+        <member name="M:lxwmvc.dbdatehelper.querydatetime(lxwmvc.WHERE,System.String,System.String,System.String,lxwmvc.orand)">
+            <summary>
+            功能:组合时间段查询语句
+            </summary>
+            <param name="where"></param>
+            <param name="strcolumn"></param>
+            <param name="strstartdate"></param>
+            <param name="strenddate"></param>
+            <param name="orand"></param>
+        </member>
+        <member name="M:lxwmvc.dbdatehelper.querydatetime(System.String@,System.String,System.String,System.String,lxwmvc.orand)">
+            <summary>
+            功能:组合时间段查询语句
+            [11-03-10 20:15  周四 lxw]<para />
+            </summary>
+            <param name="strwhere">需要组合的字符串</param>
+            <param name="strcolumn">等式左边的数据，相当于数据库对应的字段</param>
+            <param name="strstartdate">起始日期</param>
+            <param name="strenddate">结尾日期</param>
+            <param name="orand">OrAnd表示和前面的语句组合方式，如果是第一个，OrAnd不起作用</param>
+        </member>
+        <member name="M:lxwmvc.dbdatehelper.returnsql(System.String,lxwmvc.express)">
+            <summary>
+            组合SQL语句
+            </summary>
+            <param name="strcolumn">字段</param>
+            <param name="express">连接方式</param>
+            <returns>返回组合后的SQL语句</returns>
+        </member>
+        <member name="T:lxwmvc.FileHelper">
+            <summary>
+            文件相关操作
+            </summary>
+        </member>
+        <member name="M:lxwmvc.FileHelper.deletefile(System.String,lxwmvc.filetype)">
+            <summary>
+            功能:删除指定路径的文件或者文件夹
+            [11-03-08 16:10  周二 lxw]<para />
+            </summary>
+            <param name="strPath">实际物理路径</param>
+            <param name="fileType">类型,前面的路径是文件夹还是文件</param>
+            <returns>true:删除成功</returns>
+        </member>
+        <member name="M:lxwmvc.FileHelper.createfolder(System.String)">
+            <summary>
+            功能:创建文件或者文件夹
+            [11-03-08 16:10  周二 lxw]<para />
+            </summary>
+            <param name="strPath">相对路径</param>
+            <returns>true:创建成功</returns>
+        </member>
+        <member name="M:lxwmvc.FileHelper.newfilename">
+            <summary>
+            功能:生成一个新的文件名称(全是数字，总共19位长度)
+            [11-03-08 16:10  周二 lxw]<para />
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.FileHelper.fileextension(System.String)">
+            <summary>
+            功能:得到文件的后缀，包括"."
+            [11-03-08 16:10  周二 lxw]<para />
+            </summary>
+            <param name="strFileName">文件名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.FileHelper.readfile(System.String)">
+            <summary>
+            功能:读取文件流
+            [11-03-08 16:10  周二 lxw]<para />
+            </summary>
+            <param name="strFilePath">文件路径</param>
+            <returns>返回文件流</returns>
+        </member>
+        <member name="M:lxwmvc.FileHelper.savestreamfile(System.String,System.IO.Stream)">
+            <summary>
+            功能:把流写入文件
+            [09.4.14 lxw]<para />
+            </summary>
+            <param name="strFilePath">文件路径</param>
+            <param name="stream">文件流</param>
+        </member>
+        <member name="M:lxwmvc.FileHelper.savebytefile(System.String,System.Byte[])">
+            <summary>
+            功能:把byte写入文件
+            [09.4.14 lxw]<para />
+            </summary>
+            <param name="strFilePath">文件路径</param>
+            <param name="bytes">byte流</param>
+        </member>
+        <member name="T:lxwmvc.filetype">
+            <summary>
+            枚举类型（目录，文件）
+            </summary>
+        </member>
+        <member name="F:lxwmvc.filetype.file">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <member name="F:lxwmvc.filetype.folder">
+            <summary>
+            文件件
+            </summary>
+        </member>
+        <member name="T:lxwmvc.jshelper">
+            <summary>
+            功能:提供简单的js操作基本方法
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.jshelper.echo(System.String)">
+            <summary>
+            功能:Response.Write javascript 语句
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strscript">javascript语句,里面不能包括&lt;script...&gt; &lt;/script&gt;   </param>
+        </member>
+        <member name="M:lxwmvc.jshelper.alert(System.String)">
+            <summary>
+            功能:在当前页面输出一个javascript alert提示
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strmsg">提示信息</param>
+        </member>
+        <member name="M:lxwmvc.jshelper.alertandredirect(System.String,System.String)">
+            <summary>
+            功能:在当前页面提示并转向到指定页面
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strmsg">提示信息,如果提示信息为空字符串，就不提示，直接转向</param>
+            <param name="strredirectlink">转向到的页面</param>
+        </member>
+        <member name="M:lxwmvc.jshelper.alertandparentredirect(System.String,System.String)">
+            <summary>
+            功能:在当前页面的父页面提示并转向到指定页面
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strmsg">提示信息,如果提示信息为空字符串，就不提示，直接转向</param>
+            <param name="strredirectlink">转向到的页面</param>
+        </member>
+        <member name="M:lxwmvc.jshelper.alertandclose(System.String)">
+            <summary>
+            功能:在当前页面提示并关闭当前页面
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strmsg">提示信息,如果提示信息为空字符串，就不提示，直接关闭</param>
+        </member>
+        <member name="M:lxwmvc.jshelper.redirect(System.String)">
+            <summary>
+            功能:页面转向，用这种转向方法是不会保留上一个页面请求的相关信息,<para />
+            如果需要传递相关参数，还必须通过url param传递信息<para />
+            如果用Response.Redirect(url),这种方法也能转向，<para />
+            还有Server.Tran??也可以转向，这些方法都能保留信息,这是后台转发的意思<para />
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strredirectlink"></param>
+        </member>
+        <member name="M:lxwmvc.jshelper.close">
+            <summary>
+            功能:关闭当前窗口
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.jshelper.parentclose">
+            <summary>
+            功能:关闭父窗口
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.jshelper.alertandback(System.String)">
+            <summary>
+            功能:提示信息并返回,如果想保留上次页面的记录，注意使用{behavior:url(#default#savehistory);}
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strmsg">提示信息,如果提示信息为空字符串，就不提示，直接返回</param>
+        </member>
+        <member name="M:lxwmvc.jshelper.back">
+            <summary>
+            功能:直接返回
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.jshelper.responsescript(System.String)">
+            <summary>
+            功能:输出script语句
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strscript">javascript语句</param>
+        </member>
+        <member name="M:lxwmvc.jshelper.encodejavascriptmessage(System.String)">
+            <summary>
+            功能:编码javascript里面字符串代码，保障提示消息不会被浏览器断行和引号产生问题<para />
+            字符串的两端用单引号间隔
+            [09.4.10 lxw]<para />
+            </summary>
+            <param name="strmsg">javascript里面的字符串,例如 alert('xxxx') 中的"xxxx"字符串需要进行编码。 </param>
+            <returns>返回编码过的javascript字符串</returns>
+        </member>
+        <member name="P:lxwmvc.jshelper.br">
+            <summary>
+            功能:输出到客户端\r\n
+            [11-03-08 16:04  周二 lxw]<para />
+            </summary>
+        </member>
+        <member name="T:lxwmvc.JSON">
+            <summary>
+            json转换类
+            </summary>
+        </member>
+        <member name="M:lxwmvc.JSON.parse``1(System.String)">
+            <summary>
+            字符串转换成实体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="jsonString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.JSON.stringify(System.Object)">
+            <summary>
+            实体转换成字符串
+            </summary>
+            <param name="jsonObject"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvccore.ObjectCopy">
+            <summary>
+            对象复制
+            </summary>
+        </member>
+        <member name="M:lxwmvccore.ObjectCopy.ToObjectCopy``1(``0)">
+            <summary>
+            创建对象深度复制的副本
+            </summary>
+        </member>
+        <member name="M:lxwmvccore.ObjectCopy.ObjectCopyTo``1(``0,``0)">
+            <summary>
+            将source对象的所有属性复制到target对象中，深度复制
+            </summary>
+        </member>
+        <member name="T:lxwmvc.CONIFG">
+            <summary>
+            获取配置参数
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.defaultcontroller">
+            <summary>
+            defaultcontroller
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.defaultaction">
+            <summary>
+            defaultaction
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.defaultcity_key">
+            <summary>
+            defaultcity_key
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.defaultcity_controller">
+            <summary>
+            defaultcity_controller
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.defaultcity_action">
+            <summary>
+            defaultcity_action
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.defaultpage_key">
+            <summary>
+            defaultpage_key
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.defaultpage_controller">
+            <summary>
+            defaultpage_controller
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.defaultpage_action">
+            <summary>
+            defaultpage_action
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CONIFG.default_quanxian">
+            <summary>
+            是否需要扫描权限
+            </summary>
+        </member>
+        <member name="T:lxwmvc.WHERE">
+            <summary>
+            参数编程应用类型的
+            </summary>
+        </member>
+        <member name="F:lxwmvc.WHERE.where">
+            <summary>
+            内部字符串
+            </summary>
+        </member>
+        <member name="T:lxwmvc.pagebase">
+            <summary>
+            核心上下文信息
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase._PAGE_SORT_NAME_">
+            <summary>
+            在action="?$!{pagesort}"使用
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase._sw_">
+            <summary>
+            查询关键字
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase._sk_">
+            <summary>
+            需要保存状态的key
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase.layoutname">
+            <summary>
+            布局名称
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase._viewname">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase.defaultcontroller">
+            <summary>
+            默认控制器
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase.defaultaction">
+            <summary>
+            默认方法
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase.syn">
+            <summary>
+            线程安全
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase.m_monitorObject">
+            <summary>
+            同步方法，只阻塞当前方法
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.cancelview">
+            <summary>
+            不使用模板，其实在系统中，如果没有模板，系统也不会出现错误，他会自动不显示模板
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.exit">
+            <summary>
+            退出程序，后续不要再进行操作。
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.randerview(System.String)">
+            <summary>
+            改变vm名称
+            </summary>
+            <param name="vm">不能带后缀 .htm</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.setlayout(System.String)">
+            <summary>
+            设置layout名称
+            </summary>
+            <param name="layout">layout名称</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.cancellayout">
+            <summary>
+            不使用布局
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase.cookies_domain">
+            <summary>
+            设置cookies的作用域
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase.cookies_expires">
+            <summary>
+            设置cookies的过期时间
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase.cookies_userid_key">
+            <summary>
+            可以外部设置用户主键的键
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.addhelper(System.String)">
+            <summary>
+            加入helper
+            lxwmvc.Helpers.xxxhelper
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.getmodel``1(System.String,System.String)">
+            <summary>
+            获取model
+            </summary>
+            <param name="tablename"></param>
+            <param name="qianzhun"></param>
+            <returns></returns>
+        </member>
+        <member name="F:lxwmvc.pagebase.currenttype">
+            <summary>
+            可能再次使用
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.customfun(System.String,System.Object[])">
+            <summary>
+            外部执行内部方法 20121025
+            </summary>
+            <param name="fun"></param>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.execute(System.Web.HttpContext)">
+            <summary>
+            页面加载核心函数
+            </summary>
+            <param name="_context"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.savelog(System.Object,System.String)">
+            <summary>
+            存储日志信息
+            </summary>
+            <param name="log"></param>
+            <param name="fun"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.getparams">
+            <summary>
+            获取请求的参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.ConvertJsonDateToDateString(System.Text.RegularExpressions.Match)">
+            <summary>
+            json日期转换
+            </summary>
+            <param name="m"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.bodyjson">
+            <summary>
+            获取页面传输过来的json对象
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.ifcheck(System.Boolean,System.String)">
+            <summary>
+            判断p1=true 然后抛出异常
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.exit(System.String)">
+            <summary>
+            退出程序，后续不要再进行操作。
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagebase._JSON">
+            <summary>
+            默认输出json对象
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.JSON``1">
+            <summary>
+            输出json对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.setjilian(System.Object,System.Object)">
+            <summary>
+            设置级联
+            </summary>
+            <param name="zibiao">子表</param>
+            <param name="zibiaowaijian">子表对应主键的外键</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.autoloaddata(lxwmvc.supermodel,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            自动装载数据
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.check_empty(System.String,System.String)">
+            <summary>
+            检查request中key是否为空，如果为空 抛出异常
+            </summary>
+            <param name="key"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.iftrueerror(System.Boolean,System.String)">
+            <summary>
+            判断表达式是否正确，如果为真 抛出异常
+            </summary>
+            <param name="exp"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.encodejscript(System.String)">
+            <summary>
+            编码javascript代码
+            </summary>
+            <param name="strJsMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.getname(System.Object,System.Object,System.Object)">
+            <summary>
+            执行一条语句得到字段的内容
+            </summary>
+            <param name="table"></param>
+            <param name="name"></param>
+            <param name="idvalue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.innerstr(System.Object,System.Object,System.Collections.Generic.IEnumerable{lxwmvc.supermodel},System.String)">
+            <summary>
+            为了解决再循环中多次查找数据的的问题
+            </summary>
+            <param name="table">表名</param>
+            <param name="name">查询的字段</param>
+            <param name="models">遍历的集合</param>
+            <param name="guanlianid">集合对应的外键</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.innerint(System.Object,System.Object,System.Collections.Generic.IEnumerable{lxwmvc.supermodel},System.String)">
+            <summary>
+            设置int组合
+            </summary>
+            <param name="table">表名</param>
+            <param name="name">查询的字段</param>
+            <param name="models">遍历的集合</param>
+            <param name="guanlianid">集合对应的外键</param>
+        </member>
+        <member name="M:lxwmvc.pagebase._inner(System.Object,System.Object,System.Collections.Generic.IEnumerable{lxwmvc.supermodel},System.String,System.String)">
+            <summary>
+            设置关联查询方式
+            </summary>
+            <param name="table">表名</param>
+            <param name="name">查询的字段</param>
+            <param name="models">遍历的集合</param>
+            <param name="guanlianid">集合对应的外键</param>
+            <param name="split"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.innervalue(System.Object,System.Object,System.Object)">
+            <summary>
+            获取值
+            </summary>
+            <param name="table">表名</param>
+            <param name="name">查询的字段</param>
+            <param name="guanlianid">集合对应的外键</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.getzidian(System.Object)">
+            <summary>
+            得到字典的名称
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.getoptions(System.Object,System.String)">
+            <summary>
+            通过字典产生options
+            </summary>
+            <param name="bianhao"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.geterrormsg(System.Text.StringBuilder,System.Exception)">
+            <summary>
+            构造错误日志
+            </summary>
+            <param name="sb">存储错误日志</param>
+            <param name="exception">错误信息</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.getmethod(System.Type,System.String,System.String@)">
+            <summary>
+            得到方法体,也可以通过别名找
+            </summary>
+            <param name="type">type</param>
+            <param name="name">method name</param>
+            <param name="truename">action 真实名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.v_i(System.String,System.Int32)">
+            <summary>
+            没有值，或者转换失败，都用0代替，也可以自己设置
+            </summary>
+            <param name="key"></param>
+            <param name="def"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.back(System.String,System.Boolean)">
+            <summary>
+            返回到上一页
+            </summary>
+            <param name="strmsg"></param>
+            <param name="flag">true 代表跳转</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.v_s(System.String)">
+            <summary>
+            获取request里面的值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.v_ss(System.String)">
+            <summary>
+            获取request里面的值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.v_dec(System.String)">
+            <summary>
+            获取request里面的值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.v_date(System.String)">
+            <summary>
+            获取request里面的值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.get``1(System.String)">
+            <summary>
+            获取上下文信息
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.#cctor">
+            <summary>
+            系统初始化
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.dopager(System.Boolean)">
+            <summary>
+            功能:分页需要传递到VM页面的参数
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="blnencrypt">参数是否需要加密，如果加密的话，接收的时候就必须解密</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.dopager">
+            <summary>
+            功能:参考DoPager(false),不加密参数
+            [09.4.12 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.paramsvalue(System.String,System.Boolean)">
+            <summary>
+            取request中对应键的值<para />
+            blnSearch为True的是作为分页需要的字符串，但是如果blnHtml为true，blnSearch设置不起作用;<para />
+            功能:blnHtml值里面如果存在HTML格式<para />
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="strkey">request.params[strKey]中的键</param>
+            <param name="blnsearch">true:是否把值传递到分页中</param>
+            <returns>返回对应request中key的value</returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.pagervalue(System.String)">
+            <summary>
+            获取传递过来的参数，并且输出到url连接字符串中，主要用于分页中
+            </summary>
+            <param name="strkey">获取数据</param>
+            <returns>返回数据</returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.queryvalue(System.String@,System.String,System.String,lxwmvc.orand,lxwmvc.express,System.Action{lxwmvc.WHERE},lxwmvc.orand)">
+            <summary>
+            组合复杂一点的查询条件，传递的是具体的值，具体的值建议不是从前台捕获的参数
+            </summary>
+            <param name="strwhere"></param>
+            <param name="strcolmun"></param>
+            <param name="strvalue">传递具体的数据</param>
+            <param name="orand"></param>
+            <param name="express"></param>
+            <param name="action"></param>
+            <param name="orand_end"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.querykey(System.String@,System.String,System.String,lxwmvc.orand,lxwmvc.express,System.Action{lxwmvc.WHERE},lxwmvc.orand)">
+            <summary>
+            组合where条件，主要是通过strkey，获取外部的值
+            </summary>
+            <param name="strwhere"></param>
+            <param name="strcolmun"></param>
+            <param name="strkey">传递需要通过request捕获的参数</param>
+            <param name="orand"></param>
+            <param name="express"></param>
+            <param name="action"></param>
+            <param name="orand_end"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.querykey(System.String@,System.String,lxwmvc.orand,lxwmvc.express,System.Action{lxwmvc.WHERE},lxwmvc.orand)">
+            <summary>
+            重构函数，主要是如果不传递value值，就用strcolmun取前台参数
+            </summary>
+            <param name="strwhere"></param>
+            <param name="strcolmun"></param>
+            <param name="orand"></param>
+            <param name="express"></param>
+            <param name="action"></param>
+            <param name="orand_end"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.queryvalue(lxwmvc.WHERE,System.String,System.String,lxwmvc.orand,lxwmvc.express,System.Action{lxwmvc.WHERE},lxwmvc.orand)">
+            <summary>
+            组合复杂一点的查询条件，传递的是具体的值，具体的值建议不是从前台捕获的参数
+            </summary>
+            <param name="where2"></param>
+            <param name="strcolmun"></param>
+            <param name="strvalue"></param>
+            <param name="orand"></param>
+            <param name="express"></param>
+            <param name="action"></param>
+            <param name="orand_end"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.querykey(lxwmvc.WHERE,System.String,System.String,lxwmvc.orand,lxwmvc.express,System.Action{lxwmvc.WHERE},lxwmvc.orand)">
+            <summary>
+            组合where条件，主要是通过strkey，获取外部的值
+            </summary>
+            <param name="where2"></param>
+            <param name="strcolmun"></param>
+            <param name="strkey">传递需要通过request捕获的参数</param>
+            <param name="orand"></param>
+            <param name="express"></param>
+            <param name="action"></param>
+            <param name="orand_end"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.querykey(lxwmvc.WHERE,System.String,lxwmvc.orand,lxwmvc.express,System.Action{lxwmvc.WHERE},lxwmvc.orand)">
+            <summary>
+            重构函数，主要是如果不传递value值，就用strcolmun取前台参数
+            </summary>
+            <param name="where2"></param>
+            <param name="strcolmun"></param>
+            <param name="orand"></param>
+            <param name="express"></param>
+            <param name="action"></param>
+            <param name="orand_end"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.insertpagevalue(System.String,System.Object)">
+            <summary>
+            功能:把对应的键值插入到分页参数中
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="strKey">request.params[strKey]中的键</param>
+            <param name="objValue">request.params[strKey]结果</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.removekey(System.String)">
+            <summary>
+            为了解决params object[] keys 传递一个字符串的情况
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.removekey(System.Object[])">
+            <summary>
+            移除对应Key
+            </summary>
+            <param name="keys">移除多个键</param>
+            <returns>返回组合好的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.insertkey(System.String,System.String)">
+            <summary>
+            给pagesearch里面插入内容
+            </summary>
+            <param name="key"></param>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.findstr(System.String,System.String,System.Char)">
+            <summary>
+            [此方法不再使用]兼容php方法,查找字符串是否在另外一个字符串里面 默认缺省的分隔符为逗号
+            </summary>
+            <param name="strsource">源字符串</param>
+            <param name="strfind">被查找的字符串</param>
+            <param name="chrsplit">用于分割的字符</param>
+            <returns>true:存在</returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.orderbycolumn(System.String)">
+            <summary>
+            得到排序字段，先从前台取，如果取不到，就用传过来的值，采用降序 
+            [2010-01-29 13:52 HanLei]<para />
+            </summary>
+            <param name="strColumn">排序字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.orderbycolumn(System.String,System.String)">
+            <summary>
+            得到排序字段，先从前台取，如果取不到，就用传过来的值 
+            [2010-01-28 14:12 HanLei]<para />
+            </summary>
+            <param name="strColumn">排序字段</param>
+            <param name="strOrder">排序方式，asc，desc</param>
+            <returns>返回排序字段</returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.getonevalue(System.String)">
+            <summary>
+            获取信息
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.ordertype(System.String)">
+            <summary>
+            获取排序方式，先从前台取，如果取不到，就用传过来的值
+            [2010-01-28 14:21 HanLei]<para />
+            </summary>
+            <param name="strOrder">默认排序方式</param>
+            <returns>返回排序方式</returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.paixu(System.String,System.String)">
+            <summary>
+            生成排序的字符串
+            </summary>
+            <param name="id"></param>
+            <param name="cn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.formatnumber(System.Object,System.Int32)">
+            <summary>
+            格式化金额类
+            </summary>
+            <param name="d"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.formatdate(System.Object,System.String)">
+            <summary>
+            格式化日期
+            </summary>
+            <param name="date"></param>
+            <param name="fmt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.formatparcent(System.Object,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="number"></param>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.formatview(System.String)">
+            <summary>
+            动态解析htm
+            </summary>
+            <param name="templatFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.display(System.String)">
+            <summary>
+            输出模板信息
+            </summary>
+            <param name="templatFileName">模板后缀</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.jqueryfmt(System.String)">
+            <summary>
+            处理$. $(的东西，这是jquery的写法
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.search(System.String)">
+            <summary>
+            组合查询语句
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagebase.write(System.String,System.Object[])">
+            <summary>
+            response.write  信息到浏览器
+            </summary>
+            <param name="p">内容</param>
+            <param name="arg">可能内容存在需要替换的参数</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.writeend(System.String,System.Object[])">
+            <summary>
+            执行这个，会抛出线程终止错误ThreadAbortException 需要用这个捕获
+            </summary>
+            <param name="p"></param>
+            <param name="arg"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.redirect(System.String,System.Boolean)">
+            <summary>
+            重定向到对应的页面,所有提交的信息都已经保留。
+            </summary>
+            <param name="url">重定向的URL</param>
+            <param name="endresponse">是否终止请求，false 不终止</param>
+        </member>
+        <member name="M:lxwmvc.pagebase.settable(System.String)">
+            <summary>
+            设置table和id
+            </summary>
+            <param name="p"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.v_json``1(System.String)">
+            <summary>
+            获取页面传输过来的json对象
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.json``1(``0)">
+            <summary>
+            输出json对象或者json字符串
+            </summary>
+            <param name="p"></param>
+        </member>
+        <member name="M:lxwmvc.pagebase.Finalize">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagebase.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.PowerString">
+            <summary>
+            权限设置到SESSION里面，以后可以考虑其他形式存储
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.UserId">
+            <summary>
+            判断用户是否已经登录
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.pk">
+            <summary>
+            用于单表操作的主键
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.table">
+            <summary>
+            用于单表操作的表
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.jilians">
+            <summary>
+            级联
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.hasjilian">
+            <summary>
+            是否存在级联
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.formurl">
+            <summary>
+            得到上一个页面地址
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.pagesize">
+            <summary>
+            功能:返回每页显示记录的数量
+            [09.4.12 lxw]<para />
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.page">
+            <summary>
+            得到当前页
+            </summary>
+            <returns>返回当前页的数字</returns>
+        </member>
+        <member name="P:lxwmvc.pagebase.Item(System.String)">
+            <summary>
+            给模板里面输出键值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:lxwmvc.pagebase.Post">
+            <summary>
+            判断是否是post请求
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.Request">
+            <summary>
+            request
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.Response">
+            <summary>
+            response
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.Session">
+            <summary>
+            session
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.Server">
+            <summary>
+            server
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagebase.Context">
+            <summary>
+            context
+            </summary>
+        </member>
+        <member name="T:lxwmvc.ExitException">
+            <summary>
+            退出异常类
+            </summary>
+        </member>
+        <member name="M:lxwmvc.ExitException.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:lxwmvc.pagerinfo">
+            <summary>
+            分页信息类
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagerinfo.PAGE_SIZE">
+            <summary>
+            默认每页信息为20条
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagerinfo._pagesize">
+            <summary>
+            得到每页数量
+            </summary>
+        </member>
+        <member name="F:lxwmvc.pagerinfo._currentpage">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagerinfo.setfirstindex(System.Int32,System.Int32)">
+            <summary>
+            设置第一条记录的索引
+            </summary>
+            <param name="intcurpage">当前页</param> 
+            <param name="intpagesize">每页大小</param>
+        </member>
+        <member name="M:lxwmvc.pagerinfo.getfirstindex(System.Int32,System.Int32)">
+            <summary>
+            得到第一条记录的索引
+            </summary>
+            <param name="intcurpage">当前页</param>
+            <param name="intpagesize">每页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagerinfo.Finalize">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="M:lxwmvc.pagerinfo.show(System.String)">
+            <summary>
+            显示分页信息
+            </summary>
+            <param name="search">搜索的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.pagerinfo.tojson">
+            <summary>
+            数据json对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.pagesize">
+            <summary>
+            每页记录数量
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.currentpage">
+            <summary>
+            获取和设置当前第几页
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.pre">
+            <summary>
+            记录前一页
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.next">
+            <summary>
+            记录后一页
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.pagecount">
+            <summary>
+            总共多少页
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.recordcount">
+            <summary>
+            数据库记录总数
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.currentsize">
+            <summary>
+            当前页多少条记录，最后一页不一定就是PageSize
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.firstindex">
+            <summary>
+            得到第一条记录的索引
+            </summary>
+        </member>
+        <member name="P:lxwmvc.pagerinfo.data">
+            <summary>
+            获取分页后的数据
+            </summary>
+        </member>
+        <member name="T:lxwmvc.powerhelper">
+            <summary>
+            TODO:功能:权限操作类
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.powerhelper.checkpower(System.String)">
+            <summary>
+            功能:判断是否具有访问制定ID的权限
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="strPowerID">需要验证的权限ID</param>
+            <returns>true:代表具有访问此权限</returns>
+        </member>
+        <member name="M:lxwmvc.powerhelper.display(System.String)">
+            <summary>
+            功能:通过权限验证HTML控件是否显示，用于控件的HTML标签里面
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="strPowerID">需要验证的权限</param>
+            <returns>返回控件是否显示和隐藏</returns>
+        </member>
+        <member name="M:lxwmvc.powerhelper.setpowerstring(System.String,System.String)">
+            <summary>
+            设置权限
+            </summary>
+            <param name="jueseid">对应数据库角色id  -999代表管理员</param>
+            <param name="fuzhujuese">辅助角色,多个角色用,号分割</param>
+        </member>
+        <member name="T:lxwmvc.requesthelper">
+            <summary>
+            功能:处理Request请求，包括从request捕获数据等基础函数
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.requesthelper.formurl">
+            <summary>
+            功能:获取前一个页面的Url地址
+            [09.4.12 lxw]<para />
+            </summary>
+            <returns>返回Url地址字符串</returns>
+        </member>
+        <member name="M:lxwmvc.requesthelper.getonevalue(System.String)">
+            <summary>
+            获取传递过来的值，如果不存在，就用""字符串代替
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.requesthelper.fromurlparamsgetvaluebykey(System.String,System.String,System.String)">
+            <summary>
+            功能:从url里面的参数中得到对应键的值
+            [11-03-08 16:02  周二 lxw]<para />
+            </summary>
+            <param name="strUrlParams">需要检索的字符串</param>
+            <param name="strKey">需要找的键</param>
+            <param name="split">默认分割的字符串</param>
+            <returns>返回对应键的值</returns>
+        </member>
+        <member name="M:lxwmvc.requesthelper.clientip">
+            <summary>
+            功能:获取客户端IP地址,这个ip地址是可以被模拟的，所以，不起多大作用。
+            [09.4.12 lxw]<para />
+            </summary>
+            <returns>返回客户端IP地址字符串</returns>
+        </member>
+        <member name="T:lxwmvc.sqlhelper">
+            <summary>
+            执行数据库相关操作
+            </summary>
+        </member>
+        <member name="F:lxwmvc.sqlhelper.connectstring">
+            <summary>
+            数据库连接字符串
+            </summary>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.out_getds(System.String,System.String)">
+            <summary>
+            单独给外部的方法，不存在事务
+            </summary>
+            <param name="commandtext">sql语句</param>
+            <param name="connectstring">连接字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.out_exec(System.String,System.String)">
+            <summary>
+            外部执行代码
+            </summary>
+            <param name="commandText"></param>
+            <param name="connectstring"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.get``1(System.String,System.Object[])">
+            <summary>
+            得到信息
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.IsAnonymousType(System.Type)">
+            <summary>
+            判断匿名类型
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.IsGenericType(System.Type)">
+            <summary>
+            判断是否是Dictionary类型
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="F:lxwmvc.sqlhelper.context_connect">
+            <summary>
+            一次请求 就一完整的sql语句
+            </summary>
+        </member>
+        <member name="F:lxwmvc.sqlhelper.lxw_transaction">
+            <summary>
+            当前用户的session
+            </summary>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.dbconnectclose">
+            <summary>
+            关闭数据源
+            </summary>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.transactioncommit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.transactionrollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.query(System.String,System.Object[])">
+            <summary>
+            执行sql语句并返回dataset
+            </summary>
+            <param name="commandText"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.query``1(System.String,System.Object[])">
+            <summary>
+            返回特定类型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.execute(System.String,System.Object[])">
+            <summary>
+            执行sql语句
+            </summary>
+            <param name="commandText"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.FUN``1(System.Func{System.Data.IDbConnection,System.Data.IDbTransaction,``0})">
+            <summary>
+            执行方法CONN里面的所有方法
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fun"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.showpager(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Object[])">
+            <summary>
+            实现MSSQL分页 
+            </summary>
+            <param name="strtablename"></param>
+            <param name="strfileds"></param>
+            <param name="strorderfileds"></param>
+            <param name="ipageindex"></param>
+            <param name="ipagesize"></param>
+            <param name="strwhere"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.sqlhelper.weiyixing(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            唯一性判断
+            </summary>
+            <param name="table">表</param>
+            <param name="column">字段名称</param>
+            <param name="value">字段的内容</param>
+            <param name="msg">错误提示</param>
+            <param name="keycolumn">主键名称</param>
+            <param name="keyvalue">主键的值</param>
+            <param name="where">判断条件</param>
+        </member>
+        <member name="T:lxwmvc.result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:lxwmvc.result.action">
+            <summary>
+            是新增还是修改
+            </summary>
+        </member>
+        <member name="P:lxwmvc.result.identity">
+            <summary>
+            返回主键
+            </summary>
+        </member>
+        <member name="P:lxwmvc.result.model">
+            <summary>
+            传递的键值对应
+            </summary>
+        </member>
+        <member name="T:lxwmvc.action">
+            <summary>
+            操作行为
+            </summary>
+        </member>
+        <member name="F:lxwmvc.action.insert">
+            <summary>
+            插入
+            </summary>
+        </member>
+        <member name="F:lxwmvc.action.update">
+            <summary>
+            更新
+            </summary>
+        </member>
+        <member name="T:lxwmvc.cookieshelper">
+            <summary>
+            功能:Cookies基本存取操作
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="F:lxwmvc.cookieshelper.cookiesqianzhun">
+            <summary>
+            功能:cookies的前缀
+            [11-03-09 09:16  周三 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.cookieshelper.setcookie(System.String,System.String,System.String,System.Double)">
+            <summary>
+            功能:设置Cookies对应键的值
+            [09.1.24 lxw]<para />
+            </summary>
+            <param name="strcookieskey">键</param>
+            <param name="strcookiesvalue">值</param>
+            <param name="domain"></param>
+            <param name="expiressecond">以秒作为单位，默认永远不过期</param>
+        </member>
+        <member name="M:lxwmvc.cookieshelper.getcookie(System.String,System.String)">
+            <summary>
+            功能:获取Cookies对应键的值
+            [09.1.24 lxw]<para />
+            </summary>
+            <param name="strcookieskey">键</param>
+            <param name="domain"></param>
+            <returns>返回指定键的值</returns>
+        </member>
+        <member name="M:lxwmvc.cookieshelper.delcookie(System.String,System.String)">
+            <summary>
+            功能:删除cookies
+            [11-03-09 09:15  周三 lxw]<para />
+            </summary>
+            <param name="strcookieskey">key</param>
+            <param name="domain">domain</param>
+        </member>
+        <member name="T:lxwmvc.FastInvokeHandler">
+            <summary>
+            委托
+            </summary>
+            <param name="target"></param>
+            <param name="paramters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.FastInvokeUtility">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:lxwmvc.FastInvokeUtility.GetMethodInvoker(System.Reflection.MethodInfo)">
+            <summary>
+            动态创建IL代码
+            </summary>
+            <param name="methodInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.queryhelper">
+            <summary>
+            查询类和分页类
+            </summary>
+        </member>
+        <member name="M:lxwmvc.queryhelper.get(System.String)">
+            <summary>
+            执行sql语句 返回object 第一行第一列信息
+            </summary>
+            <param name="sql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.queryhelper.get``1(System.String,System.Object[])">
+            <summary>
+            得到一个实体对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.queryhelper.execute(System.String,System.Object[])">
+            <summary>
+            执行sql语句
+            </summary>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.queryhelper.model(System.Data.DataRow)">
+            <summary>
+            DataRow dr 转换成supermodel
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.queryhelper.query``1(System.String,System.Object[])">
+            <summary>
+            查询内容
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.queryhelper.FUN``1(System.Func{System.Data.IDbConnection,System.Data.IDbTransaction,``0})">
+            <summary>
+            执行CONN方法 有返回值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fun"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.queryhelper.FUN(System.Action{System.Data.IDbConnection,System.Data.IDbTransaction})">
+            <summary>
+            执行CONN方法 无返回值
+            </summary>
+            <param name="fun"></param>
+        </member>
+        <member name="M:lxwmvc.queryhelper.query(System.String,System.Object[])">
+            <summary>
+            查询内容
+            </summary>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.queryhelper.pager(System.String,System.String,System.String,System.Object,System.Object,System.String,System.Object[])">
+            <summary>
+            实现分页，跟原来分页相同
+            </summary>
+            <param name="strtablename">组合的表名</param>
+            <param name="strfileds">查询的字段名称</param>
+            <param name="strorderfileds">排序</param>        
+            <param name="ipageindex">当前页码</param>
+            <param name="ipagesize">每页数量</param>
+            <param name="strwhere">查询条件</param>
+            <param name="args">预编译参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.queryhelper.pager(System.String,System.Object,System.Object,System.Object[])">
+            <summary>
+            执行sql语句分页
+            </summary>
+            <param name="sql"></param>
+            <param name="ipageindex"></param>
+            <param name="ipagesize"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.guanlian">
+            <summary>
+            两边关联
+            </summary>
+        </member>
+        <member name="F:lxwmvc.guanlian.inner_join">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lxwmvc.guanlian.left_join">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lxwmvc.guanlian.right_join">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lxwmvc.guanlian.full_join">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lxwmvc.guanlian.empty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lxwmvc.ti">
+            <summary>
+            存储关联类型
+            </summary>
+        </member>
+        <member name="P:lxwmvc.ti.guanlian">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lxwmvc.ti.on">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lxwmvc.supermodel">
+            <summary>
+            通用实体类
+            </summary>
+        </member>
+        <member name="M:lxwmvc.supermodel.#ctor(System.String)">
+            <summary>
+            实体类初始化
+            </summary>
+            <param name="tablename"></param>
+        </member>
+        <member name="M:lxwmvc.supermodel.#ctor">
+            <summary>
+            实体类初始化
+            </summary>
+        </member>
+        <member name="M:lxwmvc.supermodel.#cctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="F:lxwmvc.supermodel.systableinfo">
+            <summary>
+            得到系统表结构
+            </summary>
+        </member>
+        <member name="F:lxwmvc.supermodel.pks">
+            <summary>
+            表的主键值
+            </summary>
+        </member>
+        <member name="M:lxwmvc.supermodel.create(System.String)">
+            <summary>
+            初始化并返回model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.ContainsKey(System.String)">
+            <summary>
+            检查对应的key是否存在
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.Contains(System.String)">
+            <summary>
+            检查对应的key是否存在
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.table(System.String)">
+            <summary>
+            CRUD操作之前如果没有设置table，会出现错误
+            </summary>
+            <param name="tablename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.set(System.String,System.Object)">
+            <summary>
+            set name=xxxx，主要用于update
+            </summary>
+            <param name="k"></param>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel._o(System.String)">
+            <summary>
+            内部用
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.select(System.String)">
+            <summary>
+            选择的列,如果为空，默认为*
+            </summary>
+            <param name="k"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.where(System.String)">
+            <summary>
+            传递where，例如： name='xx'
+            </summary>
+            <param name="w"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.Value``1(System.Int32)">
+            <summary>
+            得到
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.group(System.String)">
+            <summary>
+            传递group，例如：name
+            </summary>
+            <param name="w"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.orderby(System.String)">
+            <summary>
+            排序order,例如 name desc,age asc
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.delete(System.Boolean)">
+            <summary>
+            删除对象,flag=true 代表有没有where都可以执行delete。
+            </summary>
+        </member>
+        <member name="M:lxwmvc.supermodel.select``1(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_where"></param>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.update(System.Boolean)">
+            <summary>
+            对象更新,flag=true 代表有没有where条件用主键代替。
+            </summary>
+        </member>
+        <member name="M:lxwmvc.supermodel.get">
+            <summary>
+            得到一个supermodel，如果不存在，默认为null
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.get``1">
+            <summary>
+            获取实体对象或者第一行第一列的对象  相当于one[T]
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.list``1(System.Int32)">
+            <summary>
+            返回List T
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.list(System.Int32)">
+            <summary>
+            返回List supermodel
+            </summary>
+            <param name="top"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.one``1">
+            <summary>
+            返回一种类型
+            </summary>
+            <typeparam name="T">返回的类型</typeparam>
+            <returns>返回指定类型的对象</returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.createselect(System.Int32)">
+            <summary>
+            生成sql语句
+            </summary>
+            <param name="top"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.add(System.String,System.Object)">
+            <summary>
+            插入队列
+            </summary>
+            <param name="key"></param>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.saveorupdate(System.Action{lxwmvc.supermodel},System.Action{lxwmvc.supermodel})">
+            <summary>
+            实体的操作
+            </summary>
+            <param name="_insert"></param>
+            <param name="_update"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.inner(System.String,System.String)">
+            <summary>
+            inner
+            </summary>
+            <param name="tablename"></param>
+            <param name="on"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.left(System.String,System.String)">
+            <summary>
+            left
+            </summary>
+            <param name="tablename"></param>
+            <param name="on"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.right(System.String,System.String)">
+            <summary>
+            right
+            </summary>
+            <param name="tablename"></param>
+            <param name="on"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.full(System.String,System.String)">
+            <summary>
+            full
+            </summary>
+            <param name="tablename"></param>
+            <param name="on"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.remove(System.String)">
+            <summary>
+            从队列里面移除
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:lxwmvc.supermodel.removeall">
+            <summary>
+            从队列里面移除所有的
+            </summary>
+        </member>
+        <member name="M:lxwmvc.supermodel.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            外部不允许访问
+            </summary>
+            <param name="binder"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.get``1(System.String)">
+            <summary>
+            从队列里面得到正确类型的数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+            TrySetMember 外部不允许调用
+            </summary>
+            <param name="binder"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.ToString">
+            <summary>
+            输出json字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.toModel``1">
+            <summary>
+            转换成model
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.fromModel(System.Object)">
+            <summary>
+            通过实体转换成supermodel
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.clone(System.Boolean)">
+            <summary>
+            复制对象，只复制对象里面的内容，内部关系不复制,用处是否存在？
+            </summary>
+            <param name="flag">true:不保留主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.clear">
+            <summary>
+            只返回有主键的对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.op_Implicit(System.Collections.Hashtable)~lxwmvc.supermodel">
+            <summary>
+            隐式转换，把hashtable转成supermodel
+            </summary>
+            <param name="has"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.op_Implicit(FluorineFx.Json.JavaScriptObject)~lxwmvc.supermodel">
+            <summary>
+            隐式转换，把JavaScriptObject转成supermodel
+            </summary>
+            <param name="jso"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.op_Addition(lxwmvc.supermodel,lxwmvc.supermodel)">
+            <summary>
+            把第二个对象的数据加到第一个对象里面
+            </summary>
+            <param name="sm1"></param>
+            <param name="sm2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.op_Addition(lxwmvc.supermodel,System.Collections.Hashtable)">
+            <summary>
+            把第二个对象的数据加到第一个对象里面
+            </summary>
+            <param name="sm1"></param>
+            <param name="has"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.op_Addition(lxwmvc.supermodel,System.Object)">
+            <summary>
+            把对象的数据加到supermodel中
+            </summary>
+            <param name="sm1"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.op_Addition(System.Object,lxwmvc.supermodel)">
+            <summary>
+            把supermodel给对象里面的属性，反射的效率非常低，可以考虑替换掉
+            </summary>
+            <param name="obj"></param>
+            <param name="sm1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.supermodel.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:lxwmvc.supermodel.tableinfo">
+            <summary>
+            初始化表结构
+            </summary>
+        </member>
+        <member name="P:lxwmvc.supermodel.Count">
+            <summary>
+            容器内部数量
+            </summary>
+        </member>
+        <member name="P:lxwmvc.supermodel.PK">
+            <summary>
+            返回主键
+            </summary>
+        </member>
+        <member name="P:lxwmvc.supermodel.Item(System.String)">
+            <summary>
+            插入对象
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:lxwmvc.supermodel.Keys">
+            <summary>
+            获取Keys集合
+            </summary>
+        </member>
+        <member name="P:lxwmvc.supermodel.Values">
+            <summary>
+            获取Values集合
+            </summary>
+        </member>
+        <member name="T:lxwmvc.lxwHandleFactory">
+            <summary>
+            全局拦截请求
+            </summary>
+        </member>
+        <member name="M:lxwmvc.lxwHandleFactory.GetHandler(System.Web.HttpContext,System.String,System.String,System.String)">
+            <summary>
+            拦截所有请求
+            </summary>
+            <param name="context"></param>
+            <param name="requestType"></param>
+            <param name="virtualPath"></param>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.lxwHandler">
+            <summary>
+            拦截请求并处理
+            </summary>
+        </member>
+        <member name="M:lxwmvc.lxwHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            执行请求
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="P:lxwmvc.lxwHandler.IsReusable">
+            <summary>
+            不保存状态
+            </summary>
+        </member>
+        <member name="T:lxwmvc.dataloger">
+            <summary>
+            功能:当数据库操作失败 写日志的类
+            [11-03-08 16:12  周二 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.dataloger.debug(System.String,System.Exception)">
+            <summary>
+            debug
+            </summary>
+            <param name="msg"></param>
+            <param name="err"></param>
+        </member>
+        <member name="M:lxwmvc.dataloger.error(System.String,System.Exception)">
+            <summary>
+            error
+            </summary>
+            <param name="msg"></param>
+            <param name="err"></param>
+        </member>
+        <member name="M:lxwmvc.dataloger.fatal(System.String,System.Exception)">
+            <summary>
+            fatal
+            </summary>
+            <param name="msg"></param>
+            <param name="err"></param>
+        </member>
+        <member name="M:lxwmvc.dataloger.info(System.String,System.Exception)">
+            <summary>
+            info
+            </summary>
+            <param name="msg"></param>
+            <param name="err"></param>
+        </member>
+        <member name="M:lxwmvc.dataloger.warn(System.String,System.Exception)">
+            <summary>
+            warn
+            </summary>
+            <param name="msg"></param>
+            <param name="err"></param>
+        </member>
+        <member name="T:lxwmvc.extensionhelper">
+            <summary>
+            功能:转换类，处理各种类型之间的转换
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.toint32(System.Object,System.Int32,System.Boolean)">
+            <summary>
+            功能:转换objValue为int
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="iDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.toT``1(System.Object)">
+            <summary>
+            转换T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.touint32(System.Object,System.UInt32,System.Boolean)">
+            <summary>
+            功能:转换objValue为uint
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="iDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.todecimal(System.Object,System.Decimal,System.Boolean)">
+            <summary>
+            功能:转换objValue为Decimal
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="dDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tobase64string(System.Object,System.String,System.Boolean)">
+            <summary>
+            功能:转换objValue byte[]为Base64String
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="sDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回空字符串</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.toboolean(System.Object,System.Boolean,System.Boolean)">
+            <summary>
+            功能:转换objValue为bool
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="bDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回false</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tobyte(System.Object,System.Byte,System.Boolean)">
+            <summary>
+            功能:转换objValue为Byte
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="bDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tochar(System.Object,System.Char,System.Boolean)">
+            <summary>
+            功能:转换objValue为Char
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="cDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 '0'</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.todatetime(System.Object,System.String,System.Boolean)">
+            <summary>
+            功能:转换objValue为DateTime
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="sDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 '1900-1-1'的日期</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.todouble(System.Object,System.Double,System.Boolean)">
+            <summary>
+            功能:转换objValue为Char
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="dDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.toint16(System.Object,System.Int16,System.Boolean)">
+            <summary>
+            功能:转换objValue为Int16
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="sDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.touint16(System.Object,System.UInt16,System.Boolean)">
+            <summary>
+            功能:转换objValue为uInt16
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="sDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.toint64(System.Object,System.Int64,System.Boolean)">
+            <summary>
+            功能:转换objValue为Int64
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="lDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.touint64(System.Object,System.UInt64,System.Boolean)">
+            <summary>
+            功能:转换objValue为UInt64
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="lDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tosbyte(System.Object,System.SByte,System.Boolean)">
+            <summary>
+            功能:转换objValue为sbyte
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="sDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tosingle(System.Object,System.Single,System.Boolean)">
+            <summary>
+            功能:转换objValue为Float
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="fDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回 0</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tostr(System.Object,System.String,System.Boolean)">
+            <summary>
+            功能:转换objValue为String,主要区别于ToString， ToStr为安装转换，可以用ToStr代替toString,string a = null;string b = a.ToStr();string c = a.ToString();
+            [11-03-10 09:23  周四 lxw]<para />
+            [11-03-09 10:10  周三 lxw]<para />
+            </summary>
+            <param name="objValue">源对象</param>
+            <param name="sDefault">默认值</param>
+            <param name="throwE">是否抛出异常</param>
+            <returns>如果错误,返回""</returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.isnull(System.String)">
+            <summary>
+            判断对象是否为空 IsNullOrEmpty
+            </summary>
+            <param name="strValue">string对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.isnotnull(System.String)">
+            <summary>
+            判断对象不为空 ！IsNullOrEmpty
+            </summary>
+            <param name="strValue">string对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tosafe(System.Object,System.String,System.Boolean)">
+            <summary>
+            安全字符串
+            </summary>
+            <param name="objValue"></param>
+            <param name="sDefault"></param>
+            <param name="throwE"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.toshuzi(System.Object,System.String,System.Boolean)">
+            <summary>
+            去掉小数点
+            </summary>
+            <param name="objValue"></param>
+            <param name="sDefault"></param>
+            <param name="throwE"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tojson(System.Collections.Generic.List{lxwmvc.supermodel})">
+            <summary>
+            把list supermodel转换成javascript array
+            </summary>
+            <param name="objValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tojson(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            把this IEnumerable 转换成javascriptarray
+            </summary>
+            <param name="objValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            循环foreach
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="objValue"></param>
+            <param name="fun"></param>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tojson(FluorineFx.Json.JavaScriptArray)">
+            <summary>
+            把javascriptarray转换成 list  supermodel
+            </summary>
+            <param name="objValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tojson(lxwmvc.supermodel)">
+            <summary>
+            把supermodel转换成javascriptobject
+            </summary>
+            <param name="sm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.extensionhelper.tosm(FluorineFx.Json.JavaScriptObject)">
+            <summary>
+            把javascriptobject 转换成 supermodel
+            </summary>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.CommandFlags">
+            <summary>
+            Additional state flags that control command behaviour
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CommandFlags.None">
+            <summary>
+            No additional flags
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CommandFlags.Buffered">
+            <summary>
+            Should data be buffered before returning?
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CommandFlags.Pipelined">
+            <summary>
+            Can async queries be pipelined?
+            </summary>
+        </member>
+        <member name="F:lxwmvc.CommandFlags.NoCache">
+            <summary>
+            Should the plan cache be bypassed?
+            </summary>
+        </member>
+        <member name="T:lxwmvc.CommandDefinition">
+            <summary>
+            Represents the key aspects of a sql operation
+            </summary>
+        </member>
+        <member name="M:lxwmvc.CommandDefinition.#ctor(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType},lxwmvc.CommandFlags)">
+            <summary>
+            Initialize the command definition
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.CommandText">
+            <summary>
+            The command (sql or a stored-procedure name) to execute
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.Parameters">
+            <summary>
+            The parameters associated with the command
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.Transaction">
+            <summary>
+            The active transaction for the command
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.CommandTimeout">
+            <summary>
+            The effective timeout for the command
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.CommandType">
+            <summary>
+            The type of command that the command-text represents
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.Buffered">
+            <summary>
+            Should data be buffered before returning?
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.AddToCache">
+            <summary>
+            Should the plan for this query be cached?
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.Flags">
+            <summary>
+            Additional state flags against this command
+            </summary>
+        </member>
+        <member name="P:lxwmvc.CommandDefinition.Pipelined">
+            <summary>
+            Can async queries be pipelined?
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper">
+            <summary>
+            Dapper, a light weight object mapper for ADO.NET
+            </summary>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.DataTableTypeNameKey">
+            <summary>
+            Key used to indicate the type name associated with a DataTable
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.PurgeQueryCache">
+            <summary>
+            Purge the query cache 
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GetCachedSQLCount">
+            <summary>
+            Return a count of all the cached queries by dapper
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GetCachedSQL(System.Int32)">
+            <summary>
+            Return a list of all the queries cached by dapper
+            </summary>
+            <param name="ignoreHitCountAbove"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GetHashCollissions">
+            <summary>
+            Deep diagnostics only: find any hash collisions in the cache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ResetTypeHandlers">
+            <summary>
+            Clear the registered type handlers
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.AddTypeMap(System.Type,System.Data.DbType)">
+            <summary>
+            Configure the specified type to be mapped to a given db-type
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.AddTypeHandler(System.Type,lxwmvc.SqlMapper.ITypeHandler)">
+            <summary>
+            Configure the specified type to be processed by a custom handler
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.AddTypeHandlerImpl(System.Type,lxwmvc.SqlMapper.ITypeHandler,System.Boolean)">
+            <summary>
+            Configure the specified type to be processed by a custom handler
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.AddTypeHandler``1(lxwmvc.SqlMapper.TypeHandler{``0})">
+            <summary>
+            Configure the specified type to be processed by a custom handler
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GetDbType(System.Object)">
+            <summary>
+            Get the DbType that maps to a given value
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.AsList``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Obtains the data as a list; if it is *already* a list, the original object is returned without
+            any duplication; otherwise, ToList() is invoked.
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Execute(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute parameterized SQL  
+            </summary>
+            <returns>Number of rows affected</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Execute(System.Data.IDbConnection,lxwmvc.CommandDefinition)">
+            <summary>
+            Execute parameterized SQL  
+            </summary>
+            <returns>Number of rows affected</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ExecuteScalar(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute parameterized SQL that selects a single value
+            </summary>
+            <returns>The first cell selected</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ExecuteScalar``1(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute parameterized SQL that selects a single value
+            </summary>
+            <returns>The first cell selected</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ExecuteScalar(System.Data.IDbConnection,lxwmvc.CommandDefinition)">
+            <summary>
+            Execute parameterized SQL that selects a single value
+            </summary>
+            <returns>The first cell selected</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ExecuteScalar``1(System.Data.IDbConnection,lxwmvc.CommandDefinition)">
+            <summary>
+            Execute parameterized SQL that selects a single value
+            </summary>
+            <returns>The first cell selected</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ExecuteReader(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute parameterized SQL and return an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+            <returns>An <see cref="T:System.Data.IDataReader"/> that can be used to iterate over the results of the SQL query.</returns>
+            <remarks>
+            This is typically used when the results of a query are not processed by Dapper, for example, used to fill a <see cref="T:System.Data.DataTable"/>
+            or <see cref="T:System.Data.DataSet"/>.
+            </remarks>
+            <example>
+            <code>
+            <![CDATA[
+            DataTable table = new DataTable("MyTable");
+            using (var reader = ExecuteReader(cnn, sql, param))
+            {
+                table.Load(reader);
+            }
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ExecuteReader(System.Data.IDbConnection,lxwmvc.CommandDefinition)">
+            <summary>
+            Execute parameterized SQL and return an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+            <returns>An <see cref="T:System.Data.IDataReader"/> that can be used to iterate over the results of the SQL query.</returns>
+            <remarks>
+            This is typically used when the results of a query are not processed by Dapper, for example, used to fill a <see cref="T:System.Data.DataTable"/>
+            or <see cref="T:System.Data.DataSet"/>.
+            </remarks>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ExecuteReader(System.Data.IDbConnection,lxwmvc.CommandDefinition,System.Data.CommandBehavior)">
+            <summary>
+            Execute parameterized SQL and return an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+            <returns>An <see cref="T:System.Data.IDataReader"/> that can be used to iterate over the results of the SQL query.</returns>
+            <remarks>
+            This is typically used when the results of a query are not processed by Dapper, for example, used to fill a <see cref="T:System.Data.DataTable"/>
+            or <see cref="T:System.Data.DataSet"/>.
+            </remarks>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Return a list of dynamic objects, reader is closed after the call
+            </summary>
+            <remarks>Note: each row can be accessed via "dynamic", or by casting to an IDictionary&lt;string,object&gt;</remarks>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``1(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Executes a query, returning the data typed as per T
+            </summary>
+            <remarks>the dynamic param may seem a bit odd, but this works around a major usability issue in vs, if it is Object vs completion gets annoying. Eg type new [space] get new object</remarks>
+            <returns>A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
+            created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+            </returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query(System.Data.IDbConnection,System.Type,System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Executes a query, returning the data typed as per the Type suggested
+            </summary>
+            <returns>A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
+            created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+            </returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``1(System.Data.IDbConnection,lxwmvc.CommandDefinition)">
+            <summary>
+            Executes a query, returning the data typed as per T
+            </summary>
+            <remarks>the dynamic param may seem a bit odd, but this works around a major usability issue in vs, if it is Object vs completion gets annoying. Eg type new [space] get new object</remarks>
+            <returns>A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
+            created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+            </returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.QueryMultiple(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute a command that returns multiple result sets, and access each in turn
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.QueryMultiple(System.Data.IDbConnection,lxwmvc.CommandDefinition)">
+            <summary>
+            Execute a command that returns multiple result sets, and access each in turn
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``3(System.Data.IDbConnection,System.String,System.Func{``0,``1,``2},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Maps a query to objects
+            </summary>
+            <typeparam name="TFirst">The first type in the record set</typeparam>
+            <typeparam name="TSecond">The second type in the record set</typeparam>
+            <typeparam name="TReturn">The return type</typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn">The Field we should split and read the second object from (default: id)</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout</param>
+            <param name="commandType">Is it a stored proc or a batch?</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``4(System.Data.IDbConnection,System.String,System.Func{``0,``1,``2,``3},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Maps a query to objects
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn">The Field we should split and read the second object from (default: id)</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout</param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``5(System.Data.IDbConnection,System.String,System.Func{``0,``1,``2,``3,``4},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with 4 input parameters
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TFourth"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``6(System.Data.IDbConnection,System.String,System.Func{``0,``1,``2,``3,``4,``5},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with 5 input parameters
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TFourth"></typeparam>
+            <typeparam name="TFifth"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``7(System.Data.IDbConnection,System.String,System.Func{``0,``1,``2,``3,``4,``5,``6},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with 6 input parameters
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TFourth"></typeparam>
+            <typeparam name="TFifth"></typeparam>
+            <typeparam name="TSixth"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``8(System.Data.IDbConnection,System.String,System.Func{``0,``1,``2,``3,``4,``5,``6,``7},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with 7 input parameters
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TFourth"></typeparam>
+            <typeparam name="TFifth"></typeparam>
+            <typeparam name="TSixth"></typeparam>
+            <typeparam name="TSeventh"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Query``1(System.Data.IDbConnection,System.String,System.Type[],System.Func{System.Object[],``0},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with arbitrary input parameters
+            </summary>
+            <typeparam name="TReturn">The return type</typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="types">array of types in the record set</param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn">The Field we should split and read the second object from (default: id)</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout</param>
+            <param name="commandType">Is it a stored proc or a batch?</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ReadChar(System.Object)">
+            <summary>
+            Internal use only
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ReadNullableChar(System.Object)">
+            <summary>
+            Internal use only
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.FindOrAddParameter(System.Data.IDataParameterCollection,System.Data.IDbCommand,System.String)">
+            <summary>
+            Internal use only
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.PackListParameters(System.Data.IDbCommand,System.String,System.Object)">
+            <summary>
+            Internal use only
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ReplaceLiterals(lxwmvc.SqlMapper.IParameterLookup,System.Data.IDbCommand)">
+            <summary>
+            Replace all literal tokens with their text form
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Format(System.Object)">
+            <summary>
+            Convert numeric values to their string form for SQL literal purposes
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.CreateParamInfoGenerator(lxwmvc.SqlMapper.Identity,System.Boolean,System.Boolean)">
+            <summary>
+            Internal use only
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GetTypeMap(System.Type)">
+            <summary>
+            Gets type-map for the given type
+            </summary>
+            <returns>Type map implementation, DefaultTypeMap instance if no override present</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.SetTypeMap(System.Type,lxwmvc.SqlMapper.ITypeMap)">
+            <summary>
+            Set custom mapping for type deserializers
+            </summary>
+            <param name="type">Entity type to override</param>
+            <param name="map">Mapping rules impementation, null to remove custom map</param>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GetTypeDeserializer(System.Type,System.Data.IDataReader,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Internal use only
+            </summary>
+            <param name="type"></param>
+            <param name="reader"></param>
+            <param name="startBound"></param>
+            <param name="length"></param>
+            <param name="returnNullIfFirstMissing"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ThrowDataException(System.Exception,System.Int32,System.Data.IDataReader,System.Object)">
+            <summary>
+            Throws a data exception, only used internally
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.AsTableValuedParameter(System.Data.DataTable,System.String)">
+            <summary>
+            Used to pass a DataTable as a TableValuedParameter
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.SetTypeName(System.Data.DataTable,System.String)">
+            <summary>
+            Associate a DataTable with a type name
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GetTypeName(System.Data.DataTable)">
+            <summary>
+            Fetch the type name associated with a DataTable
+            </summary>
+        </member>
+        <member name="E:lxwmvc.SqlMapper.QueryCachePurged">
+            <summary>
+            Called if the query cache is purged via PurgeQueryCache
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.ConnectionStringComparer">
+            <summary>
+            How should connection strings be compared for equivalence? Defaults to StringComparer.Ordinal.
+            Providing a custom implementation can be useful for allowing multi-tenancy databases with identical
+            schema to share strategies. Note that usual equivalence rules apply: any equivalent connection strings
+            <b>MUST</b> yield the same hash-code.
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.IDynamicParameters">
+            <summary>
+            Implement this interface to pass an arbitrary db specific set of parameters to Dapper
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.IDynamicParameters.AddParameters(System.Data.IDbCommand,lxwmvc.SqlMapper.Identity)">
+            <summary>
+            Add all the parameters needed to the command just before it executes
+            </summary>
+            <param name="command">The raw command prior to execution</param>
+            <param name="identity">Information about the query</param>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.IParameterLookup">
+            <summary>
+            Extends IDynamicParameters providing by-name lookup of parameter values
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.IParameterLookup.Item(System.String)">
+            <summary>
+            Get the value of the specified parameter (return null if not found)
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.IParameterCallbacks">
+            <summary>
+            Extends IDynamicParameters with facilities for executing callbacks after commands have completed
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.IParameterCallbacks.OnCompleted">
+            <summary>
+            Invoked when the command has executed
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.ICustomQueryParameter">
+            <summary>
+            Implement this interface to pass an arbitrary db specific parameter to Dapper
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ICustomQueryParameter.AddParameter(System.Data.IDbCommand,System.String)">
+            <summary>
+            Add the parameter needed to the command before it executes
+            </summary>
+            <param name="command">The raw command prior to execution</param>
+            <param name="name">Parameter name</param>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.ITypeHandler">
+            <summary>
+            Implement this interface to perform custom type-based parameter handling and value parsing
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ITypeHandler.SetValue(System.Data.IDbDataParameter,System.Object)">
+            <summary>
+            Assign the value of a parameter before a command executes
+            </summary>
+            <param name="parameter">The parameter to configure</param>
+            <param name="value">Parameter value</param>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ITypeHandler.Parse(System.Type,System.Object)">
+            <summary>
+            Parse a database value back to a typed value
+            </summary>
+            <param name="value">The value from the database</param>
+            <param name="destinationType">The type to parse to</param>
+            <returns>The typed value</returns>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.UdtTypeHandler">
+            <summary>
+            A type handler for data-types that are supported by the underlying provider, but which need
+            a well-known UdtTypeName to be specified
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.UdtTypeHandler.#ctor(System.String)">
+            <summary>
+            Creates a new instance of UdtTypeHandler with the specified UdtTypeName
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.TypeHandler`1">
+            <summary>
+            Base-class for simple type-handlers
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.TypeHandler`1.SetValue(System.Data.IDbDataParameter,`0)">
+            <summary>
+            Assign the value of a parameter before a command executes
+            </summary>
+            <param name="parameter">The parameter to configure</param>
+            <param name="value">Parameter value</param>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.TypeHandler`1.Parse(System.Object)">
+            <summary>
+            Parse a database value back to a typed value
+            </summary>
+            <param name="value">The value from the database</param>
+            <returns>The typed value</returns>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.ITypeMap">
+            <summary>
+            Implement this interface to change default mapping of reader columns to type members
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ITypeMap.FindConstructor(System.String[],System.Type[])">
+            <summary>
+            Finds best constructor
+            </summary>
+            <param name="names">DataReader column names</param>
+            <param name="types">DataReader column types</param>
+            <returns>Matching constructor or default one</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ITypeMap.FindExplicitConstructor">
+            <summary>
+            Returns a constructor which should *always* be used.
+            
+            Parameters will be default values, nulls for reference types and zero'd for value types.
+            
+            Use this class to force object creation away from parameterless constructors you don't control.
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ITypeMap.GetConstructorParameter(System.Reflection.ConstructorInfo,System.String)">
+            <summary>
+            Gets mapping for constructor parameter
+            </summary>
+            <param name="constructor">Constructor to resolve</param>
+            <param name="columnName">DataReader column name</param>
+            <returns>Mapping implementation</returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.ITypeMap.GetMember(System.String)">
+            <summary>
+            Gets member mapping for column
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <returns>Mapping implementation</returns>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.IMemberMap">
+            <summary>
+            Implements this interface to provide custom member mapping
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.IMemberMap.ColumnName">
+            <summary>
+            Source DataReader column name
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.IMemberMap.MemberType">
+            <summary>
+             Target member type
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.IMemberMap.Property">
+            <summary>
+            Target property
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.IMemberMap.Field">
+            <summary>
+            Target field
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.IMemberMap.Parameter">
+            <summary>
+            Target constructor parameter
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.Link`2">
+            <summary>
+            This is a micro-cache; suitable when the number of terms is controllable (a few hundred, for example),
+            and strictly append-only; you cannot change existing values. All key matches are on **REFERENCE**
+            equality. The type is fully thread-safe.
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.TypeHandlerCache`1">
+            <summary>
+            Not intended for direct usage
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.TypeHandlerCache`1.Parse(System.Object)">
+            <summary>
+            Not intended for direct usage
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.TypeHandlerCache`1.SetValue(System.Data.IDbDataParameter,System.Object)">
+            <summary>
+            Not intended for direct usage
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.Identity">
+            <summary>
+            Identity of a cached query in Dapper, used for extensibility
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Identity.ForDynamicParameters(System.Type)">
+            <summary>
+            Create an identity for use with DynamicParameters, internal use only
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Identity.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.Identity.sql">
+            <summary>
+            The sql
+            </summary>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.Identity.commandType">
+            <summary>
+            The command type 
+            </summary>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.Identity.hashCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.Identity.gridIndex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.Identity.type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.Identity.connectionString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.Identity.parametersType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Identity.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.Identity.Equals(lxwmvc.SqlMapper.Identity)">
+            <summary>
+            Compare 2 Identity objects
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.DapperTable">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.DapperTable.IndexOfName(System.String)">
+            <summary>
+            通过名称查找位置
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.DapperTable.AddField(System.String)">
+            <summary>
+            增加新的属性
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.DapperTable.FieldExists(System.String)">
+            <summary>
+            判断属性是否存在
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.DapperTable.FieldNames">
+            <summary>
+            属性集合
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.DapperTable.FieldCount">
+            <summary>
+            属性总数
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.DapperRowMetaObject">
+            <summary>
+            通过ling表达式，可以动态执行相关的方法
+            </summary>
+        </member>
+        <member name="F:lxwmvc.SqlMapper.DapperRowMetaObject.getValueMethod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.DapperRowMetaObject.CallMethod(System.Reflection.MethodInfo,System.Linq.Expressions.Expression[])">
+            <summary>
+            执行动态方法 ling方式
+            </summary>
+            <param name="method"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.DapperRow">
+            <summary>
+            dapper row 是一个datareader 转换成key value对象
+            继承动态类型和键值类型
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.LiteralToken">
+            <summary>
+            Represents a placeholder for a value that should be replaced as a literal value in the resulting sql
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.LiteralToken.Token">
+            <summary>
+            The text in the original command that should be replaced
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.LiteralToken.Member">
+            <summary>
+            The name of the member referred to by the token
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SqlMapper.GridReader">
+            <summary>
+            The grid reader provides interfaces for reading multiple result sets from a Dapper query 
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read(System.Boolean)">
+            <summary>
+            Read the next grid of results, returned as a dynamic object
+            </summary>
+            <remarks>Note: each row can be accessed via "dynamic", or by casting to an IDictionary&lt;string,object&gt;</remarks>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read``1(System.Boolean)">
+            <summary>
+            Read the next grid of results
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.ReadOne``1(System.Boolean)">
+            <summary>
+            Read the next grid of results
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="buffered"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read(System.Type,System.Boolean)">
+            <summary>
+            Read the next grid of results
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read``3(System.Func{``0,``1,``2},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read``4(System.Func{``0,``1,``2,``3},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read``5(System.Func{``0,``1,``2,``3,``4},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read``6(System.Func{``0,``1,``2,``3,``4,``5},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read``7(System.Func{``0,``1,``2,``3,``4,``5,``6},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Read``8(System.Func{``0,``1,``2,``3,``4,``5,``6,``7},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SqlMapper.GridReader.Dispose">
+            <summary>
+            Dispose the grid, closing and disposing both the underlying reader and command.
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SqlMapper.GridReader.IsConsumed">
+            <summary>
+            Has the underlying reader been consumed?
+            </summary>
+        </member>
+        <member name="T:lxwmvc.DynamicParameters">
+            <summary>
+            A bag of parameters that can be passed to the Dapper Query and Execute methods
+            </summary>
+        </member>
+        <member name="M:lxwmvc.DynamicParameters.#ctor">
+            <summary>
+            construct a dynamic parameter bag
+            </summary>
+        </member>
+        <member name="M:lxwmvc.DynamicParameters.#ctor(System.Object)">
+            <summary>
+            construct a dynamic parameter bag
+            </summary>
+            <param name="template">can be an anonymous type or a DynamicParameters bag</param>
+        </member>
+        <member name="M:lxwmvc.DynamicParameters.AddDynamicParams(System.Object)">
+            <summary>
+            Append a whole object full of params to the dynamic
+            EG: AddDynamicParams(new {A = 1, B = 2}) // will add property A and B to the dynamic
+            </summary>
+            <param name="param"></param>
+        </member>
+        <member name="M:lxwmvc.DynamicParameters.Add(System.String,System.Object,System.Nullable{System.Data.DbType},System.Nullable{System.Data.ParameterDirection},System.Nullable{System.Int32})">
+            <summary>
+            Add a parameter to this dynamic parameter list
+            </summary>
+        </member>
+        <member name="M:lxwmvc.DynamicParameters.Add(System.String,System.Object,System.Nullable{System.Data.DbType},System.Nullable{System.Data.ParameterDirection},System.Nullable{System.Int32},System.Nullable{System.Byte},System.Nullable{System.Byte})">
+            <summary>
+            Add a parameter to this dynamic parameter list
+            </summary>
+        </member>
+        <member name="M:lxwmvc.DynamicParameters.AddParameters(System.Data.IDbCommand,lxwmvc.SqlMapper.Identity)">
+            <summary>
+            Add all the parameters needed to the command just before it executes
+            </summary>
+            <param name="command">The raw command prior to execution</param>
+            <param name="identity">Information about the query</param>
+        </member>
+        <member name="M:lxwmvc.DynamicParameters.Get``1(System.String)">
+            <summary>
+            Get the value of a parameter
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <returns>The value, note DBNull.Value is not returned, instead the value is returned as null</returns>
+        </member>
+        <member name="M:lxwmvc.DynamicParameters.Output``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Nullable{System.Data.DbType},System.Nullable{System.Int32})">
+            <summary>
+            Allows you to automatically populate a target property/field from output parameters. It actually
+            creates an InputOutput parameter, so you can still pass data in. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target">The object whose property/field you wish to populate.</param>
+            <param name="expression">A MemberExpression targeting a property/field of the target (or descendant thereof.)</param>
+            <param name="dbType"></param>
+            <param name="size">The size to set on the parameter. Defaults to 0, or DbString.DefaultLength in case of strings.</param>
+            <returns>The DynamicParameters instance</returns>
+        </member>
+        <member name="P:lxwmvc.DynamicParameters.RemoveUnused">
+            <summary>
+            If true, the command-text is inspected and only values that are clearly used are included on the connection
+            </summary>
+        </member>
+        <member name="P:lxwmvc.DynamicParameters.ParameterNames">
+            <summary>
+            All the names of the param in the bag, use Get to yank them out
+            </summary>
+        </member>
+        <member name="T:lxwmvc.TableValuedParameter">
+            <summary>
+            Used to pass a DataTable as a TableValuedParameter
+            </summary>
+        </member>
+        <member name="M:lxwmvc.TableValuedParameter.#ctor(System.Data.DataTable)">
+            <summary>
+            Create a new instance of TableValuedParameter
+            </summary>
+        </member>
+        <member name="M:lxwmvc.TableValuedParameter.#ctor(System.Data.DataTable,System.String)">
+            <summary>
+            Create a new instance of TableValuedParameter
+            </summary>
+        </member>
+        <member name="T:lxwmvc.DbString">
+            <summary>
+            This class represents a SQL string, it can be used if you need to denote your parameter is a Char vs VarChar vs nVarChar vs nChar
+            </summary>
+        </member>
+        <member name="F:lxwmvc.DbString.DefaultLength">
+            <summary>
+            A value to set the default value of strings
+            going through Dapper. Default is 4000, any value larger than this
+            field will not have the default value applied.
+            </summary>
+        </member>
+        <member name="M:lxwmvc.DbString.#ctor">
+            <summary>
+            Create a new DbString
+            </summary>
+        </member>
+        <member name="M:lxwmvc.DbString.AddParameter(System.Data.IDbCommand,System.String)">
+            <summary>
+            Add the parameter to the command... internal use only
+            </summary>
+            <param name="command"></param>
+            <param name="name"></param>
+        </member>
+        <member name="P:lxwmvc.DbString.IsAnsi">
+            <summary>
+            Ansi vs Unicode 
+            </summary>
+        </member>
+        <member name="P:lxwmvc.DbString.IsFixedLength">
+            <summary>
+            Fixed length 
+            </summary>
+        </member>
+        <member name="P:lxwmvc.DbString.Length">
+            <summary>
+            Length of the string -1 for max
+            </summary>
+        </member>
+        <member name="P:lxwmvc.DbString.Value">
+            <summary>
+            The value of the string
+            </summary>
+        </member>
+        <member name="T:lxwmvc.FeatureSupport">
+            <summary>
+            Handles variances in features per DBMS
+            </summary>
+        </member>
+        <member name="M:lxwmvc.FeatureSupport.Get(System.Data.IDbConnection)">
+            <summary>
+            Gets the feature set based on the passed connection
+            </summary>
+        </member>
+        <member name="P:lxwmvc.FeatureSupport.Arrays">
+            <summary>
+            True if the db supports array columns e.g. Postgresql
+            </summary>
+        </member>
+        <member name="T:lxwmvc.SimpleMemberMap">
+            <summary>
+            Represents simple member map for one of target parameter or property or field to source DataReader column
+            </summary>
+        </member>
+        <member name="M:lxwmvc.SimpleMemberMap.#ctor(System.String,System.Reflection.PropertyInfo)">
+            <summary>
+            Creates instance for simple property mapping
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <param name="property">Target property</param>
+        </member>
+        <member name="M:lxwmvc.SimpleMemberMap.#ctor(System.String,System.Reflection.FieldInfo)">
+            <summary>
+            Creates instance for simple field mapping
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <param name="field">Target property</param>
+        </member>
+        <member name="M:lxwmvc.SimpleMemberMap.#ctor(System.String,System.Reflection.ParameterInfo)">
+            <summary>
+            Creates instance for simple constructor parameter mapping
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <param name="parameter">Target constructor parameter</param>
+        </member>
+        <member name="P:lxwmvc.SimpleMemberMap.ColumnName">
+            <summary>
+            DataReader column name
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SimpleMemberMap.MemberType">
+            <summary>
+            Target member type
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SimpleMemberMap.Property">
+            <summary>
+            Target property
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SimpleMemberMap.Field">
+            <summary>
+            Target field
+            </summary>
+        </member>
+        <member name="P:lxwmvc.SimpleMemberMap.Parameter">
+            <summary>
+            Target constructor parameter
+            </summary>
+        </member>
+        <member name="T:lxwmvc.DefaultTypeMap">
+            <summary>
+            Represents default type mapping strategy used by Dapper
+            </summary>
+        </member>
+        <member name="M:lxwmvc.DefaultTypeMap.#ctor(System.Type)">
+            <summary>
+            Creates default type map
+            </summary>
+            <param name="type">Entity type</param>
+        </member>
+        <member name="M:lxwmvc.DefaultTypeMap.FindConstructor(System.String[],System.Type[])">
+            <summary>
+            Finds best constructor
+            </summary>
+            <param name="names">DataReader column names</param>
+            <param name="types">DataReader column types</param>
+            <returns>Matching constructor or default one</returns>
+        </member>
+        <member name="M:lxwmvc.DefaultTypeMap.FindExplicitConstructor">
+            <summary>
+            Returns the constructor, if any, that has the ExplicitConstructorAttribute on it.
+            </summary>
+        </member>
+        <member name="M:lxwmvc.DefaultTypeMap.GetConstructorParameter(System.Reflection.ConstructorInfo,System.String)">
+            <summary>
+            Gets mapping for constructor parameter
+            </summary>
+            <param name="constructor">Constructor to resolve</param>
+            <param name="columnName">DataReader column name</param>
+            <returns>Mapping implementation</returns>
+        </member>
+        <member name="M:lxwmvc.DefaultTypeMap.GetMember(System.String)">
+            <summary>
+            Gets member mapping for column
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <returns>Mapping implementation</returns>
+        </member>
+        <member name="P:lxwmvc.DefaultTypeMap.MatchNamesWithUnderscores">
+            <summary>
+            Should column names like User_Id be allowed to match properties/fields like UserId ?
+            </summary>
+        </member>
+        <member name="T:lxwmvc.CustomPropertyTypeMap">
+            <summary>
+            Implements custom property mapping by user provided criteria (usually presence of some custom attribute with column to member mapping)
+            </summary>
+        </member>
+        <member name="M:lxwmvc.CustomPropertyTypeMap.#ctor(System.Type,System.Func{System.Type,System.String,System.Reflection.PropertyInfo})">
+            <summary>
+            Creates custom property mapping
+            </summary>
+            <param name="type">Target entity type</param>
+            <param name="propertySelector">Property selector based on target type and DataReader column name</param>
+        </member>
+        <member name="M:lxwmvc.CustomPropertyTypeMap.FindConstructor(System.String[],System.Type[])">
+            <summary>
+            Always returns default constructor
+            </summary>
+            <param name="names">DataReader column names</param>
+            <param name="types">DataReader column types</param>
+            <returns>Default constructor</returns>
+        </member>
+        <member name="M:lxwmvc.CustomPropertyTypeMap.FindExplicitConstructor">
+            <summary>
+            Always returns null
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.CustomPropertyTypeMap.GetConstructorParameter(System.Reflection.ConstructorInfo,System.String)">
+            <summary>
+            Not implemented as far as default constructor used for all cases
+            </summary>
+            <param name="constructor"></param>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.CustomPropertyTypeMap.GetMember(System.String)">
+            <summary>
+            Returns property based on selector strategy
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <returns>Poperty member map</returns>
+        </member>
+        <member name="T:lxwmvc.IWrappedDataReader">
+            <summary>
+            Describes a reader that controls the lifetime of both a command and a reader,
+            exposing the downstream command/reader as properties.
+            </summary>
+        </member>
+        <member name="P:lxwmvc.IWrappedDataReader.Reader">
+            <summary>
+            Obtain the underlying reader
+            </summary>
+        </member>
+        <member name="P:lxwmvc.IWrappedDataReader.Command">
+            <summary>
+            Obtain the underlying command
+            </summary>
+        </member>
+        <member name="T:lxwmvc.ExplicitConstructorAttribute">
+            <summary>
+            Tell Dapper to use an explicit constructor, passing nulls or 0s for all parameters
+            </summary>
+        </member>
+        <member name="T:lxwmvc.stringhelper">
+            <summary>
+            功能:字符串操作类
+            [09.4.10 lxw]<para />
+            </summary>
+        </member>
+        <member name="M:lxwmvc.stringhelper.replace(System.String,System.String,System.String)">
+            <summary>
+            功能:不区分大小写替换文本
+            [09.4.11 lxw]<para />
+            </summary>
+            <param name="strsource">查找字符串</param>
+            <param name="strfind">需要被替换的字符串</param>
+            <param name="strreplace">替换后字符串</param>
+            <returns>返回全部替换后的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.chr(System.Int32)">
+            <summary>
+            功能:把数字转换成对应的字符
+            [09.4.11 lxw]<para />
+            </summary>
+            <param name="charcode">需要转换的数字</param>
+            <returns>转换后的字符</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.asc(System.String)">
+            <summary>
+            功能:把字符转换成对应的asc码
+            [09.4.11 lxw]<para />
+            </summary>
+            <param name="strchar">需要转换的字符</param>
+            <returns>转换后的asc吗</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.instr(System.String,System.String)">
+            <summary>
+            功能:查找第二个字符串在第一个字符串所在的其实位置
+            [09.4.11 lxw]<para />
+            </summary>
+            <param name="strsource">原字符串</param>
+            <param name="strsrc">需要查找的字符串</param>
+            <returns>返回整数，第二个字符串在第一个字符串的起始位置</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.split(System.String,System.String)">
+            <summary>
+            功能:分割字符串为字符串数组
+            [09.4.11 lxw]<para />
+            </summary>
+            <param name="strsource">需要分割的字符串</param>
+            <param name="strsplit">用于分割的字符串</param>
+            <returns>已经分割的字符串数组</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.splice(System.String,System.String)">
+            <summary>
+            功能:从字符串中提出制定的字符串，strSource中每个字符串用","隔开
+            [11-03-08 16:01  周二 lxw]<para />
+            </summary>
+            <param name="strsource">源字符串</param>
+            <param name="strfindvalue">需要查找的字符串</param>
+            <returns>提出后的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.findvalue(System.String,System.String,System.Boolean)">
+            <summary>
+            功能:从字符串中查找是否存在指定的字符，strSource中每个字符串用","隔开
+            [11-03-08 16:01  周二 lxw]<para />
+            </summary>
+            <param name="strsource">源字符串</param>
+            <param name="strfindvalue">需要查找的字符串</param>
+            <param name="bignorecase">是否忽略大小写，默认为true，忽略</param>
+            <returns>true:查找到</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.mid(System.String,System.Int32,System.Int32)">
+            <summary>
+            功能:返回一个字符串，该字符串包含某字符串中指定数量的字符,跟substring 类似
+            [09.4.11 lxw]<para />
+            </summary>
+            <param name="strsource">原字符串</param>
+            <param name="intstart">起始位置</param>
+            <param name="intlength">字符串长度，如果为0，代表从起始位置以后的所有字符</param>
+            <returns>返回指定数量的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.htmlencode(System.String)">
+            <summary>
+            功能:html字符串编码为普通字符串，不被浏览器解析<para />
+            比如:Replace(">", "&gt;");<para />
+            [09.4.11 lxw]<para />
+            </summary>
+            <param name="strsource">需要编码的html字符串</param>
+            <returns>返回已经编码过的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.htmldecode(System.String)">
+            <summary>
+            功能:对字符串进行HTML解码操作，解码为客户端浏览器可解析的html字符<para />
+            比如:Replace("&gt;", ">");<para />
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="strsource">需要解码的字符串</param>
+            <returns>返回解码后的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.replacehtmlstring(System.String)">
+            <summary>
+            功能:过滤所有的HTML字符串，只保留其中内容
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="strsource">需要被过滤的字符串</param>
+            <returns>返回过滤后的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.cutstr(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            功能:截取字符串,不会因为中英文宽度不一样而出现整个字符串长度不一样（是不是都有效果？）
+            [09.4.12 lxw]<para />
+            </summary>
+            <param name="strsource">需要截取的字符串</param>
+            <param name="intlength">截取后字符串的长度</param>
+            <param name="strendstring">结尾字符串，如果字符串被截取，后面用加结尾字符串,没有截取就不用加结尾字符串</param>
+            <param name="strothers">空格在这里也是宽字符</param>
+            <returns>返回截取后的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.strend(System.String,System.String)">
+            <summary>
+            功能:兼容php方法,去掉结尾字符串
+            [11-03-08 16:01  周二 lxw]<para />
+            </summary>
+            <param name="strsource">源字符串</param>
+            <param name="strend">结尾字符串</param>
+            <returns>返回去掉结尾后的字符串</returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.strstart(System.String,System.String)">
+            <summary>
+            功能:去掉头部的字符串
+            [10.3.1 hanlei]<para />
+            </summary>
+            <param name="strsource">源字符串</param>
+            <param name="strstart">待去掉的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.stringhelper.nr2br(System.String)">
+            <summary>
+            功能:将\r\n转化为 br
+            [11-03-08 16:00  周二 lxw]<para />
+            </summary>
+            <param name="strsource">原字符串</param>
+            <returns>返回新的字符串</returns>
+        </member>
+        <member name="T:lxwmvc.formhelper">
+            <summary>
+            表单的帮助类
+            </summary>
+        </member>
+        <member name="M:lxwmvc.formhelper.defaultdate(System.Object)">
+            <summary>
+            设置字段日期默认值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.paixu(System.String,System.String,System.String)">
+            <summary>
+            生产排序方法
+            </summary>
+            <param name="n"></param>
+            <param name="cn"></param>
+            <param name="ot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.inputdate(System.Object,System.String,System.String)">
+            <summary>
+            加载日期控件
+            </summary>
+            <param name="key">name</param>
+            <param name="fmt">日期格式化</param>
+            <param name="html">自定义一些内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.iframe(System.String)">
+            <summary>
+            生成iframe并显示
+            </summary>
+            <param name="name">iframe的名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.code">
+            <summary>
+            显示验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.hidden(System.Object,System.String)">
+            <summary>
+            生成隐藏域
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.input(System.Object,System.Object,System.String)">
+            <summary>
+            生成input
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.defaultvalue(System.Object,System.Object)">
+            <summary>
+            其他隐藏默认值
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.inputsearch(System.Object,System.Object,System.Object)">
+            <summary>
+            需要搜索的表达式生成
+            </summary>
+            <param name="key">name</param>
+            <param name="express">查询表达式</param>
+            <param name="value">对应的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.textarea(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            生成textarea框
+            </summary>
+            <param name="key"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="html"></param>
+            <param name="value">对应的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.formhelper.ckeditor(System.Object)">
+            <summary>
+            生成ckeditor
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.funhelper">
+            <summary>
+            veloctiy 前台帮助类
+            </summary>
+        </member>
+        <member name="M:lxwmvc.funhelper.jiafa(System.Object,System.Object)">
+            <summary>
+            加法
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.jianfa(System.Object,System.Object)">
+            <summary>
+            减法
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.chengfa(System.Object,System.Object)">
+            <summary>
+            乘法
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.panduan(System.Object,System.Object,System.Object)">
+            <summary>
+            判断表达式
+            </summary>
+            <param name="a"></param>
+            <param name="c"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.chufa(System.Object,System.Object)">
+            <summary>
+            除法
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.todecimal(System.Object)">
+            <summary>
+            转换decimal
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.toint(System.Object)">
+            <summary>
+            转换成整数
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.yushu(System.Object,System.Object)">
+            <summary>
+            余数
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.session(System.String)">
+            <summary>
+            得到session的内容
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.cookie(System.String)">
+            <summary>
+            得到cookies的内容
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.split(System.Object,System.String)">
+            <summary>
+            分割字符串
+            </summary>
+            <param name="obj"></param>
+            <param name="splitstr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.array(System.Object[])">
+            <summary>
+            #foreach($item in $funhelper.array("a","b","c","d"))
+            $item.key $item.value
+            #end
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.funhelper.encode(System.Object,System.Object[])">
+            <summary>
+            强大的switch函数 
+            </summary>
+            <param name="v"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.objecthelper">
+            <summary>
+            匿名类帮助
+            </summary>
+        </member>
+        <member name="M:lxwmvc.objecthelper.castanonymous``1(System.Object,``0)">
+            <summary>
+            匿名类转换
+            var a = castanonymous(anonymous, new { a=0, Name = "", b = false });
+            var c = new { a = new Func【 string,DialogResult】 (MessageBox.Show), b = 2 };
+            </summary>
+            <typeparam name="lxw"></typeparam>
+            <param name="anonymous"></param>
+            <param name="anonymousType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.objecthelper.Fix``2(System.Func{System.Action{``0,``1},System.Action{``0,``1}})">
+            <summary>
+            这是一个自己调用直接无返回值，递归委托函数
+            </summary>
+            <typeparam name="T">参数1</typeparam>
+            <typeparam name="T1">参数2</typeparam>
+            <param name="f">自己</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.objecthelper.FixF``2(System.Func{System.Func{``0,``1},System.Func{``0,``1}})">
+            <summary>
+            这是一个递归的委托函数
+            </summary>
+            <typeparam name="T">参数1</typeparam>
+            <typeparam name="T1">返回值</typeparam>
+            <param name="f">自己</param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.imagehelper">
+            <summary>
+            图像处理类
+            </summary>
+        </member>
+        <member name="M:lxwmvc.imagehelper.GetImageFromBase64(System.String)">
+            <summary>
+            把base64字符串转换成图片
+            </summary>
+            <param name="base64string"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.imagehelper.GetBase64FromImage(System.Drawing.Image)">
+            <summary>
+            把图片转换成base64字符串
+            </summary>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.imagehelper.cutsuoxiaimage(System.Drawing.Bitmap,System.Int32[])">
+            <summary>
+            默认切割
+            <param name="bmp">图片</param>
+            <param name="size">修建图片并等比例缩小，而且留白</param>
+            </summary>
+        </member>
+        <member name="M:lxwmvc.imagehelper.cutsuoxiaimage(System.Drawing.Bitmap,System.Drawing.Size)">
+            <summary>
+            默认切割
+            <param name="bmp">图片</param>
+            <param name="size">修建图片并等比例缩小，而且留白</param>
+            </summary>
+        </member>
+        <member name="M:lxwmvc.imagehelper.cutsuoxiaimage(System.Drawing.Bitmap,System.Int32[],System.Boolean,System.Boolean)">
+            <summary>
+            图片进行处理
+            </summary>
+            <param name="bmp">图片</param>
+            <param name="size">缩小到什么尺寸</param>
+            <param name="isCut">是否裁剪</param>
+            <param name="isblank">不够的地方是否留白</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.imagehelper.saveimage(System.Drawing.Image,System.String)">
+            <summary>
+            保存并返回根目录路径
+            </summary>
+            <param name="img">图片</param>
+            <param name="path">保存到什么位置，相对网站路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.imagehelper.cutimage(System.Drawing.Bitmap,System.Int32[])">
+            <summary>
+            直接裁剪图片形成缩略图
+            </summary>
+            <param name="bmp">图片</param>
+            <param name="size">缩略图大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.imagehelper.imagecut(System.Drawing.Image,System.Int32[])">
+            <summary>
+            图片切割
+            </summary>
+            <param name="image">图片</param>
+            <param name="size">缩略图大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.imagehelper.getminpic(System.Drawing.Image,System.Int32[])">
+            <summary>
+            生成小的图片
+            </summary>
+            <param name="MaxPic">图片</param>
+            <param name="size">缩略图大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:lxwmvc.imagehelper.checksize(System.Drawing.Image,System.Int32[])">
+            <summary>
+            检查图片是否满足裁剪要求
+            </summary>
+            <param name="img">图片</param>
+            <param name="size">大小</param>
+            <returns></returns>
+        </member>
+        <member name="T:lxwmvc.caidan">
+            <summary>
+            sysbumen
+            </summary>
+        </member>
+        <member name="M:lxwmvc.caidan.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lxwmvc.caidan.biaoshi">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lxwmvc.caidan.mingcheng">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lxwmvc.caidan.path">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lxwmvc.quanxian">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:lxwmvc.quanxian.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lxwmvc.quanxian.mingcheng">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lxwmvc.quanxian.biaoshi">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:lxwmvc.quanxian.caidan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:lxwmvc.tablecontroller">
+            <summary>
+            单表的crud操作
+            </summary>
+        </member>
+        <member name="M:lxwmvc.tablecontroller._init(lxwmvc.pagebase)">
+            <summary>
+            初始化
+            </summary>
+            <param name="pb"></param>
+        </member>
+        <member name="M:lxwmvc.tablecontroller.add(lxwmvc.pagebase)">
+            <summary>
+            增加或者编辑
+            </summary>
+            <param name="pb"></param>
+        </member>
+        <member name="M:lxwmvc.tablecontroller.list(lxwmvc.pagebase)">
+            <summary>
+            列表页面
+            </summary>
+            <param name="pb"></param>
+        </member>
+        <member name="M:lxwmvc.tablecontroller.action(lxwmvc.pagebase)">
+            <summary>
+            执行相关操作
+            </summary>
+            <param name="pb"></param>
+        </member>
+        <member name="M:lxwmvc.tablecontroller.save(lxwmvc.pagebase)">
+            <summary>
+            不用修改程序就能添加字段，添加业务
+            </summary>
+            <param name="pb"></param>
+        </member>
+        <member name="M:lxwmvc.tablecontroller.checkbuchongfu(lxwmvc.pagebase,System.String,System.String)">
+            <summary>
+            判断不重复
+            </summary>
+            <param name="pb"></param>
+            <param name="table"></param>
+            <param name="where"></param>
+        </member>
+    </members>
+</doc>

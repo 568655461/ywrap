@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="icon" href="favicon.png" type="image/png" >
+    <title>艺网</title>
+    <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/iCheck/1.0.1/skins/all.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/iCheck/1.0.1/skins/flat/_all.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/iCheck/1.0.1/skins/flat/blue.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/tooltipster/3.3.0/css/tooltipster.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/malihu-custom-scrollbar-plugin/3.1.1/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+
+    <link href="/web/css/default.css" rel="stylesheet">
+    <link href="/web/css/default.less" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/iCheck/1.0.1/icheck.min.js"></script>
+    <script src="//cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.js"></script>
+    <script src="//cdn.bootcss.com/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+    <script src="//cdn.bootcss.com/malihu-custom-scrollbar-plugin/3.1.1/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
+</head>
+    <script>
+        var GTUPIANIMG = "$!GTUPIANIMG";
+        var GTUPIANIMGIMG = "$!GTUPIANIMGIMG";
+        var OSS = "$!OSS";
+        var OSSIMG = "$OSSIMG";
+    </script>
+<body onload="Body_Load();">
+    <header>
+        <div class="logo f_l">
+            <a href="/"><img src="/web/images/logo.svg" /></a>
+        </div>
+        <div class="nav_ico f_l">
+            <a href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="nav f_l">
+            <a href="/"
+               #if($request.url.ToString().EndsWith("/"))
+            class="active"
+            #end
+            >精选</a>
+            <a href="/buy"
+               #if($request.url.ToString().IndexOf("/buy")!=-1)
+            class="active"
+            #end
+            >购艺术</a>
+            <a href="#">艺术圈</a>
+
+
+            <a href="/my_obj_appreciate_cro"
+               #if($request.url.ToString().IndexOf("/my_obj_appreciate_cro")!=-1)
+            class="active"
+            #end
+            >我的珍藏</a>
+        </div>
+        <div class="member f_r">
+            #if("$!userid" == "" || "$!userid" == "0")
+            <div class="login_prev">
+                <a href="/login">登录 / 注册</a>
+            </div>
+            #else
+            <div class="login_next">
+                <a href="/user_info">
+                    <span class="username">$!username</span>
+                    #if("$!{userface}"!="")
+                    <img src="$!{OSS}face/$!{userface}" />
+                    #else
+                    <img src="/svg_file?path=/web/images/avatar_default.svg&rgb=236,240,241" />
+                    #end
+                </a>
+                <div class="login_hover">
+                    <i></i>
+                    <ul>
+                        <li><a href="/user_info">用户中心</a></li>
+                        <li><a href="/user_order">我的订单</a></li>
+                        <li><a href="javascript:checkLogin('/buy_cart')">我的购物车</a></li>
+                        <li><a href="/exit">退出</a></li>
+                    </ul>
+                </div>
+            </div>
+            #end
+        </div>
+        <div class="my_cart f_r">
+            <a href="javascript:checkLogin('/buy_cart')"><img src="/svg_file?path=/web/images/icon_cart.svg&rgb=255,255,255" /></a>
+        </div>
+        <div class="search f_r">
+            <a href="javascript:void(0);"><img src="/svg_file?path=/web/images/icon_search.svg&rgb=255,255,255" /></a>
+            <input placeholder="请输入搜索的关键字" class="header_search_input" />
+        </div>
+        <div class="nav_title"></div>
+    </header>
+    <section class="clearfix">$bodycontent</section>
+
+    <a class="scroll_top" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
+
+    <script type="text/html" id="loginTemplate">
+        <div class="page_login_box">
+            <div class="logo" onclick="location.href = '/index';" style="cursor:pointer"></div>
+            <ul>
+                <li><div class="li_div"><input id="account" type="text" placeholder="请输入手机或邮箱" class="lxw_user pure-input-1" autocomplete="off" /></div><span class="tip"></span></li>
+            </ul>
+            <ul class="login_div">
+                <li class="_hidden"><div class="li_div"><input id="password" type="password" class="lxw_pwd_login" placeholder="请输入密码" autocomplete="off" /></div><span class="tip"></span></li>
+
+                <li class="_hidden lxw_li_code_login button_code button_code_local">
+                    <div class="li_div"><input  class="lxw_code_login" /></div>
+                    <div class="li_tool"><img class="lxw_codeimg_login" src="login_code_ss?t=$!now" /></div>
+                    <span class="tip"></span>
+                </li>
+
+                <li class="button"><button ref="登录 / 注册" class="lxw_submit_login">登录 / 注册</button></li>
+                <li class="forgetpw" style="text-align:left;"><a href="forgetpw">忘记密码</a></li>
+            </ul>
+
+            <ul class="register_div _hidden">
+                <li class="lxw_li_code_reg button_code button_code_local">
+                    <div class="li_div"><input class="lxw_code_reg" placeholder="请输入验证码"/></div>
+                    <div class="li_tool"><img class="lxw_codeimg_reg" src="login_code_ss?t=$!now" /></div>
+                    <span class="tip"></span>
+                </li>
+
+                <li class="button_code">
+                    <div class="li_div"><input id="code" class="lxw_code_value" type="text" placeholder="短信验证码" /></div>
+                    <div class="li_tool">
+                        <a class="lxw_code_sms">获取短信验证码</a>
+                        <a class="lxw_code_phone">获取语音验证码</a>
+                    </div>
+                    <span class="tip"></span>
+                </li>
+
+                <li><div class="li_div"><input id="password2" type="password" class="lxw_pwd_reg" placeholder="请输入密码，不少于6位" /></div><span class="tip"></span></li>
+                <li class="button"><button class="lxw_submit_reg">注册</button></li>
+            </ul>
+        
+            <div class="login_third">
+                <a href="$!weibo" target="_blank">
+                    <i class="fa fa-weibo"></i>
+                </a>
+                <a href="$!weixin"><i class="fa fa-weixin"></i></a>
+            </div>
+        </div>
+        <script src="/web/js/login.js"></script> 
+    </script>
+    <script src="/web/js/common.js"></script>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257530311'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257530311' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

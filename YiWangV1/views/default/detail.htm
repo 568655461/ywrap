@@ -1,0 +1,233 @@
+﻿<script>
+    #set($GTITLE="$!ysp.zhongwen - $!{ysp.mingcheng}($!ysj.xingming)作品详情")﻿
+    var ywyishupinid = "$!{ysp.yspkey}";
+    var ywyishujiaid = "$!{ysp.ysjkey}";
+</script>
+<script src="/web/js/ToolTip.js"></script>
+<div class="detail_center">
+    <div class="gallery_big">
+        <img src="" class="feature-image" />
+        <a href="javascript:void(0);">×</a>
+        <div class="preview_container">
+            <div>
+                <img src="$!{GTUPIANIMG}$!{ysp.tupian}.jpg" id='pictures_big' />
+                <div class="preview">
+                    <img/>
+                    <span>拖动</span>
+                </div>
+            </div>
+        </div>
+    </div>     
+    <div class="gallery">
+        <div class="pictures loading"><img src="" _src="$!{GTUPIANIMGIMG}$!{ysp.tupian}.jpg_small04" _o_src="$!{GTUPIANIMGIMG}$!{ysp.tupian}.jpg_small04" /></div>
+        <div class="detailBox">
+            <div class="btn_a">
+                <a href="javascript:void(0);" class="active btn_info">i</a>
+                <a href="javascript:void(0);" 
+                    #if("$!ysp.zan"=="0") 
+                        class="icon_a mxl_like" 
+                    #else 
+                        class="icon_a active mxl_like" 
+                    #end 
+                    >
+                    <img src="/svg_file?path=/web/images/icon_heart_empty.svg&rgb=186,186,186" class="defualt"/>
+                    <img src="/svg_file?path=/web/images/icon_heart_empty.svg&rgb=255,3,3" class="hover"/>
+                    <img src="/svg_file?path=/web/images/icon_heart.svg&rgb=255,3,3" class="active"/>
+                </a>
+            </div>
+            <div class="detail">
+                <div class="baseInfo">
+                    <!--<p class="title">[ $funhelper.encode("$!ysp.zhongwen","",$funhelper.encode("$!ysp.mingcheng","","无题","$!ysp.mingcheng"),"$!ysp.zhongwen") ]</p>-->
+                    <p class="name"><a href="/artist/$!{ysj.ysjkey}" target="_blank">$!ysj.xingming</a></p>
+                    <p>作品名称：$funhelper.encode("$!ysp.zhongwen","",$funhelper.encode("$!ysp.mingcheng","","无题","$!ysp.mingcheng"),"$!ysp.zhongwen")</p>
+                    <p>作品材质：$!ysp.leibie</p>
+                     <p>尺寸规格：$!ysp.size</p>
+                    <p>创作时间：
+                        #if("$!ysp.chuangzuoriqi"!="")
+                        $!ysp.chuangzuoriqi.tostring("yyyy.MM")
+                        #end
+                        $!ysp.chuangzuoriqi
+                    </p>
+                </div>
+                <div class="description">$!ysp.gushi</div>
+                <div class="share">
+                    <a href="javascript:void(0):" class="mxl_weibo" v="$!weiboshareurl"><i class="fa fa-weibo"></i></a>
+                  
+                    <a href="javascript:window.open('/preview?T=$!{ysp.tupian}')"><i class="fa fa-weixin"></i></a>
+                    <a href="javascript:void(0):"><i class="fa fa-qrcode" onMouseOver="toolTip('扫一扫，分享给朋友<br /><br /><img src=/erweima?id=$!{ysp.ywyishupinid}>', 0, 0);" onMouseOut="toolTip()"></i></a>
+                </div>
+                <div class="buy default">
+                    <div class="buy_div">
+                        <div class="pirce clearfix">
+                            <span class="_pirce">¥$!ysp.money</span>
+                            <span class="how_to_pirce">如何定价？</span>
+                            <span class="status">$funhelper.encode("$!ysp.chushou","$!core_enum.yishou","已售","未售")</span>
+                        </div>
+                        <div class="other clearfix">
+                            <div class="classify clearfix">
+                                <ul>
+                                    <li $funhelper.encode("$!ysp.yuanchuang","1","class='active'","")><i><b></b></i>原创</li>                                                              
+                                    <li $funhelper.encode("$!ysp.gupin","1","class='active'","")><i><b></b></i>装裱</li> 
+                                    <li $funhelper.encode("$!ysp.huigou","1","class='active' "," ")><i><b></b></i>收藏证书</li>                                                             
+                                    <li $funhelper.encode("$!ysp.huigou","1","class='active' "," ")><i><b></b></i>艺术家签名/铃印</li>
+                                </ul>
+                            </div>
+                            <div class="distribution clearfix">
+                                <ul>
+                                    <li></li>
+                                    <li>$funhelper.encode("$!ysp.peisongfangshi","1","由艺网提供配送","由艺网提供配送")</li>
+                                    <!--<li></li>-->
+                                    <li>十四天内可退换</li>
+                                </ul>
+                            </div>
+                        </div>
+                        #if("$!ysp.chushou" !="1")
+                        <div class="button clearfix mxl_button">
+                            <a href="javascript:void(0);" class="go_buy mxl_buy">立即购买</a>
+                            #if("$!ysp.gwc" == "0")
+                                <a href="javascript:void(0);" class="go_cart mxl_cart">加入购物车</a>
+                            #else
+                                <a href="javascript:void(0);" class="go_cart">已在购物车</a>
+                            #end
+                        </div>
+                        #end
+                    </div>
+                    <span class="price_icon">¥</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="roll_img">
+        <div class="roll_img_div">
+            #foreach($bj in $beijing)
+		    <a href="javascript:void(0);"><img src="bgimage!$!code?index=$bj.ywbeijingid" _src="bgimage!$!code?index=$bj.ywbeijingid" /></a>
+            #end
+
+            ##这部分内容再后台生成
+            #foreach($kj in $kongjian)
+		    <a href="javascript:void(0);"><img src="${OSS}kj/$kj.lujing" _src="${OSS}kj/$kj.lujing" /></a>
+            #end
+		    
+        </div>
+        <a href="javascript:void(0);" class="roll_img_prev"><img src="/svg_file?path=/web/images/arrow_left.svg&rgb=255,255,255" /><span></span></a>
+        <a href="javascript:void(0);" class="roll_img_next"><img src="/svg_file?path=/web/images/arrow_right.svg&rgb=255,255,255" /><span></span></a>
+    </div>
+    <div class="price_float _hidden  mxl_svg">
+        <!-- a标签有active，便是选中-->
+        <a href="javascript:void(0);" 
+            #if("$!ysp.zan"=="0") 
+                class="icon_a mxl_like" 
+            #else 
+                class="icon_a active mxl_like" 
+            #end
+            >
+            <img src="/svg_file?path=/web/images/icon_heart_empty_o.svg&rgb=3,3,3" class="defualt"/>
+            <img src="/svg_file?path=/web/images/icon_heart_empty_o.svg&rgb=255,3,3" class="hover"/>
+            <img src="/svg_file?path=/web/images/icon_heart_o.svg&rgb=255,3,3" class="active"/>
+        </a>
+        <a href="javascript:void(0);" 
+            #if("$!ysp.gwc"=="0") 
+                class="icon_a mxl_cart" 
+            #else 
+                class="icon_a active" 
+            #end
+            >
+            <img src="/svg_file?path=/web/images/icon_cart_o.svg&rgb=3,3,3" class="defualt"/>
+            <img src="/svg_file?path=/web/images/icon_cart_o.svg&rgb=255,3,3" class="hover"/>
+            <img src="/svg_file?path=/web/images/icon_cart_o.svg&rgb=255,3,3" class="active"/>
+        </a>
+        
+        <!--
+        #if("$!userid" == "" || "$!userid" == "0")
+        <a href="javascript:void(0);"class="mxl_cart">加入购物车</a>
+        #else
+            #set($c=$core_buy.getgwccount($!userid,$!ysp.ywyishupinid))
+            #if("$!c" == "0")
+            <a href="javascript:void(0);"class="mxl_cart">加入购物车</a>
+            #else
+            <a href="javascript:void(0);"class="mxl_cart">已在购物车</a>
+            #end
+        #end
+        -->
+    </div>
+    <div class="box" id="price_float_address">
+        <div class="box_nav clearfix">
+            <a href="javascript:void(0);">艺术评析</a>
+            <span class="line"></span>
+        </div>
+        <div class="art_comment">
+            $!ysp.yishupingxi
+        </div>
+    </div>
+    <div class="box">
+        <div class="box_nav clearfix mxl_box_nav">
+            <a href="javascript:void(0);" class="active" v="pinglun">评论</a>
+            <a href="javascript:void(0);" v="zixun">购买咨询</a>
+            <span class="line"></span>
+        </div>
+        <div class="question_comment">
+            <div class="input_div mxl_input_div">
+                <textarea placeholder="说说你的感受"></textarea>
+                <a href="javascript:void(0);">发表</a>
+            </div>
+            <div class="list clearfix">
+                <div class="loading">请稍后，正在加载数据...</div>
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="box_nav clearfix">
+            <a href="javascript:void(0);">相似作品</a>
+            <span class="line"></span>
+        </div>
+        <div class="like_project clearfix">
+            <ul class="clearfix">
+                #foreach($item in $leisi)
+                #set($yishujia=$core_buy.getyishujia($item.ywyishujiaid))
+                <li>
+                    <a href="/artworks/$!{item.yspkey}" target="_blank"><div class="thumb"><img src="${GTUPIANIMGIMG}$!{item.tupian}.jpg_small04" /></div></a>
+                    <div class="detail">
+                        <p><strong>$funhelper.encode("$!item.zhongwen","",$funhelper.encode("$!item.mingcheng","","无题","$!item.mingcheng"),"$!item.zhongwen")</strong></p>
+                        <p><a href="/artist/$!{item.ysjkey}" target="_blank">$!yishujia.xingming</a></p>
+                        <p><span>$!item.leibie</span><span>$!{item.size}</span></p>
+                        <p class="price">¥$!item.money</p>
+                    </div>
+                </li>
+                #end
+            </ul>
+        </div>
+    </div>
+    <div class="more_project"> 
+         <ul></ul>
+        <div class="loading"><img src="/web/images/loding.gif" /></div>
+        <div class="other_all">
+            <div>
+                <strong>作者其他作品</strong>
+                <a href="/artist/$!{ysj.ysjkey}" target="_blank">查看全部</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/web/js/jquery.imageScroller.min.js"></script>
+<script src="/web/js/imageFullScreenView.js"></script>
+<script src="/web/js/lxwdrop.js"></script>
+<script src="/web/js/detail.js"></script>
+<script type="text/html" id="body_load">
+    /** Like_Project **/
+    var likePIH = 0,
+        likePIH_A = 0;
+    $('.like_project .thumb img').each(function(){
+        likePIH += $(this).height();
+    });
+    likePIH_A = likePIH / $('.like_project li').length;
+    $('.like_project .thumb').each(function () {
+        $(this).css({
+            'height': likePIH_A,
+            'background': 'url(' + $(this).find('img').attr('src') + ') no-repeat',
+            'background-size': 'cover'
+        }).find('img').css({'display': 'none'});
+    });
+
+</script>

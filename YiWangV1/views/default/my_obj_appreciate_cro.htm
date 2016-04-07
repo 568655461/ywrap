@@ -1,0 +1,233 @@
+﻿<div class="my_center">
+    <div class="nav">
+        <a href="/my_obj_collection_cro">我的藏品</a>
+        <a href="/my_obj_appreciate_cro" class="active">欣赏的作品</a>
+        <a href="/my_travel">我的艺网之旅</a>
+    </div>
+    
+    #if($!imgcount == 0) 
+    <div class="no_login">
+        <h2>您还没有欣赏的作品，现在就去<a href="/buy">挑选</a>吧。</h2>
+    </div>
+    #else
+    <div class="filter clearfix">
+        <div class="f_l menu">
+            <div class="item border_small">
+                <select name="opt1" class="mxlselect">
+                    <option value="asc" selected>按最早加入时间</option>
+                    <option value="desc">按最新加入时间</option>
+                </select>
+            </div>
+            #if($yspleibie.Count()>0)
+            <div class="item border_small">
+                <select name="opt2" class="mxlselect">
+                    <option value="" selected>全部</option>
+                    #foreach($type in $yspleibie)
+                    <option value="$!type">$!type</option>
+                    #end
+                </select>
+            </div>
+            #end
+            <div class="item border switchFormat">
+                <a href="/my_obj_appreciate" class="icon_a"><img src="/svg_file?path=/web/images/icon_vertical.svg&rgb=3,3,3" class="defualt"/><img src="/svg_file?path=/web/images/icon_vertical.svg&rgb=255,3,3" class="active"/></a>
+                <a href="/my_obj_appreciate_cro" class="icon_a active"><img src="/svg_file?path=/web/images/icon_transverse.svg&rgb=3,3,3" class="defualt"/><img src="/svg_file?path=/web/images/icon_transverse.svg&rgb=255,3,3" class="active"/></a>
+            </div>
+            <div class="item">
+                <a href="javascript:void(0);" class="_back _hidden">← BACK-返回</a>
+            </div>
+        </div>
+        <div class="f_r sum">
+            <em><span class="imgcount">$!imgcount</span> 件欣赏的作品</em>
+        </div>
+    </div>
+
+    <div class="my_obj_appreciate clearfix">
+        <div class="image_list_cro clearfix">
+            <div class="clearfix sly" id="container"></div>
+            <div class="image_load _hidden">正在加载...</div>
+        </div>
+    </div>
+    #end
+</div>
+
+#if($!imgcount != 0) 
+<link rel="stylesheet" href="/web/css/progress.css">
+<script type="text/javascript" src="/web/js/jquery-asPieProgress.js"></script>    
+<style>
+    .mCSB_scrollTools{z-index:999;}
+</style>
+<script type="text/html" id="body_load">
+    var _={};
+    function _init(){
+        _.page_s = 1;
+        _.page_s_count = 10;
+        _.page_b = 1;
+        _.page_b_count = 30;
+        _.data = null;
+    }
+    _init();
+
+    $(function(){
+        //加载数据
+        function loaddata() {
+            var para = "";
+            $(".border_small .mxlselect").each(function(i,v){
+                var ths = $(v);
+                para += "&"+ths.attr("name")+"="+ths.val();
+            });    
+                
+            $('.image_load').fadeIn(2000);
+            $.getJSON("my_obj_appreciate_data?page=" + _.page_b + "&ps=" + _.page_b_count + "&type=1"+para, function (json) {
+                _.data = json;
+                
+                $(".image_load").hide();
+                loadMeinv();
+            });
+        }
+
+        loaddata();
+
+        load_status = 0;
+        
+        function loadMeinv(){
+            if (load_status){return false;}
+            load_status = 1;
+            //$('.image_load').fadeIn(200);
+            if(_.data != null)
+            {
+                for(var i=0; i < _.page_s_count; i++){
+                    if((_.page_s-1)*_.page_s_count+i >= _.data.length)  break; 
+                    var img_data = _.data[(_.page_s-1)*_.page_s_count+i];
+			        var html = "";
+			        html = '<div class="item transparent">' +
+                            '<div class="c_delete pie_progress" role="progressbar" v="'+img_data.ywshoucangid+'"><div class="pie_progress__label">×</div></div>' + 
+                            '<a href="/artworks/'+img_data.key_ysp+'" target="_blank"><div class="thumb"><img src="'+ GTUPIANIMGIMG + img_data.tupian + '.jpg_small04" /></div></a>' +
+                            '<div class="detail">' +
+                            '<p><strong>$funhelper.encode("'+img_data.zhongwen+'","",$funhelper.encode("'+img_data.mingcheng+'","","无题","'+img_data.mingcheng+'"),"'+img_data.zhongwen+'")</strong></p>' +
+                            '<p><a href="/artist/'+img_data.key_ysj+'" target="_blank">'+img_data.xingming+'</a></p>' +
+                            '<p>' + ($.trim(img_data.chuangzuoriqix) == "" ? '' : '<span>' + img_data.chuangzuoriqix + '</span>') + '<span>' + img_data.size + '</span><span>'+img_data.leibie+'</span></p>' +
+                            '<p class="price">¥' + img_data.jiage + '</p>' +
+                            '</div>' +
+                            '</div>';
+			        $("#container").append(html);
+                    load_status = 0;
+                    set_event();
+		        }
+                _delete();
+                _.page_s++,_.page_s > 1 && _.page_s % 3 == 1 && (_.page_b++, loaddata(), _.page_s = 1);
+            }
+
+
+            $('#container .transparent').each(function(){
+                $(this).animate({"opacity": "1"}).removeClass('transparent');
+            });
+            //$('.image_load').fadeOut(200);
+            setTimeout(function(){
+                blocksit_fu();
+            }, 100);
+            
+        }
+        
+        function set_event(){
+            $('.pie_progress').asPieProgress({
+                namespace: 'pie_progress',
+                speed: 5,
+                easing: 'linear'
+            });
+            $('.c_delete').hover(function(){
+                $(this).asPieProgress('go','100%');
+            }, function(){
+                $(this).asPieProgress('go','0');
+            });
+
+
+            $('.item').hover(function(){
+                $(this).find('.c_delete').stop().fadeIn(500);
+            }, function(){
+                $(this).find('.c_delete').stop().fadeOut(500);
+            });
+        }
+        //删除数据
+        function _delete(){
+            $('.c_delete').click(function(){
+                var ths = $(this);
+                $.get("my_obj_appreciate_delete",{ywshoucangid:$(this).attr("v")},function(ret){
+                    if(ret == "ok")
+                    {
+                        ths.parents('.item').fadeOut(500, function(){ ths.parents('.item').remove();});
+                        var v = (parseInt($(".imgcount").text())-1) > 0?parseInt($(".imgcount").text())-1:0;
+                        $(".imgcount").text(v);    
+                    }
+                    else
+                    {
+                        alert("删除失败！");
+                    }
+                });
+            });
+        }
+
+        setInterval(function(){
+            blocksit_fu();
+        }, 1000);
+        $(window).resize(function() {
+            blocksit_fu();
+        });
+
+        function blocksit_fu(){
+            var win_width = $(window).width();
+            var win_height = $(window).height();
+            var set_height = win_height - $('.my_center .nav').outerHeight() - $('.filter').outerHeight() - 183;
+            set_height = set_height < 300 ? 300 : set_height;
+            $('.image_list_cro .item .thumb, .image_list_cro .item img').css({width: '100%'});
+            $('.image_list_cro .item').css({height : set_height });
+            $('.image_list_cro .item .thumb, .image_list_cro .item .thumb img').css({width: 'auto', height : $('.image_list_cro .item').outerHeight()  - $('.image_list_cro .item .detail').height() - 50 });
+
+            //各个模块的宽
+		    var pro_layout_width = 0;
+		    $(".image_list_cro .item").each(function(i){
+			    pro_layout_width += $(this).innerWidth();
+		    });
+		    //滚动内容总宽
+		    $("#container").css({"width": pro_layout_width + 15 + "px"});             
+        }           
+    
+        $.mCustomScrollbar.defaults.scrollButtons.enable=true;
+		$.mCustomScrollbar.defaults.axis="x";
+        $(".image_list_cro").mCustomScrollbar({ 
+            theme:"inset-dark", 
+            autodraggerlength: true,
+            documentTouchScroll: true,
+            advanced:{ autoExpandHorizontalScroll: true },
+            callbacks:{
+                            alwaysTriggerOffsets: true,
+                            onTotalScrollOffset: 500,
+                            onTotalScroll: function(){loadMeinv();},
+                            onScroll: function () {
+                                if ($('#mCSB_1_container').position().left < 0) {
+                                    $('._back').fadeIn(100);
+                                } else {
+                                    $('._back').fadeOut(100);
+                                }
+                            }
+                        }
+        });    
+        $('._back').click(function () {
+            $('.artist_center').mCustomScrollbar('scrollTo','left');
+        });
+
+        //$(".nav a").click(function(){
+        //    $('.nav a').removeClass("active");
+        //    $(this).addClass("active");
+
+        //    _init();
+        //    loaddata();
+
+      //  });
+        $(".border_small .mxlselect").change(function(){
+            _init();
+            $("#container").html("");
+            loaddata();
+        });        
+    })
+</script>
+#end

@@ -1,0 +1,48 @@
+﻿<div class="nav_title">下单完成</div>
+<div class="buy_order_success">
+    <h1>恭喜您！下单成功。我们会尽快处理您的订单。</h1>
+    <h2>前往<a href="/user_order">订单中心</a>查看您的订单</h2>
+    <h3>交易成功后，您将或得 1000 积分，10 个艺术细胞</h3>
+    <div class="share clearfix">
+        <h4>分享您的喜悦：</h4>
+        <div class="share_box f_l">
+            <textarea>$!{message}</textarea>
+            <div class="button">
+                <a href="javascript:void(0);" class="mxl_weibo" v="$!{weiboshare}"><i class="fa fa-weibo"></i></a>
+                <a href="javascript:void(0);"><i class="fa fa-weixin"></i></a>
+               
+            </div>
+        </div>
+        <div class="service f_r">
+            <div class="title">如有问题，请通过以下方式获得售后支持。</div>
+            <div class="table clearfix">
+                <ul>
+                    <li class="online">
+                        <span>在线咨询</span>
+                        <img src="http://img02.sogoucdn.com/app/a/100520024/99f140a0d4be0873798e590454e034fe" />
+                        <p>安安</p>
+                    </li>
+                    <li>
+                        <span>热线</span>
+                        <p>400 - 123 - 4567</p>
+                    </li>
+                    <li>
+                        <span>邮件</span>
+                        <p>service@ywart.com</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".mxl_weibo").click(function () {
+        //微博分享
+        var openUrl = $(this).attr("v");//弹出窗口的url
+        var iWidth = 630; //弹出窗口的宽度;
+        var iHeight = 360; //弹出窗口的高度;
+        var iTop = (window.screen.availHeight - 30 - iHeight) / 2; //获得窗口的垂直位置;
+        var iLeft = (window.screen.availWidth - 10 - iWidth) / 2; //获得窗口的水平位置;
+        window.open(openUrl, "target", "height=" + iHeight + ", width=" + iWidth + ", top=" + iTop + ", left=" + iLeft);
+    });
+</script>

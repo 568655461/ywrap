@@ -1,0 +1,54 @@
+﻿<div class="artist_center">
+   <div class="pro_layout">
+       <div class="item clearfix author">
+           <div class="avatar f_l">
+               #if("$!{yishijia.zhaopian}"!="")
+               <img src="about:blank" data_src="$!{OSS}ysj/$!{yishijia.zhaopian}" />
+               #else
+                   #if("$!{yishijia.zhaopianold}"!="")
+                   <img src="about:blank" data_src="$!{OSS}ysj/$!{yishijia.zhaopianold}" />
+                   #else
+                   没有照片应该显示一个默认照片
+                   #end
+               #end
+           </div>
+           <div class="synopsis f_l">
+               <div class="blank"></div>
+               <span class="name">$!yishijia.xingming<i></i></span>
+               <div class="introduction">
+                    <p>出生 ：$!{yishijia.chushengnian}</p>
+                    <p>籍贯 ：$!{yishijia.jiguan}</p>
+                    <p>&nbsp;</p>
+                    <p>$!{yishijia.jiaoyu}</p>
+                   
+               </div>
+           </div>
+       </div>
+       <div class="item achievement clearfix">
+            <h2>参展经历</h2>
+          
+            <p>$!{yishijia.congye}</p>       
+           #if("$!{yishijia.rongyao}" != "")
+            <h2>参展经历</h2>
+            <p>$!{yishijia.rongyao}</p>
+           #end
+           #if("$!{yishijia.pingjia}" != "")
+            <h2>业内评价</h2>
+            <p>$!{yishijia.pingjia}</p>
+           #end
+   
+       </div>
+       <div class="item imagesList clearfix"><div class="viewport" id="viewport"></div></div>
+   </div>
+    <a href="javascript:void(0);" class="go_back"><</a>
+</div>
+
+<style>
+    .mCSB_horizontal.mCSB_inside>.mCSB_container{margin:0;}
+    .mCSB_scrollTools{z-index:999;}
+</style>
+<script>
+    var artistid = "$!{yishijia.ywyishujiaid}";
+</script>
+<script src="/web/js/9gg.js"></script>
+<script src="/web/js/artist.js"></script>

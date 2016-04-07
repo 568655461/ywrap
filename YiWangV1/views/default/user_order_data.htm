@@ -1,0 +1,388 @@
+﻿#foreach($item in $pager.data)
+<div class="order_item">
+    <ul>
+        #foreach($mx in $item.dingdanmingxi)
+        #set($yishupin=$core_buy.getzuopin($mx.ywyishupinid))
+        #set($yishujia=$core_buy.getyishujia($yishupin.ywyishujiaid))
+        <li>
+            #if($velocityCount==0)
+           <div class="item_header clearfix">
+                <div class="f_l time">$item.riqi</div>
+                <div class="f_r order_overview">
+                    <span class="tooltip" title="
+                        <div class='card_address'>
+                            <p>$item.shouhuoren</p>
+                            <p>$!{item.shoujihao1}$!{item.shoujihao2}</p>
+                            <p>$item.xiangxidizhi</p>
+                            <p>$item.youzhengbianma</p>
+                        </div>
+                        ">送货至：$item.shouhuoren（$item.dizhibieming）<i class="fa fa-caret-down"></i></span>
+                    <span class="tooltip" title="
+                        <div class='card_pay_type'>
+                            <p><strong>支付方式</strong></p>
+                            <p>$funhelper.encode($item.fukuanfangshi,"0","支付宝","1","微信支付","2","网上银行支付","3","其他","")</p>
+                            <p>&nbsp;</p>
+                            <p><strong>发票信息</strong></p>
+                            <p>发票抬头：$!{item.fapiaotaitou}</p>
+                        </div>
+                        " >订单编号：$item.dingdanbianhao<i class="fa fa-caret-down"></i></span>
+                </div>
+            </div>
+            #end
+            <div class="item clearfix">
+                <div class="f_l thumb"><a href="/artworks/${yishupin.key}" target="_blank"><img src="${GTUPIANIMGIMG}${yishupin.tupian}.jpg_small02"/></a></div>
+                <div class="f_l unified detail">
+                    <div class="title nowrap mxl_detail" vv="$!mx.mingxiidnew">$funhelper.encode("$!yishupin.zhongwen","",$funhelper.encode("$!yishupin.mingcheng","","无题","$!yishupin.mingcheng"),"$!yishupin.zhongwen")</div>
+                    <p><a href="/artist/${yishujia.key}" target="_blank">$yishujia.xingming</a></p>
+                    <p>$yishupin.leibie</p>
+                    <p>$!yishupin.size</p>
+                </div>
+                <div class="f_l unified price_unit">
+                    <p class="now">#if($!$yishupin.youhuijia != "")<strong class="price">¥<em>$yishupin.youhuijia</em>#end</strong></p>
+                    <p class="old"><strong class="price">¥<em>$yishupin.money</em></strong></p>
+                    <!--<p class="special"><span>会员生日优惠</span></p>-->
+                </div>
+                <div class="f_l unified status">
+                    <p><strong class="tooltip_logistics" title="123456789">$funhelper.encode("$!mx.zhuangtai","0","未支付","1","支付完成","2","取消","3","退货","4","已发货","")$!{mx.ywyishujiaid}</strong></p>
+
+                    <p><span>&nbsp;</span></p>
+                    #if($velocityCount==0 && $item.zhuangtai == 0)
+                    <p><a href="javascript:void(0);" class="mxl_pay pay_now" v="$item.fukuanfangshi">立即支付</a></p>
+                    #end
+                </div>
+
+                #if($velocityCount==0)
+                <div class="f_l unified price_sum">
+                    <p><strong class="price price_sum">¥<em>$item.totalprice</em></strong></p>
+                    <p><span>免运费</span></p>
+                </div>
+                <div class="f_l unified op mxl_opt" v1="$item.idnew" v2="$item.dizhiidnew">
+                    #if($item.zhuangtai != 2)
+                    <a href="javascript:void(0);" v="quxiao">取消订单</a>
+                    #end
+                    <a href="javascript:void(0);" v="tuihuanhuo">申请退货</a>
+                    <a href="javascript:void(0);" v="fapiao">补开发票</a>
+                    <a href="javascript:void(0);" v="pinglun">购买反馈</a>
+                </div>
+                #else
+                <div class="f_l unified price_sum">
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="f_l unified op mxl_opt" v1="$item.idnew" v2="$item.dizhiidnew">
+                    <a href="javascript:void(0);" v="tuihuanhuo">申请退货</a>
+                </div>
+                #end
+            </div>
+        </li>
+        #end
+    </ul>
+</div>
+#end
+
+<div class="pagination p_r">
+$core_pager.simple($!pager)
+</div>
+
+<script id="retitems" type="text/html">
+    <form>
+        <input type="hidden" class="mxl_v" name="v" />
+        <div id="mxname"></div>
+        <p>请填写退货理由</p>
+        <div><textarea name="yuanyin" class="yuanyin" style="width:500px;height:100px;"></textarea></div>
+        <div style="padding:3px 0;">
+            <div style="padding:3px 0;" class="yuanyin_inputList">
+                <p><input type="file" name="filename" /><a href="#" target="_blank"></a></p>
+            </div>
+            <a href="javascript:void(0);" class="yuanyin_btnAdd" style="text-decoration:none;font-size:14px;color:#333;display:block;">+ 添加</a>
+        </div>
+    </form>
+    <script>
+        //预览界面
+        function upload() {
+            $("input[type='file']").change(function (e) {
+                var files = e.target.files || e.dataTransfer.files;
+
+                var file = files[0];
+                if (!(/^image\/.*$/.test(file.type))) {
+                    alert('请选择图片文件');
+                    return false;
+                }
+                var URL = window.URL || window.webkitURL;
+                // 通过 file 生成目标 url
+                var imgURL = URL.createObjectURL(file);
+
+                $(this).parent().find("a").text("查看");
+                $(this).parent().find("a").attr("href", imgURL);
+            });
+        }
+        upload();
+
+        $('body').on("click", ".yuanyin_btnAdd", function () {
+            if ($('.yuanyin_inputList input').length > 2) {
+                alert('最多添加3张');
+            } else {
+                $('.yuanyin_inputList').append('<p><input type="file" name="filename" /><a href="#" target="_blank"></a></p>');
+            }
+            upload();
+        });
+    </script>
+</script>
+
+<script id="divfapiao" type="text/html">
+    <p>请填写发票抬头</p>
+    <div><textarea class="fapiaotaitou" style="width:500px;height:100px;"></textarea></div>
+    <p>邮寄地址</p>
+    <div style="margin-bottom:30px;">
+        <select style="min-width:150px;border:1px solid #838383;" class="mxldizhi">
+            #foreach($dz in $dizhi)
+            <option value="$dz.dizhiidnew">$!{dz.dizhibieming}</option>
+            #end
+        </select>
+        <a href="/user_address" target="_blank" style="text-decoration:none;margin-left:10px;color:#838383;">添加新收货地址</a>
+    </div>
+    <div style="color:#F33;font-size:12px;" class="tip"></div>
+</script>
+
+<script id="divfankui" type="text/html">
+    <p>内 容</p>
+    <div><textarea class="fankuineirong" style="width:500px;height:100px;"></textarea></div>
+</script>
+
+<!-- 提交订单，跳转支付页面后，弹出层 -->
+<script id="divtijiaodingdan" type="text/html">
+    <div style="padding:3px 0;">
+        <div style="padding:3px 0;" class="yuanyin_inputList">
+            <p><img class="mxl_ercode"/></p>
+        </div>
+    </div>
+    <p><span class="mxl_zhifu_msg"></span>订单已生成，如果未能支付，请前往<a href="/user_order">订单中心</a>完成支付</p>
+</script>
+
+<script>
+    
+    /**
+    补开发票成功后调用： alert( '<div style="width:500px;text-align:center;padding:50px 0;"><h1>提交成功！</h1></div>', '', 2 );
+    退货成功后调用：补开发票成功后调用： alert( '<div style="width:500px;text-align:center;padding:50px 0;"><h1>提交成功！</h1><p style="padding:20px 0;margin:0;">我们将尽快处理，请留意订单状态！</p></div>', '', 2 );
+    **/
+
+    //订单操作 mxl 20151130
+
+    $(function () {
+        $(".mxl_opt a").on("click",function () {
+            var ths = $(this);
+            var v = ths.attr("v") || "";
+            if (v == "") return;
+            //debugger;
+            switch (v) {
+                case "quxiao":
+                    confirm('您确定要取消订单', {
+                        confirm: function () {
+                            quxiaodingdan(ths);
+                        }
+                    });
+                    break;
+                case "tuihuanhuo":
+                    confirm($('#retitems').html(), {
+                        title: '申请退货',
+                        isHtml: 1,
+                        confirmClose: false,
+                        confirm: function () {
+                            //点击确认后
+                            shenqingtuihuo(ths);
+                        }
+                    });
+
+                    var n_objs = ths.parent().parent().parent().parent().find(".mxl_detail");
+                    $(".mxl_v").val(n_objs.attr("vv"));
+
+                    break;
+                case "fapiao":
+                    confirm($('#divfapiao').html(), {
+                        title: '发票信息',
+                        isHtml: 1,
+                        confirmClose: false,
+                        confirm: function () {
+                            //点击确认后
+                            fapiao(ths);
+                        }
+                    });
+                    var v2 = ths.parent().attr("v2");
+                    $(".mxldizhi").children("option").each(function (i, v) {
+                        if ($(v).val() == v2)
+                            $(".mxldizhi").val(v2);
+                    });
+
+
+                    break;
+                case "pinglun":
+                    confirm($('#divfankui').html(), {
+                        title: '购买反馈',
+                        isHtml: 1,
+                        confirmClose: false,
+                        confirm: function () {
+                            //点击确认后
+                            dingdanpinglun(ths);
+                        }
+                    });
+                    break;
+            }
+        });
+
+        //取消订单
+        function quxiaodingdan(ths) {
+            var ywdingdanid = ths.parent().attr("v1");
+
+            var _obj = { url: "user_order_quxiao", para: { ywdingdanid: ywdingdanid} };
+            update(_obj);
+
+        }
+        //提交退货申请
+        function shenqingtuihuo(ths) {
+            var yuanyin = $.trim($(".yuanyin").val());
+            if (yuanyin == "") {
+                alert("请输入退货原因");
+                return;
+            }
+            confirmClose();
+            $("form").ajaxSubmit({
+                type: "post",
+                url: "user_order_shenqingtuihuo",
+                success: function (ret) {
+                    if (ret.indexOf("ok|") != -1) {
+                        alert('<div style="width:500px;text-align:center;padding:50px 0;"><h1>提交成功！</h1><p style="padding:20px 0;margin:0;">我们将尽快处理，请留意订单状态！</p></div>', '', 2);
+                    }
+                    else {
+                        alert(ret.split('|')[0]);
+                    }
+                }
+            });
+        }
+        //补开发票
+        function fapiao(ths) {
+            var ywdingdanid = ths.parent().attr("v1");
+            var taitou = $.trim($(".fapiaotaitou").val());
+            var dizhiid = $.trim($(".mxldizhi").val());
+            if (taitou == "")
+            {
+                alert("请填写发票抬头");
+                return;
+            }
+            if (dizhiid == "") {
+                alert("请选择发票地址");
+                return;
+            }
+            confirmClose();
+            var _obj = { url: "user_order_fapiao", para: { id: ywdingdanid, taitou: taitou, dizhiid: dizhiid } };
+            update(_obj);
+        }
+        //订单反馈
+        function dingdanpinglun(ths) {
+            var ywdingdanid = ths.parent().attr("v1");
+            var neirong = $.trim($(".fankuineirong").val());
+            if (neirong == "") {
+                alert("请填反馈内容");
+                return;
+            }
+            confirmClose();
+            var _obj = { url: "user_order_pinglun", para: { id: ywdingdanid, neirong: neirong } };
+            update(_obj);
+        }
+        //提交后台更新数据
+        function update(_obj)
+        {
+            $.post(_obj.url, _obj.para, function (ret) {
+                if (ret.indexOf("ok|") != -1) {
+                    alert('<div style="width:500px;text-align:center;padding:50px 0;"><h1>操作成功！</h1></div>', '', 2);
+                }
+                else {
+                    alert('<div style="width:500px;text-align:center;padding:50px 0;"><h1>' + ret.split('|')[0] + '！</h1></div>', '', 2);
+                }
+            });
+        }
+        //
+        $(".mxl_pay").click(function () {
+            var _new = $(this).parent().parent().parent().find(".mxl_opt").attr("v1");
+            var pay = $(this).attr("v");
+            var openurl = "buy_order_jixuzhifu?new=" + _new + "&t=" + new Date();
+            //锁屏
+            OpenMode();
+            if (pay == 1) {
+                $(".mxl_zhifu_msg").text("请在新页面中完成支付。");
+                window.open(openurl);
+            }
+            if (pay == 2) {
+
+                $(".mxl_zhifu_msg").text("请使用微信扫描二维码完成支付。");
+                //二进制流输出图片
+                function getBlobImage($img, url, opacity) {
+                    opacity = opacity || 1;
+                    $img.hide();
+                    window.URL = window.URL || window.webkitURL;
+                    if (typeof history.pushState == "function") {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("get", url, true);
+                        xhr.responseType = "blob";
+                        xhr.onload = function () {
+                            if (this.status == 200) {
+                                var blob = this.response;
+
+                                $img[0].onload = function (e) {
+
+                                    window.URL.revokeObjectURL($img[0].src);
+                                    $img.fadeTo("slow", opacity);
+
+                                };
+
+                                $img[0].src = window.URL.createObjectURL(blob);
+                            }
+                        }
+                        xhr.send();
+                    } else {
+                    }
+                }
+
+                var img = $(".mxl_ercode");
+                getBlobImage(img, openurl);
+            }
+            setTimeout(function () {
+                checktimer(_new)
+            }, 2000);
+        });
+
+        //监测订单支付情况
+        function checktimer(_new) {
+            //var d = "$!new";
+            $.get("check_order_pay?new=" + _new + "&t=" + new Date(), function (d) {
+                if (d.indexOf("ok|") != -1) {
+                    location.href = "/buy_order_success?new=" + d.split('|')[1] + "&t=" + new Date();
+                }
+                else {
+                    setTimeout(function () {
+                        checktimer(_new)
+                    }, 2000);
+                }
+            });
+        }
+
+
+        //弹屏
+        function OpenMode() {
+            confirm($('#divtijiaodingdan').html(), {
+                title: '提交订单',
+                isHtml: 1,
+                confirmButton: '支付成功',
+                cancelButton: '支付遇到问题',
+                confirm: function () {
+                    //点击确认后
+                    location.href = "/buy_order_success";
+                },
+                cancel: function () {
+                   // location.href = "/user_order";
+                }
+            });
+        }
+
+
+    });
+</script>

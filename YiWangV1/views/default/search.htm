@@ -1,0 +1,158 @@
+﻿<div class="search_center">
+    <div class="search_input clearfix">
+        <div class="input_div">
+            <i class="fa fa-search"></i>
+            <input class="keyword" placeholder="请输入搜索的关键字" value="$!{keys}"/>
+            <a href="javascript:void(0);" onclick="$('.keyword').val('');">×</a>
+        </div>
+        <button class="input_button">搜索</button>
+    </div>
+    <div class="search_nav clearfix mxl_search">
+        <a href="javascript:void(0);" class="_project" v2="maxl_project_data" v="search_project_data">艺术品</a>
+        <a href="javascript:void(0);" class="_artist"  v2="maxl_artist_data" v="search_artist_data">艺术家</a>
+        <a href="javascript:void(0);" class="_article" v2="maxl_article_data" v="search_article_data">文章</a>
+    </div>
+    <div class="maxl_search_data">
+
+    </div>
+</div>
+
+<script type="text/html" id="body_load">
+    $('.project .thumb').each(function () {
+        var div_w = $(this).width(); 
+        var div_h = $(this).height();
+        var div_pro = div_w / div_h;
+        var img_obj = $(this).find('img');
+        var img_w = img_obj.width();
+        var img_h = img_obj.height();
+        var img_pro = img_w / img_h;
+        if (img_w > div_h && img_h < div_h) {
+            img_obj.css({ 'width': div_w });
+        } else if (img_h > div_h && img_w < div_h) {
+            img_obj.css({ 'height': div_h });
+        } else if (div_pro < img_pro) {
+            img_obj.css({ 'width': div_w});
+            img_obj.css({ 'padding-top': (div_h - img_obj.height()) / 2 + 'px' });
+        } else if (div_pro > img_pro) {
+            img_obj.css({ 'height': div_h });
+        } else {
+            img_obj.css({ 'width': '100%' });
+        }
+    });
+
+    var ul_width = 0;
+    $('.artist_project li').each(function () {
+        ul_width += $(this).outerWidth() + 2;
+    });
+    $('.artist_project ul').css('width', ul_width);
+
+</script>
+
+<script>
+    var _ = {};
+    _.page = 1;
+    _.pagesize = 10;
+
+    $(function () {
+        //$(".maxl_project_data").hide();
+        //$(".maxl_artist_data").hide();
+        //$(".maxl_article_data").hide();
+
+        //$(".maxl_" + colname + "_data").show();
+
+        InitData();
+        $('.keyword').bind('keypress', function (event) {
+            if (event.keyCode == "13") {
+                InitData();
+            }
+        });
+        $('.input_button').click(function () {
+            InitData();
+        });
+
+    });
+
+    //第一次加载数据
+    function InitData()
+    {
+        var keys = $(".search_input .keyword").val();
+        $.get("search_data", { keys: keys, page: _.page, ps: _.pagesize }, function (html) {
+
+            $(".maxl_search_data").html(html);
+
+            //搜索结果  按照结果集最多的优先显示
+            $(".maxl_project_data").hide();
+            $(".maxl_artist_data").hide();
+            $(".maxl_article_data").hide();
+
+            var curname = $(".curname").val();
+            $(".maxl_" + curname + "_data").show();
+
+            if ($(".search_center .mxl_search a").hasClass("active")) {
+                $(".search_center .mxl_search a").removeClass("active");
+            }
+
+            if (!$(".search_center .mxl_search ._" + curname).hasClass("active"))
+                $(".search_center .mxl_search ._" + curname).addClass("active");
+
+            //激活翻页事件
+            bindclick();
+
+        });
+    }
+
+    $(".search_center .mxl_search a").click(function () {
+
+        $(".search_center .mxl_search a").each(function (i,vv) {
+            var _this = $(vv);
+            if (_this.hasClass("active"))
+            {
+                _this.removeClass("active");
+            }
+            $("." + _this.attr("v2")).hide();
+        });
+        var ths = $(this);
+        if (!ths.hasClass("active")) {
+            ths.addClass("active");
+        }
+        var v = ths.attr("v2");
+        $("." + v).show();
+    });
+
+    var URL = "";
+    function loadData(URL, page) {
+        var _obj = $(".search_center .mxl_search").find(".active");
+
+        var url = URL || _obj.attr("v");
+        page = page || _.page;
+
+        var keys = $(".search_input .keyword").val();
+        $.get(url, { keys: keys, page: page, ps: _.pagesize }, function (html) {
+
+            $("." + _obj.attr("v2")).html(html);
+
+            bindclick()
+
+        });
+    }
+
+    function bindclick() {
+        $(".lxw_page").off("click", null);
+        $(".lxw_page").on("click", function () {
+            var ths = $(this);
+            var v = ths.attr("v") || "";
+            if (v == "") return;
+
+
+            var _obj = $(".search_center .mxl_search").find(".active");
+            $("." + _obj.attr("v2") + " .lxw_page").removeClass("active");
+
+            ths.addClass("active");
+
+            var _obj = $(".search_center .mxl_search").find(".active");
+            var URL = $(_obj).attr("v");
+
+            loadData(URL, v);
+        });
+    }
+</script>

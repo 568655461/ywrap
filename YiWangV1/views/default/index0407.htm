@@ -1,0 +1,348 @@
+﻿<link href="/web/css/index.less" rel="stylesheet">
+
+<div class="index_center">
+    <div class="hero">
+        <div class="hero_background">
+            <span><!--<img src="/web/images/test4.jpg" />--></span>
+        </div>
+        <div class="hero_content page-container page-container-full">
+            <div class="va-container va-container-v va-container-h">
+                <div class="va-middle hero_center">
+                    <h2>为什么你需要一件原创艺术品？</h2>
+                    <h4>将独一无二的艺术品带入你的空间<br />让它变得和你一样与众不同</h4>
+                    <div id="searchbar">
+                        <div class="searchbar">
+                            <form id="searchbar-form">
+                                <div class="saved-search-wrapper">
+                                    <label>
+                                        <select v="zplb">
+                                            <option value="">类别</option>
+                                            <option value="油画">油画</option>
+                                            <option value="雕塑">雕塑</option>
+                                            <option value="摄影">摄影</option>
+                                            <option value="版画">版画</option>F
+                                        </select>
+                                    </label>
+                                    <label>
+                                        <select v="fg">
+                                            <option value="">风格</option>
+                                            <option>抽象</option>
+                                            <option>具象</option>
+                                            <option>观念</option>
+                                        </select>
+                                    </label>
+                                    <label>
+                                        <select v="cc">
+                                            <option value="">尺寸</option>
+                                            <option>50cm&nbsp以下</option>
+                                            <option>50cm&nbsp-&nbsp100cm</option>
+                                            <option>100cm&nbsp-&nbsp150cm</option>
+                                            <option>150cm&nbsp-&nbsp200cm</option>
+                                            <option>200cm&nbsp以上</option>
+                                        </select>
+                                    </label>
+                                    <label>
+                                        <select v="jg">
+                                            <option value="">价格</option>
+                                            <option value="0,2000">¥ 2,000&nbsp以下</option>
+                                            <option value="2001,8000">¥ 2,000&nbsp-&nbsp¥ 8,000</option>
+                                            <option value="8000,15000">¥ 8,000&nbsp-&nbsp¥ 15,000</option>
+                                            <option value="15000,30000">¥ 15,000&nbsp-&nbsp¥ 30,000</option>
+                                            <option value="30001,999999999">¥ 30,000&nbsp以上</option>
+                                        </select>
+                                    </label>
+                                    <label class="searchbar-pop">
+                                        请选择筛选条件
+                                    </label>
+                                </div>
+                                <button type="submit" class="searchbar-submit lxw_search"><span>开始</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero_pop">
+            <form>
+                <div class="selects">
+                    <select v="zplb">
+                        <option value="">类别</option>
+                        <option value="油画">油画</option>
+                        <option value="中国画">中国画</option>
+                        <option value="当代水墨">当代水墨</option>
+                        <option value="雕塑">雕塑</option>
+                        <option value="装置">装置</option>
+                        <option value="摄影">摄影</option>
+                        <option value="版画">版画</option>
+                        <option value="书法">书法</option>
+                        <option value="水粉水彩">水粉水彩</option>
+                        <option value="工艺品">工艺品</option>
+                        <option value="衍生工艺">衍生工艺</option>
+                        <option value="其他">其他</option>
+                    </select>
+                    <select v="tc">
+                        <option value="">题材</option>
+                        <option>风景</option>
+                        <option>人物</option>
+                        <option>静物</option>
+                        <option>其他</option>
+                    </select>
+                    <select v="fg">
+                        <option value="">风格</option>
+                        <option>抽象</option>
+                        <option>具象</option>
+                        <option>观念</option>
+                    </select>
+                    <select v="cc">
+                        <option value="">尺寸</option>
+                        <option>50cm&nbsp以下</option>
+                        <option>50cm&nbsp-&nbsp100cm</option>
+                        <option>100cm&nbsp-&nbsp150cm</option>
+                        <option>150cm&nbsp-&nbsp200cm</option>
+                        <option>200cm&nbsp以上</option>
+                    </select>
+                    <select v="jg">
+                        <option value="">价格</option>
+                        <option value="0,2000">2000&nbsp以下</option>
+                        <option value="2001,8000">2000&nbsp-&nbsp8000</option>
+                        <option value="8000,15000">8000&nbsp-&nbsp15000</option>
+                        <option value="15000,30000">15000&nbsp-&nbsp30000</option>
+                        <option value="30001,999999999">30000&nbsp以上</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="searchbar-submit lxw_search"><span>开始</span></button>
+                    <button type="button" class="searchbar-back"><span>返回</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mainpanel">
+        <div class="section section_essence">
+            <div class="header">
+                <span class="title">春季精选</span>
+            </div>
+            <div class="roll_img_warp">
+                <div class="roll_img_box">
+                    <div class="roll_img_panel clearfix">
+                        #foreach($ysp in $zt1_data)
+                        <div class="roll_img">
+                            <a href="/artworks/${ysp.yspkey}">
+                                <div class="img" style="background-image:url(${OSSIMG}yw/${ysp.tupian}.jpg_small01)"></div>
+                            </a>
+                            <div class="img_info_box">
+                                <div class="ysp_title">$!ysp.yishujiaxingming</div>
+                                <div class="ysp_author">$!ysp.zhongwen &nbsp;$!ysp.cailiao &nbsp;$!ysp.size</div>
+                                <!--<div class="ysp_otherinfo">
+                                    <span>$!ysp.chuangzuoriqi $!ysp.leibie $!ysp.size</span>
+                                </div>-->
+                                <div class="ysp_price">￥$ysp.money</div>
+                            </div>
+                        </div>
+                        #end
+                    </div>
+                </div>
+                <!--<a href="javascript:void(0);" class="roll_img_prev"><img src="/svg_file?path=/web/images/arrow_left.svg&rgb=255,255,255" /><span></span></a>
+                <a href="javascript:void(0);" class="roll_img_next"><img src="/svg_file?path=/web/images/arrow_right.svg&rgb=255,255,255" /><span></span></a>-->
+            </div>
+        </div>
+        <div class="section section_slogan1">
+            <div class="content">买艺术品，更是在买未来</div>
+        </div>
+        <div class="section section_group_a">
+            <div class="group_panel">
+                <div class="news_group">
+                    <div class="group group1">
+                        <div class="g_title">
+                            <span>艺网之星</span>
+                        </div>
+                        <div class="g_content">
+                            <div class="img" style="background-image:url(http://yw2015.oss-cn-beijing.aliyuncs.com/ysj/150723416Ukb2gYrLBRZoUuDm.jpg)">
+                            </div>
+                            <div class="info">
+                                <div class="news_title">梁丹荼：一切坚固的东西都消失了</div>
+                                <div class="news_content">我的画儿好像是一种写实的,具有戏剧化情节的创作,但却找不出叙事情节的线索和逻辑关系。画面提供更多的是充溢于我目光所及的各种图像碎片。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group group2">
+                        <div class="g_title">
+                            <span>艺网展讯</span>
+                        </div>
+                        <div class="g_content">
+                            <div class="img" style="background-image:url(http://yw2015.oss-cn-beijing.aliyuncs.com/material/201603190002.jpg)">
+                            </div>
+                            <div class="info">
+                                <div class="news_title">“绘画的故事”群展</div>
+                                <div class="news_content">过度的文本解读和社会学阐述几乎伴随中国当代绘画近四十年的发展。而在今天，当我们面对绘画这一古老艺术话题再度审视时，不得不重新思考关于艺术和社会、艺术与艺术家、艺术与艺术史之间的关系、边界和维度。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group group3">
+                        <div class="g_title">
+                            <span>精彩活动</span>
+                        </div>
+                        <div class="g_content">
+                            <div class="img" style="background-image:url(http://yw2015.oss-cn-beijing.aliyuncs.com/material/201603190001.jpg)">
+                            </div>
+                            <div class="info">
+                                <div class="news_title">造型艺术：艾格尼丝马丁启发摘要</div>
+                                <div class="news_content">
+                                    本周的造型艺术的灵感来自泰特现代艺术馆的艾格尼丝马丁展览。这些最低限度的家具和艺术品证明，任何人都可以带一点抽象的精神进入家庭...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="category_topn">
+                    <div class="name_panel clearfix">
+                        <ul id="categorytitle">
+                            <li class="active" categoryname="油画">油画</li>
+                            <li categoryname="版画">版画</li>
+                            <li categoryname="雕塑">雕塑</li>
+                        </ul>
+                        <div class="more">
+                            <a href="/buy">查看更多 ></a>
+                        </div>
+                    </div>
+                    <script id="t_category_content" type="text/html">
+                        <% if (list.length > 0) {
+                        var item = list[0];
+                        %>
+                        <div class="first">
+                            <a href="/artworks/<%=item.yspkey%>">
+                                <div class="img" style="background-image:url(${OSSIMG}yw/<%=item.tupian%>.jpg_small01)"></div>
+                            </a>
+                            <div class="info_box clearfix">
+                                <div class="ysp_title"><%=item.yishujiaxingming%></div>
+                                <div class="ysp_author"><%=item.zhongwen%> &nbsp; <%=item.cailiao%> &nbsp; <%=item.size%> </div>
+                                <!--<div class="ysp_otherinfo">
+                                    <span><%=item.chuangzuoriqi%> <%=item.leibie%> <%=item.size%></span>
+                                </div>-->
+                                <div class="ysp_price">￥<%=item.jiage%></div>
+                            </div>
+                        </div>
+                        <% }%>
+                        <% if (list.length > 1) {%>
+                        <div class="other clearfix">
+                            <%
+                            for(var i= 1; i< list.length ; i++){
+                            var item = list[i];
+                            %>
+                            <div class="item clearfix">
+                                <a href="/artworks/<%=item.yspkey%>">
+                                    <div class="img" style="background-image:url(${OSSIMG}yw/<%=item.tupian%>.jpg_small01)"></div>
+                                </a>
+                                <div class="info_box clearfix">
+                                    <div class="ysp_title"><%=item.yishujiaxingming%></div>
+                                    <div class="ysp_author"><%=item.zhongwen%> &nbsp; <%=item.cailiao%> &nbsp; <%=item.size%></div>
+                                    <!--<div class="ysp_otherinfo">
+                                        <span><%=item.chuangzuoriqi%> <%=item.leibie%> <%=item.size%></span>
+                                    </div>-->
+                                    <div class="ysp_price">￥<%=item.jiage%></div>
+                                </div>
+                            </div>
+                            <%}%>
+                        </div>
+                        <%}%>
+                    </script>
+                    <div class="ysp_panel">
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="section section_slogan2">
+            <div class="content">来艺网，找到好艺术</div>
+        </div>
+        <div class="section section_newproduct">
+            <div class="header clearfix">
+                <span class="title">源源不断的新作</span>
+                <div class="more">
+                    <a href="/buy">查看更多 ></a>
+                </div>
+            </div>
+            <div class="roll_img_warp">
+                <div class="roll_img_box">
+                    <div class="roll_img_panel clearfix">
+                        #foreach($ysp in $newgoods_data)
+                        <div class="roll_img">
+                            <a href="/artworks/${ysp.yspkey}">
+                                <div class="img" style="background-image:url(${OSSIMG}yw/${ysp.tupian}.jpg_small01)"></div>
+                            </a>
+                            <div class="info_box">
+                                <div class="ysp_title">$!ysp.yishujiaxingming</div>
+                                <div class="ysp_author">$!ysp.zhongwen &nbsp;$!ysp.cailiao &nbsp;$!ysp.size</div>
+                                <!--<div class="ysp_desc">
+                                    <span>$!ysp.chuangzuoriqi $!ysp.leibie $!ysp.size</span>
+                                </div>-->
+                                <div class="ysp_price">￥$!ysp.jiage</div>
+                            </div>
+                        </div>
+                        #end
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section_introduction">
+            <div class="box">
+                <div class="header">
+                    <span class="title">关于艺网</span>
+                </div>
+                <div class="content">
+                    <div class="content1">
+                        艺网 YWART.COM    是艺网科技倾力打造的当代艺术品电商交易服务平台。
+                        艺网旨在推动艺术品消费大众化，依托于专业团队，在全国范围内持续挖掘优秀艺术品，将大量原创、高质量、经过严格筛选的艺术品通过线上平台带给大众，结合线下的体验空间，形成一整套专业、可信赖的艺术消费服务。
+                    </div>
+                    <div class="content2 clearfix">
+                        <div class="img" style="background-image:url(${OSS}material/201603150002.jpg)"></div>
+                        <div class="img" style="background-image:url(${OSS}material/201603150001.jpg)"></div>
+                    </div>
+                    <div class="content3 clearfix">
+                        <div class="img" style="background-image:url(${OSS}material/201603150003.jpg)"></div>
+                        <div class="img" style="background-image:url(${OSS}material/201603150004.jpg)"></div>
+                    </div>
+                    <div class="content4">
+                        艺网着眼于时下随物质财富不断积累而逐渐活跃的精神世界的强烈需求，从当代艺术出发，倡导艺术和生活的和谐融合，旨在鼓励人们主动的体验艺术，丰富大众的精神生活。
+                        一种初见端倪的生活方式将在YWART.COM落地
+                        ——艺术品消费日常化
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section_feature">
+            <div class="content">
+                <ul class="clearfix">
+                    <li>
+                        <img src="/web/images/index_sevice_1.png">
+                        <p><strong>专业甄选</strong></p>
+                        <p>艺网拥有专业的艺术学术团队</p>
+                        <p>他们从艺术品的海选、定价，</p>
+                        <p>到编辑层层把关，力求以最高的标准</p>
+                        <p>呈现给消费者</p>
+                    </li>
+                    <li>
+                        <img src="/web/images/index_sevice_2.png">
+                        <p><strong>安心物流</strong></p>
+                        <p>艺网与国内专业的艺术品物流合作</p>
+                        <p>确保每一件艺术品安全到达</p>
+                    </li>
+                    <li>
+                        <img src="/web/images/index_sevice_3.png">
+                        <p><strong>优质服务</strong></p>
+                        <p>对于购买艺术品的任何问题</p>
+                        <p>您都可以随时联系我们的专业咨询</p>
+                        <p>8888-888-888</p>
+                        <p>艺网承诺14天无条件退换货</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    ##底部页面在数据库中维护
+    $indexbottom
+</div>
+<script src="/web/js/template-native.js"></script>
+<script src="/web/js/index.js"></script>

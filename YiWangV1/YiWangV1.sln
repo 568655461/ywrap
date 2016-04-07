@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiWangV1", "YiWangV1.csproj", "{E26ABCA7-EC03-46DE-ABD9-5AA28C785BF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiWangV1DLL", "..\YiWangV1DLL\YiWangV1DLL.csproj", "{9ABE153D-5849-49DE-AD2C-E3DA716F4AC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YWTools", "..\YWTools\YWTools.csproj", "{1F94F279-36C7-4818-ACD0-01FCB8AF6109}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E26ABCA7-EC03-46DE-ABD9-5AA28C785BF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E26ABCA7-EC03-46DE-ABD9-5AA28C785BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E26ABCA7-EC03-46DE-ABD9-5AA28C785BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E26ABCA7-EC03-46DE-ABD9-5AA28C785BF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ABE153D-5849-49DE-AD2C-E3DA716F4AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ABE153D-5849-49DE-AD2C-E3DA716F4AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ABE153D-5849-49DE-AD2C-E3DA716F4AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ABE153D-5849-49DE-AD2C-E3DA716F4AC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F94F279-36C7-4818-ACD0-01FCB8AF6109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F94F279-36C7-4818-ACD0-01FCB8AF6109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F94F279-36C7-4818-ACD0-01FCB8AF6109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F94F279-36C7-4818-ACD0-01FCB8AF6109}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

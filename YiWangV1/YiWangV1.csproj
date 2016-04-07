@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E26ABCA7-EC03-46DE-ABD9-5AA28C785BF7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>lxwmvc</RootNamespace>
+    <AssemblyName>velocity_lxwmvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="velocity_Commons">
+      <HintPath>..\l\velocity_Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="velocity_lxwmvccore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\l\velocity_lxwmvccore.dll</HintPath>
+    </Reference>
+    <Reference Include="velocity_NVelocity">
+      <HintPath>..\l\velocity_NVelocity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="color\dist\color-thief.min.js" />
+    <Content Include="color\examples\css\screen.css" />
+    <Content Include="color\examples\img\photo1.jpg" />
+    <Content Include="color\examples\img\photo2.jpg" />
+    <Content Include="color\examples\img\photo3.jpg" />
+    <Content Include="color\examples\js\demo.js" />
+    <Content Include="color\examples\js\jquery.js" />
+    <Content Include="color\examples\js\mustache.js" />
+    <Content Include="color\Gruntfile.js" />
+    <Content Include="color\index.html" />
+    <Content Include="color\src\color-thief.js" />
+    <Content Include="default.aspx" />
+    <Content Include="favicon.png" />
+    <Content Include="Global.asax" />
+    <Content Include="test\9gg.html" />
+    <Content Include="test\drop.html" />
+    <Content Include="test\jquery.imageScroller.min.js" />
+    <Content Include="test\jquery.min.js" />
+    <Content Include="test\jquery.mousewheel.js" />
+    <Content Include="test\lxwdrop.js" />
+    <Content Include="test\pv.html" />
+    <Content Include="test\screen.css" />
+    <Content Include="test\副本 jquery.imageScroller.min.js" />
+    <Content Include="upload\093522998MlS74i7aTfFTa1jK_s.jpg" />
+    <Content Include="upload\bg\bg1.jpg" />
+    <Content Include="upload\bg\bg2.jpg" />
+    <Content Include="upload\bg\bg3.jpg" />
+    <Content Include="upload\bg\bg4.jpg" />
+    <Content Include="upload\bg\bg5.jpg" />
+    <Content Include="views\default\artist.htm" />
+    <Content Include="views\default\arts.htm" />
+    <Content Include="views\default\buy_cart.htm" />
+    <Content Include="views\default\buy_order.htm" />
+    <Content Include="views\default\buy_order_addrs.htm" />
+    <Content Include="views\default\buy_order_success.htm" />
+    <Content Include="views\default\detail.htm" />
+    <Content Include="views\default\forgetpw.htm" />
+    <Content Include="views\default\forgetpwemail.htm" />
+    <Content Include="views\default\found.htm" />
+    <Content Include="views\default\index0407.htm" />
+    <Content Include="views\default\index_old.htm" />
+    <Content Include="views\default\index - 复制.htm" />
+    <Content Include="views\default\index.htm" />
+    <Content Include="views\default\login.htm" />
+    <Content Include="views\default\my_obj_appreciate.htm" />
+    <Content Include="views\default\my_obj_appreciate_cro.htm" />
+    <Content Include="views\default\my_obj_collection.htm" />
+    <Content Include="views\default\my_obj_collection_cro.htm" />
+    <Content Include="views\default\my_travel.htm" />
+    <Content Include="views\default\no.htm" />
+    <Content Include="views\default\return_url.htm" />
+    <Content Include="views\default\search.htm" />
+    <Content Include="views\default\search_article_data.htm" />
+    <Content Include="views\default\search_artist_data.htm" />
+    <Content Include="views\default\search_data.htm" />
+    <Content Include="views\default\search_project_data.htm" />
+    <Content Include="views\default\test.htm" />
+    <Content Include="views\default\tupianjisuan.htm" />
+    <Content Include="views\default\user_address.htm" />
+    <Content Include="views\default\user_address_no.htm" />
+    <Content Include="views\default\user_info.htm" />
+    <Content Include="views\default\user_order.htm" />
+    <Content Include="views\default\user_order_data.htm" />
+    <None Include="Properties\PublishProfiles\HollenRelease.pubxml" />
+    <Content Include="views\layout\default.htm" />
+    <Content Include="views\layout\default_cro.htm" />
+    <Content Include="views\layout\login.htm" />
+    <Content Include="views\layout\user.htm" />
+    <Content Include="views\web\index.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="web\css\addr.css" />
+    <Content Include="web\css\default0407.css" />
+    <Content Include="web\css\default.css" />
+    <Content Include="web\css\normalize.css" />
+    <Content Include="web\images\arrow_left.svg" />
+    <Content Include="web\images\arrow_right.svg" />
+    <Content Include="web\images\artworks_bg.jpg" />
+    <Content Include="web\images\avatar_default.jpg" />
+    <Content Include="web\images\avatar_default.svg" />
+    <Content Include="web\images\buy_nav_1.jpg" />
+    <Content Include="web\images\buy_nav_2.jpg" />
+    <Content Include="web\images\color_all.png" />
+    <Content Include="web\images\color_all_small.png" />
+    <Content Include="web\images\icon_cart.svg" />
+    <Content Include="web\images\icon_cart_o.svg" />
+    <Content Include="web\images\icon_guanbi.svg" />
+    <Content Include="web\images\icon_hanbao.svg" />
+    <Content Include="web\images\icon_heart.svg" />
+    <Content Include="web\images\icon_heart_empty.svg" />
+    <Content Include="web\images\icon_heart_empty_o.svg" />
+    <Content Include="web\images\icon_heart_o.svg" />
+    <Content Include="web\images\icon_qq.svg" />
+    <Content Include="web\images\icon_search.svg" />
+    <Content Include="web\images\icon_transverse.svg" />
+    <Content Include="web\images\icon_vertical.svg" />
+    <Content Include="web\images\icon_weibo.svg" />
+    <Content Include="web\images\icon_weixin.svg" />
+    <Content Include="web\images\image_large.svg" />
+    <Content Include="web\images\index_bg_1.jpg" />
+    <Content Include="web\images\index_sevice_1.png" />
+    <Content Include="web\images\index_sevice_2.png" />
+    <Content Include="web\images\index_sevice_3.png" />
+    <Content Include="web\images\loading.gif" />
+    <Content Include="web\images\loding.gif" />
+    <Content Include="web\images\login_background.jpg" />
+    <Content Include="web\images\logo.png" />
+    <Content Include="web\images\logo.svg" />
+    <Content Include="web\images\logo2.svg" />
+    <Content Include="web\images\meijia.jpg" />
+    <Content Include="web\images\select_bg.png" />
+    <Content Include="web\images\select_bg_2.png" />
+    <Content Include="web\images\test\1.jpg" />
+    <Content Include="web\images\test\2.jpg" />
+    <Content Include="web\images\test\index_1.jpg" />
+    <Content Include="web\images\test\index_2.jpg" />
+    <Content Include="web\images\test\index_3.jpg" />
+    <Content Include="web\js\9gg.js" />
+    <Content Include="web\js\artist.js" />
+    <Content Include="web\js\blocksit.min.js" />
+    <Content Include="web\js\common.js" />
+    <Content Include="web\js\detail.js" />
+    <Content Include="web\js\forgetpw.js" />
+    <Content Include="web\js\forgetpwemail.js" />
+    <Content Include="web\js\found.js" />
+    <Content Include="web\js\found1.js" />
+    <Content Include="web\js\imageFullScreenView.js" />
+    <Content Include="web\css\index.less" />
+    <Content Include="web\js\index.js" />
+    <Content Include="web\js\jquery-asPieProgress.js" />
+    <Content Include="web\js\jquery.formatCurrency-1.4.0.js" />
+    <Content Include="web\js\jquery.imageScroller.min.js" />
+    <Content Include="web\js\location.js" />
+    <Content Include="web\js\login.js" />
+    <Content Include="web\js\lxwdrop.js" />
+    <Content Include="web\js\template-native.js" />
+    <Content Include="web\js\ToolTip.js" />
+    <Content Include="web\js\user_address.js" />
+    <Content Include="web\js\user_info.js" />
+    <Content Include="web\layer\extend\layer.ext.js" />
+    <Content Include="web\layer\layer.js" />
+    <Content Include="web\layer\skin\default\icon-ext.png" />
+    <Content Include="web\layer\skin\default\icon.png" />
+    <Content Include="web\layer\skin\default\loading-0.gif" />
+    <Content Include="web\layer\skin\default\loading-1.gif" />
+    <Content Include="web\layer\skin\default\loading-2.gif" />
+    <Content Include="web\layer\skin\layer.css" />
+    <Content Include="web\layer\skin\layer.ext.css" />
+    <Content Include="web\css\index0407.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="nvelocity.properties" />
+    <Content Include="views\default\login1.htm" />
+    <Content Include="color\bower.json" />
+    <Content Include="color\examples\sass\screen.sass" />
+    <Content Include="color\examples\sass\_normalize.sass" />
+    <Content Include="color\package.json" />
+    <None Include="Properties\PublishProfiles\YHFRelease.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="web\font\PingHei-light.eot" />
+    <Content Include="web\font\PingHei-light.ttf" />
+    <Content Include="web\font\PingHei-text.ttf" />
+    <Content Include="web\font\PingHei-text.woff" />
+    <Content Include="web\css\default.less" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\YiWangV1DLL\YiWangV1DLL.csproj">
+      <Project>{9abe153d-5849-49de-ad2c-e3da716f4ac3}</Project>
+      <Name>YiWangV1DLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,182 @@
+﻿<div class="my_center">
+    <div class="nav">
+        <a href="/my_obj_collection_cro" class="active">我的藏品</a>
+        <a href="/my_obj_appreciate_cro" >欣赏的作品</a>
+        <a href="/my_travel">我的艺网之旅</a>
+    </div>
+    #if($!imgcount == 0) 
+    <div class="no_login">
+        <h2>您还没有购买，现在就去<a href="/buy">挑选</a>吧。</h2>
+    </div>
+    #else
+    <div class="filter clearfix">
+        <div class="f_l menu">
+            <div class="item border_small">
+                <select name="opt1" class="mxlselect">
+                    <option value="asc" selected>按最早加入时间</option>
+                    <option value="desc">按最新加入时间</option>
+                </select>
+            </div>
+            #if($yspleibie.Count()>0)
+            <div class="item border_small">
+                <select name="opt2" class="mxlselect">
+                    <option value="" selected>全部</option>
+                    #foreach($type in $yspleibie)
+                    <option value="$type">$type</option>
+                    #end
+                </select>
+            </div>
+            #end
+            <div class="item border">
+                <div class="item border switchFormat">
+                    <a href="/my_obj_collection" class="icon_a active"><img src="/svg_file?path=/web/images/icon_vertical.svg&rgb=3,3,3" class="defualt"/><img src="/svg_file?path=/web/images/icon_vertical.svg&rgb=255,3,3" class="active"/></a>
+                    <a href="/my_obj_collection_cro" class="icon_a"><img src="/svg_file?path=/web/images/icon_transverse.svg&rgb=3,3,3" class="defualt"/><img src="/svg_file?path=/web/images/icon_transverse.svg&rgb=255,3,3" class="active"/></a>
+                </div>
+            </div>
+        </div>
+        <div class="f_r sum">
+            <em>$!imgcount 件收藏的作品</em>
+        </div>
+    </div>
+
+    <div class="my_collection clearfix">
+        <div class="image_list_ver clearfix">
+            <div class="clearfix" id="container"></div>
+            <div class="image_load _hidden">正在拼命的加载...</div>
+        </div>
+    </div>
+    #end
+</div>
+
+#if($!imgcount != 0) 
+<script type="text/html" id="body_load">
+    var _ = {};
+    function _init(){
+        _.page_s = 1;//小页
+        _.page_s_count = 9;//小页显示数据条数
+        _.page_b = 1;//查询数据翻页
+        _.page_b_count = 27;//翻页数据pagesize
+        _.data = null;
+    }
+    _init();
+
+    $(function(){
+
+        //加载数据
+        function loaddata() {
+
+            var para = "";
+            $(".border_small .mxlselect").each(function(i,v){
+                var ths = $(v);
+                para += "&"+ths.attr("name")+"="+ths.val();
+            });
+      
+            $('.image_load').fadeIn(2000);
+            
+            $.getJSON("my_obj_appreciate_data?page=" + _.page_b + "&ps=" + _.page_b_count + "&type=0"+para, function (json) {
+                _.data = json;
+                
+                $(".image_load").hide();
+                loadMeinv();
+            });
+        }
+
+        loaddata();
+    
+        load_status = 0;
+
+        function loadMeinv(){
+            if (load_status){return false;}
+            load_status = 1;
+
+            if(_.data != null)
+            {
+                for(var i=0; i < _.page_s_count;i++){
+                    if((_.page_s-1)*_.page_s_count+i >= _.data.length)  break; 
+                    var img_data = _.data[(_.page_s-1)*_.page_s_count+i];
+
+			        var html = "";
+			        html = '<div class="item transparent">' +
+                            '<a href="/artworks/'+img_data.key_ysp+'" target="_blank"><div class="thumb"><img src="'+ GTUPIANIMGIMG + img_data.tupian + '.jpg_small01" /></div></a>' +
+                            '<div class="detail">' +
+                            '<p><strong>$funhelper.encode("'+img_data.zhongwen+'","",$funhelper.encode("'+img_data.mingcheng+'","","无题","'+img_data.mingcheng+'"),"'+img_data.zhongwen+'")</strong></p>' +
+                            '<p><a href="/artist/'+img_data.key_ysj+'" target="_blank">'+img_data.xingming+'</a></p>' +
+                            '<p>'+img_data.size+'</p>' +
+                            '<p>'+img_data.leibie+'</p>' +
+                            '<p>¥ '+img_data.jiage+'</p>' +
+                            '<div class="image_list_icon">' +
+                            '<a href="javascript:void(0);" class="icon_a active"><img src="/svg_file?path=/web/images/icon_heart_empty_o.svg&rgb=255,3,3" class="defualt"/><img src="/svg_file?path=/web/images/icon_heart_o.svg&rgb=255,3,3" class="active"/></a>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+			        $("#container").append(html);
+                    load_status = 0;
+
+		        }
+                _.page_s++,_.page_s > 1 && _.page_s % 3 == 1 && (_.page_b++,loaddata(),_.page_s = 1);
+            }
+            $('#container .transparent').each(function(){
+                $(this).animate({"opacity": "1"}).removeClass('transparent');
+            });
+            setTimeout(function(){
+                blocksit_fu();
+            }, 100);
+        }
+        
+        $(window).on("scroll",function(){
+            if( $(document).scrollTop() >= $(document).height() - $(window).height()  ){
+                loadMeinv();
+            }
+        })
+
+        setInterval(function(){
+            blocksit_fu();
+        }, 1000);
+        //window resize
+        var currentWidth = 1100;
+        $(window).resize(function() {
+            blocksit_fu();
+        });
+
+        function blocksit_fu(){
+            var winWidth = $(window).width();
+            var conWidth;
+            if(winWidth < 450) {
+                conWidth = winWidth;
+                col = 1
+            }else if(winWidth < 768) {
+                conWidth = winWidth;
+                col = 2
+            }else if(winWidth < 1300) {
+                conWidth = winWidth;
+                col = 3
+            } else if(winWidth < 1900) {
+                conWidth = winWidth;
+                col = 4
+            } else if(winWidth < 2400) {
+                conWidth = winWidth;
+                col = 5
+            } else {
+                conWidth = winWidth;
+                col = 5;
+            }
+            if(conWidth != currentWidth) {
+                currentWidth = conWidth;
+                $('#container').width(conWidth);
+            }
+            $('#container').BlocksIt({
+                    numOfCol: col,
+                    offsetX: 8,
+                    offsetY: 8,
+                    blockElement: '.item'
+                });
+        }
+
+        $(".border_small .mxlselect").change(function(){
+            _init();
+            $("#container").html("");
+            loaddata();
+        });
+    })
+</script>
+#end

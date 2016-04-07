@@ -1,0 +1,41 @@
+﻿<div class="search_line">
+    <span class="result_num mxl_result_num"><em>$pager.recordcount</em>个结果</span>
+</div>
+<div class="search_content">
+    <!-- 无结果DIV -->
+    
+    #if($pager.recordcount == 0)
+    <div class="no_data">
+        <strong>搜索结果为空</strong>
+        请检查你的输入是否有误
+    </div>
+    #end
+    <div class="search_list">
+        <ul>
+            #foreach($item in $pager.data)
+            #set($yishujia=$core_buy.getyishujia($item.ywyishujiaid))
+            <li>
+                <div class="project clearfix"><!--艺术品-->
+                    <div class="f_l thumb"><a href="/artworks/$!{item.xiangqing}" target="_blank"><img src="${GTUPIANIMGIMG}$!{item.tupian}.jpg_small02"/></a></div>
+                    <div class="f_l detail">
+                        <div class="title nowrap">$funhelper.encode("$!item.zhongwen","",$funhelper.encode("$!item.mingcheng","","无题","$!item.mingcheng"),"$!item.zhongwen")</div>
+                        <p>$!yishujia.xingming</p>
+                        <p>$!{item.gao}*$!{item.kuan}CM</p>
+                        <p>¥$!{item.jiage}</p>
+                    </div>
+                    <div class="f_l info">
+                        <strong class="title">作品描述</strong>
+                        <div class="summarize">$!{item.miaoshu}</div>
+                        <div class="more">
+                            <a href="/artworks/$!{item.xiangqing}">查看详情 ></a><!--转 作品详情里面吗？-->
+                        </div>
+                    </div>
+                </div>
+            </li>
+            #end
+        </ul>
+        <div class="pagination p_r">
+        $core_pager.simple($!pager)
+        </div>
+    </div>
+</div>
